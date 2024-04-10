@@ -1,0 +1,42 @@
+openapi: "3.1.0"
+info:
+  title: IWXXM AIRMET Model
+  version: "1.0"
+  description: |
+    An OpenAPI model of the IWXXM AIRMET diagram.
+
+components:
+  schemas:
+    METAR:
+      allOf:
+        - $ref: "../Common/Report.yaml#/components/schemas/Report"
+        - type: object
+          required:
+          - issueTime
+          - issuingAirTrafficServicesUnit
+          - validPeriod
+          properties:
+            issueTime:
+              type: string
+              format: date-time
+            issuingAirTrafficServicesUnit:
+              $ref: "../AIXM/AIXM.yaml#/components/schemas/Unit"
+            sequenceNumber:
+              $ref: "../Common/String.yaml#/components/schemas/StringWithNilReason"
+            validPeriod:
+              $ref: "../GML/GML.yaml#/components/schemas/TimePeriod"
+            cancelledReportSequenceNumber:
+              $ref: "../Common/String.yaml#/components/schemas/CharacterString"
+            cancelledReportValidPeriod:
+              $ref: "../GML/GML.yaml#/components/schemas/TimePeriod"
+            phenomenon:
+              $ref: "#/components/schemas/AeronauticalAreaWeatherPhenomenon"
+            analysis:
+              $ref: "AIRMET_Analysis.yaml#/components/schemas/AIRMETEvolvingConditionCollection"
+            isCancelReport:
+              type: string
+              enum: ["CNL"]
+
+    AeronauticalAreaWeatherPhenomenon:
+      type: string
+      unum: []

@@ -1,0 +1,7 @@
+openapi-spec-validator Common/Cloud.yaml
+openapi-spec-validator Common/Permissible_Usage.yaml
+openapi-spec-validator Common/Relational_Operator.yaml
+openapi-spec-validator Common/Report.yaml
+openapi-spec-validator Common/String.yaml
+openapi-spec-validator Common/Surface_Wind.yaml
+openapi-spec-validator Common/Weather.yaml

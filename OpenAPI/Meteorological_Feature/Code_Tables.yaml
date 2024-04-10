@@ -1,0 +1,11 @@
+openapi: "3.1.0"
+info:
+  title: IWXXM Code Tables Model
+  version: "1.0"
+
+components:
+  schemas:
+    MeteorologicalPhenomenon:
+      description: http://codes.wmo.int/49-2/MeteorologicalFeature
+      type: string
+      enum: []

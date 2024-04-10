@@ -1,0 +1,26 @@
+openapi: "3.1.0"
+info:
+  title: IWXXM METAR/SPECI Runway State Model
+  version: "1.0"
+
+components:
+  schemas:
+    RunwayDeposits:
+      description: http://codes.wmo.int/bufr4/codeflag/0-20-086
+      type: string
+      enum: []
+
+    RunwayContamination:
+      description: http://codes.wmo.int/common/quantity-kind/runwayContaminationCoverage
+      type: string
+      enum: []
+
+    RunwayFrictionCoefficient:
+      description: http://codes.wmo.int/bufr4/codeflag/0-20-089
+      type: string
+      enum: []
+
+    SeaSurfaceState:
+      description: http://codes.wmo.int/bufr4/codeflag/0-22-061
+      type: string
+      enum: []

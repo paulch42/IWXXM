@@ -1,0 +1,11 @@
+openapi: "3.1.0"
+info:
+  title: WMO Code Lists Model
+  version: "1.0"
+
+components:
+  schemas:
+    AerodromeForecastWeather:
+      description: http://codes.wmo.int/49-2/AerodromePresentOrForecastWeather
+      type: string
+      enum: []

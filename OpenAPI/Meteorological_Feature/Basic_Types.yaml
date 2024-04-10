@@ -1,0 +1,113 @@
+openapi: "3.1.0"
+info:
+  title: IWXXM Basic Types Model
+  version: "1.0"
+  description: TO DO
+
+components:
+  schemas:
+    ElevatedPoint:
+      allOf:
+        - $ref: "../GML/GML.yaml#/components/schemas/Point"
+        - type: object
+          required:
+            - elevation
+          properties:
+            elevation:
+              $ref: "#/components/schemas/ValDistanceVertical"
+            verticalReference:
+              $ref: "../AIXM/AIXM.yaml#/components/schemas/CodeVerticalReferenceBase"
+            interpretation:
+              $ref: "../AIXM/AIXM.yaml#/components/schemas/CodeValueInterrpetationBase"
+
+    ElevatedEnvelope:
+      allOf:
+        - $ref: "../GML/GML.yaml#/components/schemas/Envelope"
+        - type: object
+          required:
+            - upperElevation
+            - lowerElevation
+          properties:
+            upperElevation:
+              $ref: "#/components/schemas/ValDistanceVertical"
+            upperVerticalReference:
+              $ref: "../AIXM/AIXM.yaml#/components/schemas/CodeVerticalReferenceBase"
+            lowerElevation:
+              $ref: "#/components/schemas/ValDistanceVertical"
+            lowerVerticalReference:
+              $ref: "../AIXM/AIXM.yaml#/components/schemas/CodeVerticalReferenceBase"
+
+    ElevatedLevel:
+      allOf:
+        - $ref: "../GML/GML.yaml#/components/schemas/AbstractGeometricPrimitive"
+        - type: object
+          required:
+            - elevation
+          properties:
+            elevation:
+              $ref: "#/components/schemas/ValDistanceVertical"
+            verticalReference:
+              $ref: "../AIXM/AIXM.yaml#/components/schemas/CodeVerticalReferenceBase"
+            interpretation:
+              $ref: "../AIXM/AIXM.yaml#/components/schemas/CodeValueInterrpetationBase"
+
+    ElevatedCurve:
+      allOf:
+        - $ref: "../GML/GML.yaml#/components/schemas/Curve"
+        - type: object
+          required:
+            - elevation
+          properties:
+            elevation:
+              $ref: "#/components/schemas/ValDistanceVertical"
+            verticalReference:
+              $ref: "../AIXM/AIXM.yaml#/components/schemas/CodeVerticalReferenceBase"
+            interpretation:
+              $ref: "../AIXM/AIXM.yaml#/components/schemas/CodeValueInterrpetationBase"
+
+    ElevatedSurface:
+      allOf:
+        - $ref: "../GML/GML.yaml#/components/schemas/Surface"
+        - type: object
+          required:
+            - elevation
+          properties:
+            elevation:
+              $ref: "#/components/schemas/ValDistanceVertical"
+            verticalReference:
+              $ref: "../AIXM/AIXM.yaml#/components/schemas/CodeVerticalReferenceBase"
+            interpretation:
+              $ref: "../AIXM/AIXM.yaml#/components/schemas/CodeValueInterrpetationBase"
+
+    ElevatedVolume:
+      allOf:
+        - $ref: "../GML/GML.yaml#/components/schemas/Surface"
+        - type: object
+          required:
+            - upperElevation
+            - lowerElevation
+          properties:
+            upperElevation:
+              $ref: "#/components/schemas/ValDistanceVertical"
+            upperVerticalReference:
+              $ref: "../AIXM/AIXM.yaml#/components/schemas/CodeVerticalReferenceBase"
+            upperInterpretation:
+              $ref: "../AIXM/AIXM.yaml#/components/schemas/CodeValueInterrpetationBase"
+            lowerElevation:
+              $ref: "#/components/schemas/ValDistanceVertical"
+            lowerVerticalReference:
+              $ref: "../AIXM/AIXM.yaml#/components/schemas/CodeVerticalReferenceBase"
+            lowerInterpretation:
+              $ref: "../AIXM/AIXM.yaml#/components/schemas/CodeValueInterrpetationBase"
+
+    ValDistanceVertical:
+      allOf:
+        - $ref: "../AIXM/AIXM.yaml#/components/schemas/ValDistanceVerticalBase"
+        - type: object
+          required:
+            - uom
+          properties:
+            uom:
+              $ref: "../AIXM/AIXM.yaml#/components/schemas/UomDistanceVertical"
+            nilReason:
+              $ref: "../GML/GML.yaml#/components/schemas/NilReason"

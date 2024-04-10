@@ -1,0 +1,47 @@
+openapi: "3.1.0"
+info:
+  title: IWXXM Report Model
+  version: "1.0"
+  description: |
+    An OpenAPI model of the IWXXM Common/Report diagram.
+
+components:
+  schemas:
+    BasicReport:
+      type: object
+      required:
+        - reportStatus
+        - permissibleUsage
+      properties:
+        reportStatus:
+          $ref: "#/components/schemas/ReportStatus"
+        permissibleUsage:
+          $ref: "Permissible_Usage.yaml#/components/schemas/PermissibleUsage"
+        permissibleUsageReason:
+          $ref: "Permissible_Usage.yaml#/components/schemas/PermissibleUsageReason"
+        permissibleUsageSupplementary:
+          type: string
+
+    ReportStatus:
+      type: string
+      enum: ["Normal", "Amendment", "Correction"]
+
+    Report:
+      allOf:
+        - $ref: "#/components/schemas/BasicReport"
+        - type: object
+          properties:
+            translatedBulletinID:
+              type: string
+            translatedBulletinReceptionTime:
+              type: string
+              format: date-time
+            translationCentreDesignator:
+              type: string
+            translationCentreName:
+              type: string
+            translationTime:
+              type: string
+              format: date-time
+            translationFailedTAC:
+              type: string

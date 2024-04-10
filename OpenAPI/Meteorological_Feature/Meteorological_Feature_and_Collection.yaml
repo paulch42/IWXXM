@@ -1,0 +1,72 @@
+openapi: "3.1.0"
+info:
+  title: IWXXM Meteorological Feature Model
+  version: "1.0"
+
+components:
+  schemas:
+    MeteorologicalFeatureCollection:
+      allOf:
+        - $ref: "../Common/Report.yaml#/components/schemas/Report"
+        - type: object
+          required:
+            - issueTime
+            - originatingCentre
+            - phenomenonCategory
+            - feature
+          properties:
+            boundingPeriod:
+              $ref: "../GML/GML.yaml#/components/schemas/TimePeriod"
+            boundingVolume:
+              $ref: "Basic_Types.yaml#/components/schemas/ElevatedEnvelope"
+            phenomenaList:
+              type: array
+              items:
+                $ref: "Code_Tables.yaml#/components/schemas/MeteorologicalPhenomenon"
+            issueTime:
+              type: string
+              format: date-time
+            originatingCentre:
+              $ref: "../GML/GML.yaml#/components/schemas/AssociationRole"
+            phenomenonCategory:
+              $ref: "#/components/schemas/WMOCategoryCode"
+            phenomenonBaseTime:
+              type: string
+              format: date-time
+            phenomenonTime:
+              $ref: "../GML/GML.yaml#/components/schemas/DateTimeOrPeriod"
+            feature:
+              type: array
+              minItems: 1
+              items:
+                $ref: "#/components/schemas/MeteorologicalFeature"
+
+    MeteorologicalFeature:
+      type: object
+      required:
+        - phenomenon
+      properties:
+        issueTime:
+          type: string
+          format: date-time
+        originatingCentre:
+          $ref: "../GML/GML.yaml#/components/schemas/AssociationRole"
+        phenomenonCategory:
+          $ref: "#/components/schemas/WMOCategoryCode"
+        phenomenonBaseTime:
+          type: string
+          format: date-time
+        phenomenonTime:
+          $ref: "../GML/GML.yaml#/components/schemas/DateTimeOrPeriod"
+        phenomenon:
+          $ref: "Code_Tables.yaml#/components/schemas/MeteorologicalPhenomenon"
+        phenomenonGeometry:
+          $ref: "../GML/GML.yaml#/components/schemas/AssociationRole"
+        phenomenonProperty:
+          type: array
+          items:
+            $ref: "../GML/GML.yaml#/components/schemas/AssociationRole"
+
+    WMOCategoryCode:
+      type: string
+      enum: ["weatherObservations", "weatherForecasts"]

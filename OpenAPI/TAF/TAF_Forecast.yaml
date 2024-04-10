@@ -1,0 +1,73 @@
+openapi: "3.1.0"
+info:
+  title: IWXXM TAF Model
+  version: "1.0"
+  description: |
+    An OpenAPI model of the IWXXM TAF diagram.
+
+components:
+  schemas:
+    MeteorologicalAerodromeForecast:
+      type: object
+      required:
+        - phenomenonTime
+      properties:
+        phenomenonTime:
+          $ref: "../GML/GML.yaml#/components/schemas/TimePeriod"
+        prevailingVisibility:
+          $ref: "../GML/GML.yaml#/components/schemas/Length"
+        prevailingVisibilityOperator:
+          $ref: "../Common/Relational_Operator.yaml#/components/schemas/RelationalOperator"
+        surfaceWind:
+          $ref: "../Common/Surface_Wind.yaml#/components/schemas/AerodromeSurfaceWindForecast"
+        weather:
+          type: array
+          maxItems: 3
+          uniqueItems: true
+          items:
+            $ref: "../Common/Weather.yaml#/components/schemas/AerodromeForecastWeather"
+        cloud:
+          $ref: "../Common/Cloud.yaml#/components/schemas/AerodromeCloudForecast"
+        temperature:
+          type: array
+          maxItems: 2
+          uniqueItems: true
+          items:
+            $ref: "#/components/schemas/AerodromeAirTemperatureForecast"
+        changeIndicator:
+          $ref: "#/components/schemas/AerodromeChangeForecastIndicator"
+        cloudAndVisibilityOK:
+          type: string
+          enum: ["CAVOK"]
+
+    AerodromeAirTemperatureForecast:
+      type: object
+      required:
+        - maximumAirTemperature
+        - maximumAirTemperatureTime
+        - minimumAirTemperature
+        - minimumAirTemperatureTime
+      properties:
+        maximumAirTemperature:
+          $ref: "../GML/GML.yaml#/components/schemas/Temperature"
+        maximumAirTemperatureTime:
+          type: string
+          format: date-time
+        minimumAirTemperature:
+          $ref: "../GML/GML.yaml#/components/schemas/Temperature"
+        minimumAirTemperatureTime:
+          type: string
+          format: date-time
+
+    AerodromeChangeForecastIndicator:
+      type: string
+      enum:
+        [
+          "Becoming",
+          "Temporary_Fluctuations",
+          "From",
+          "Probability_30",
+          "Probability_30_Temporary_Fluctuations",
+          "Probability_40",
+          "Probability_40_Temporary_Fluctuations",
+        ]

@@ -1,0 +1,45 @@
+openapi: "3.1.0"
+info:
+  title: IWXXM Report Model
+  version: "1.0"
+  description: |
+    An OpenAPI model of the IWXXM Common/Cloud diagram.
+
+components:
+  schemas:
+    AerodromeCloudForecast:
+      type: object
+      properties:
+        verticalVisibility:
+          description: http://codes.wmo.int/common/quantity-kind/verticalVisibility
+          $ref: "../Measures/Measure.yaml#/components/schemas/LengthWithNilReason"
+        layer:
+          type: array
+          maxItems: 4
+          uniqueItems: true
+          items:
+            $ref: "#/components/schemas/CloudLayer"
+
+    CloudLayer:
+      type: object
+      required:
+        - amount
+        - base
+      properties:
+        amount:
+          $ref: "#/components/schemas/CloudAmountReportedAtAerodrome"
+        base:
+          description: http://codes.wmo.int/common/quantity-kind/heightOfBaseOfCloud
+          $ref: "../Measures/Measure.yaml#/components/schemas/DistanceWithNilReason"
+        cloudType:
+          $ref: "#/components/schemas/SigConvectiveCloudType"
+
+    CloudAmountReportedAtAerodrome:
+      description: http://codes.wmo.int/49-2/CloudAmountReportedAtAerodrome
+      type: string
+      enum: []
+
+    SigConvectiveCloudType:
+      description: http://codes.wmo.int/49-2/SigConvectiveCloudType
+      type: string
+      enum: []

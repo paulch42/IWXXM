@@ -1,0 +1,96 @@
+{
+    "reportStatus": "Normal",
+    "permissibleUsage": "Operational",
+    "issueTime": "2012-08-22T16:30:00Z",
+    "aerodrome": "YUDO",
+    "observationTime": "2012-08-22T16:30:00Z",
+    "observation": {
+        "airTemperature": {
+            "value": 17.0,
+            "uom": "Cel"
+        },
+        "dewpointTemperature": {
+            "value": 16.0,
+            "uom": "Cel"
+        },
+        "qnh": {
+            "value": 1018,
+            "uom": "hPa"
+        },
+        "surfaceWind": {
+            "meanWindDirection": {
+                "value": 240,
+                "uom": "deg"
+            },
+            "meanWindSpeed": {
+                "value": 4.0,
+                "uom": "m/s"
+            }
+        },
+        "visibility": {
+            "prevailingVisibility": {
+                "value": 600,
+                "uom": "m"
+            }
+        },
+        "rvr": [
+            {
+                "runway": "12",
+                "meanRVR": {
+                    "value": 1000,
+                    "uom": "m"
+                },
+                "pastTendency": "Upward"
+            }
+        ],
+        "presentWeather": [
+            "DZ",
+            "FG"
+        ],
+        "cloud": {
+            "layer": [
+                {
+                    "amount": "SCT",
+                    "base": {
+                        "value": 1000,
+                        "uom": "[ft_i]"
+                    }
+                },
+                {
+                    "amount": "OVC",
+                    "base": {
+                        "value": 2000,
+                        "uom": "[ft_i]"
+                    }
+                }
+            ]
+        }
+    },
+    "trendForecast": [
+        {
+            "phenomenonTime": {
+                "beginPosition": "2012-08-22T16:30:00Z",
+                "endPosition": "2012-08-22T17:00:00Z"
+            },
+            "timeIndicator": "UNTIL",
+            "prevailingVisibility": {
+                "value": 800,
+                "uom": "m"
+            },
+            "weather": ["FG"]
+        },
+        {
+            "phenomenonTime": {
+                "beginPosition": "2012-08-22T18:00:00Z",
+                "endPosition": "2012-08-22T18:00:00Z"
+            },
+            "timeIndicator": "AT",
+            "prevailingVisibility": {
+                "value": 10000,
+                "uom": "m"
+            },
+            "prevailingVisibilityOperator": "ABOVE",
+            "weather": []
+        }
+    ]
+}

@@ -1,0 +1,3 @@
+openapi-spec-validator Meteorological_Feature/Basic_Types.yaml
+openapi-spec-validator Meteorological_Feature/Code_Tables.yaml
+openapi-spec-validator Meteorological_Feature/Meteorological_Feature_and_Collection.yaml

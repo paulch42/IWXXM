@@ -1,0 +1,50 @@
+openapi: "3.1.0"
+info:
+  title: IWXXM Measure Model
+  version: "1.0"
+  description: |
+    An OpenAPI model of the IWXXM Measure diagram.
+
+components:
+  schemas:
+    PressureWithNilReason:
+      description:
+      oneOf:
+        - $ref: "#/components/schemas/Nil"
+        - $ref: "../GML/GML.yaml#/components/schemas/Pressure"
+
+    TemperatureWithNilReason:
+      description:
+      oneOf:
+        - $ref: "#/components/schemas/Nil"
+        - $ref: "../GML/GML.yaml#/components/schemas/Temperature"
+
+    AngleWithNilReason:
+      description:
+      oneOf:
+        - $ref: "#/components/schemas/Nil"
+        - $ref: "../GML/GML.yaml#/components/schemas/Angle"
+
+    VelocityWithNilReason:
+      description:
+      oneOf:
+        - $ref: "#/components/schemas/Nil"
+        - $ref: "../GML/GML.yaml#/components/schemas/Velocity"
+
+    DistanceWithNilReason:
+      description:
+      oneOf:
+        - $ref: "#/components/schemas/Nil"
+        - $ref: "../GML/GML.yaml#/components/schemas/Length"
+
+    LengthWithNilReason:
+      description:
+      oneOf:
+        - $ref: "#/components/schemas/Nil"
+        - $ref: "../GML/GML.yaml#/components/schemas/Length"
+
+    Nil:
+      type: object
+      properties:
+        nilReason:
+          type: string

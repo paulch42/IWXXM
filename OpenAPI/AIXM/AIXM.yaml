@@ -1,0 +1,39 @@
+openapi: "3.1.0"
+info:
+  title: IWXXM Report Model
+  version: "1.0"
+  description: Minimal model of AIXM features to support IWXXM model.
+
+components:
+  schemas:
+    AirportHeliport:
+      description: An AIXM airport/heliport feature.
+      type: string
+      pattern: "^[A-Z]{4}$"
+
+    RunwayDirection:
+      description: An AIXM runway direction feature.
+      type: string
+      pattern: "^[0-9]{2}[LCR]?$"
+
+    Unit:
+      type: string
+
+    AirspaceVolume:
+      type: string
+
+    CodeVerticalReferenceBase:
+      description: ????
+      type: object
+
+    CodeValueInterrpetationBase:
+      description: ????
+      type: object
+
+    ValDistanceVerticalBase:
+      description: ????
+      type: object
+
+    UomDistanceVertical:
+      description: ????
+      type: object

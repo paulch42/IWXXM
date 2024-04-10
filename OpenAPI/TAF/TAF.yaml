@@ -1,0 +1,36 @@
+openapi: "3.1.0"
+info:
+  title: IWXXM TAF Model
+  version: "1.0"
+  description: |
+    An OpenAPI model of the IWXXM TAF diagram.
+
+components:
+  schemas:
+    TAF:
+      allOf:
+        - $ref: "../Common/Report.yaml#/components/schemas/Report"
+        - type: object
+          description: A model of an aerodrome observation report.
+          required:
+            - issueTime
+            - aerodrome
+          properties:
+            issueTime:
+              type: string
+              format: date-time
+            aerodrome:
+              $ref: "../AIXM/AIXM.yaml#/components/schemas/AirportHeliport"
+            validPeriod:
+              $ref: "../GML/GML.yaml#/components/schemas/TimePeriod"
+            cancelledReportValidPeriod:
+              $ref: "../GML/GML.yaml#/components/schemas/TimePeriod"
+            baseForecast:
+              $ref: "TAF_Forecast.yaml#/components/schemas/MeteorologicalAerodromeForecast"
+            changeForecast:
+              type: array
+              items:
+                $ref: "TAF_Forecast.yaml#/components/schemas/MeteorologicalAerodromeForecast"
+            isCancelReport:
+              type: string
+              enum: ["CNL"]

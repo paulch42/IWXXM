@@ -1,0 +1,49 @@
+openapi: "3.1.0"
+info:
+  title: IWXXM METAR/SPECI Trend Forecast Model
+  version: "1.0"
+  description: |
+    An OpenAPI model of the IWXXM METAR/SPECI Trend Forecast diagram.
+
+components:
+  schemas:
+    MeteorologicalAerodromeTrendForecast:
+      description: A model of an aerodrome trend forecast.
+      type: object
+      required:
+        - phenomenonTime
+        - changeIndicator
+      properties:
+        phenomenonTime:
+          $ref: "../GML/GML.yaml#/components/schemas/DateTimeOrPeriod"
+        timeIndicator:
+          $ref: "#/components/schemas/TrendForecastTimeIndicator"
+        prevailingVisibility:
+          $ref: "../GML/GML.yaml#/components/schemas/Length"
+        prevailingVisibilityOperator:
+          $ref: "../Common/Relational_Operator.yaml#/components/schemas/RelationalOperator"
+        surfaceWind:
+          $ref: "../Common/Surface_Wind.yaml#/components/schemas/AerodromeSurfaceWindTrendForecast"
+        weather:
+          type: array
+          maxItems: 3
+          uniqueItems: true
+          items:
+           $ref: "../Common/Weather.yaml#/components/schemas/AerodromeForecastWeather"
+        cloud:
+          $ref: "../Common/Cloud.yaml#/components/schemas/AerodromeCloudForecast"
+        changeIndicator:
+          $ref: "#/components/schemas/ForecastChangeIndicator"
+        cloudAndVisibilityOK:
+          type: string
+          enum: ["CAVOK"]
+
+    TrendForecastTimeIndicator:
+      description:
+      type: string
+      enum: ["From_Until", "From", "Until", "At"]
+
+    ForecastChangeIndicator:
+      description:
+      type: string
+      enum: ["Becoming", "Temporary_Fluctuations"]

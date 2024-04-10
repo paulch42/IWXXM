@@ -1,0 +1,30 @@
+openapi: "3.1.0"
+info:
+  title: IWXXM Report Model
+  version: "1.0"
+
+components:
+  schemas:
+    CharacterString:
+      type: object
+      required:
+        - characterSet
+        - elements
+        - maxLength
+        - size
+      properties:
+        characterSet:
+          type: string
+          enum: ["ISO 10646-2"]
+        elements:
+          type: string
+        maxLength:
+          type: integer
+          minimum: 0
+        size:
+          type: integer
+          minimum: 0
+
+    StringWithNilReason:
+      allOf:
+        - $ref: "#/components/schemas/CharacterString"

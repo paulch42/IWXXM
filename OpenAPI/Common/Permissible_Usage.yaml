@@ -1,0 +1,14 @@
+openapi: "3.1.0"
+info:
+  title: IWXXM Report Model
+  version: "1.0"
+
+components:
+  schemas:
+    PermissibleUsage:
+      type: string
+      enum: ["Operational", "Non-Operational"]
+
+    PermissibleUsageReason:
+      type: string
+      enum: ["Test", "Exercise"]

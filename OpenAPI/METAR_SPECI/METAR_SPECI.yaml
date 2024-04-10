@@ -1,0 +1,44 @@
+openapi: "3.1.0"
+info:
+  title: IWXXM METAR/SPECI Model
+  version: "1.0"
+  description: |
+    An OpenAPI model of the IWXXM METAR/SPECI diagram.
+
+components:
+  schemas:
+    METAR:
+      allOf:
+        - $ref: "#/components/schemas/MeteorologicalAerodromeObservationReport"
+
+    SPECI:
+      allOf:
+        - $ref: "#/components/schemas/MeteorologicalAerodromeObservationReport"
+
+    MeteorologicalAerodromeObservationReport:
+      allOf:
+        - $ref: "../Common/Report.yaml#/components/schemas/Report"
+        - type: object
+          description: A model of an aerodrome observation report.
+          required:
+            - issueTime
+            - aerodrome
+            - observationTime
+          properties:
+            issueTime:
+              type: string
+              format: date-time
+            aerodrome:
+              $ref: "../AIXM/AIXM.yaml#/components/schemas/AirportHeliport"
+            observationTime:
+              type: string
+              format: date-time
+            observation:
+              $ref: "Observation.yaml#/components/schemas/MeteorologicalAerodromeObservation"
+            trendFroecast:
+              type: array
+              items:
+                $ref: "Trend_Forecast.yaml#/components/schemas/MeteorologicalAerodromeTrendForecast"
+            automatedStation:
+              type: string
+              enum: ["AUTO"]

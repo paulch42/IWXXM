@@ -1,0 +1,192 @@
+openapi: "3.1.0"
+info:
+  title: IWXXM METAR/SPECI Observation Model
+  version: "1.0"
+  description: |
+    An OpenAPI model of the IWXXM METAR/SPECI Observation diagram.
+
+components:
+  schemas:
+    MeteorologicalAerodromeObservation:
+      description:
+      type: object
+      required:
+        - airTemperature
+        - dewpointTemperature
+        - qnh
+        - surfaceWind
+      properties:
+        airTemperature:
+          $ref: "../Measures/Measure.yaml#/components/schemas/TemperatureWithNilReason"
+        dewpointTemperature:
+          $ref: "../Measures/Measure.yaml#/components/schemas/TemperatureWithNilReason"
+        qnh:
+          $ref: "../Measures/Measure.yaml#/components/schemas/PressureWithNilReason"
+        surfaceWind:
+          $ref: "#/components/schemas/AerodromeSurfaceWind"
+        visibility:
+          $ref: "#/components/schemas/AerodromeHorizontalVisibility"
+        rvr:
+          type: array
+          maxItems: 4
+          uniqueItems: true
+          items:
+            $ref: "#/components/schemas/AerodromeRunwayVisualRange"
+        presentWeather:
+          type: array
+          maxItems: 3
+          uniqueItems: true
+          items:
+            $ref: "Weather.yaml#/components/schemas/AerodromePresentWeather"
+        cloud:
+          $ref: "#/components/schemas/AerodromeCloud"
+        recentWeather:
+          type: array
+          maxItems: 3
+          uniqueItems: true
+          items:
+            $ref: "Weather.yaml#/components/schemas/AerodromeRecentWeather"
+        windShear:
+          $ref: "#/components/schemas/AerodromeWindShear"
+        seaCondition:
+          $ref: "#/components/schemas/AerodromeSeaCondition"
+        runwayState:
+          $ref: "#/components/schemas/AerodromeRunwayState"
+        cloudAndVisibilityOK:
+          type: string
+          enum: ["CAVOK"]
+
+    AerodromeSurfaceWind:
+      description:
+      type: object
+      required:
+        - meanWindSpeed
+      properties:
+        meanWindDirection:
+          description: http://codes.wmo.int/common/quantity-kind/windDirection
+          $ref: "../Measures/Measure.yaml#/components/schemas/AngleWithNilReason"
+        meanWindSpeed:
+          description: http://codes.wmo.int/common/quantity-kind/windSpeed
+          $ref: "../Measures/Measure.yaml#/components/schemas/VelocityWithNilReason"
+        meanWindSpeedOperator:
+          $ref: "../Common/Relational_Operator.yaml#/components/schemas/RelationalOperator"
+        windGustSpeed:
+          description: http://codes.wmo.int/common/quantity-kind/maximumWindGustSpeed
+          $ref: "../Measures/Measure.yaml#/components/schemas/VelocityWithNilReason"
+        windGustSpeedOperator:
+          $ref: "../Common/Relational_Operator.yaml#/components/schemas/RelationalOperator"
+        extremeClockwiseWindDirection:
+          description: http://codes.wmo.int/common/quantity-kind/windDirection
+          $ref: "../Measures/Measure.yaml#/components/schemas/AngleWithNilReason"
+        extremeCounterClockwiseWindDirection:
+          description: http://codes.wmo.int/common/quantity-kind/windDirection
+          $ref: "../Measures/Measure.yaml#/components/schemas/AngleWithNilReason"
+        variableWindDirection:
+          type: string
+          enum: ["VRB"]
+
+    AerodromeHorizontalVisibility:
+      description:
+      type: object
+      required:
+        - prevailingVisibility
+      properties:
+        prevailingVisibility:
+          description: http://codes.wmo.int/common/quantity-kind/aeronauticalPrevailingHorizontalVisibility
+          $ref: "../Measures/Measure.yaml#/components/schemas/DistanceWithNilReason"
+        prevailingVisibilityOperator:
+          $ref: "../Common/Relational_Operator.yaml#/components/schemas/RelationalOperator"
+        minimumVisibility:
+          description: http://codes.wmo.int/common/quantity-kind/aeronauticalVisibility
+          $ref: "../Measures/Measure.yaml#/components/schemas/DistanceWithNilReason"
+        minimumVisibilityDirection:
+          desciption: http://codes.wmo.int/common/quantity-kind/aerodromeMinimumVisibilityDirection
+          $ref: "../Measures/Measure.yaml#/components/schemas/AngleWithNilReason"
+
+    AerodromeRunwayVisualRange:
+      description:
+      type: object
+      required:
+        - runway
+        - meanRVR
+      properties:
+        runway:
+          $ref: "../AIXM/AIXM.yaml#/components/schemas/RunwayDirection"
+        meanRVR:
+          description: http://codes.wmo.int/common/quantity-kind/runwayVisualRangeRvr
+          $ref: "../Measures/Measure.yaml#/components/schemas/DistanceWithNilReason"
+        meamRVROperator:
+          $ref: "../Common/Relational_Operator.yaml#/components/schemas/RelationalOperator"
+        pastTendency:
+          $ref: "#/components/schemas/VisualRangeTendency"
+
+    AerodromeCloud:
+      description:
+      type: object
+      properties:
+        verticalVisibility:
+          description: http://codes.wmo.int/common/quantity-kind/verticalVisibility
+          $ref: "../Measures/Measure.yaml#/components/schemas/LengthWithNilReason"
+        layer:
+          type: array
+          maxItems: 4
+          uniqueItems: true
+          items:
+            $ref: "../Common/Cloud.yaml#/components/schemas/CloudLayer"
+
+    AerodromeWindShear:
+      description:
+      type: object
+      properties:
+        runway:
+          type: array
+          uniqueItems: true
+          items:
+            $ref: "../AIXM/AIXM.yaml#/components/schemas/RunwayDirection"
+        allRunways:
+          type: string
+          enum: ["All"]
+
+    VisualRangeTendency:
+      description:
+      type: string
+      enum: ["Upward", "No_Change", "Downward", "Missing_Value"]
+
+    AerodromeRunwayState:
+      description: A model of an aerodrome observation.
+      type: object
+      properties:
+        runway:
+          $ref: "../AIXM/AIXM.yaml#/components/schemas/RunwayDirection"
+        depositType:
+          $ref: "Runway_State.yaml#/components/schemas/RunwayDeposits"
+        contamination:
+          $ref: "Runway_State.yaml#/components/schemas/RunwayContamination"
+        depthOfDeposit:
+          description: http://codes.wmo.int/common/quantity-kind/depthOfRunwayDeposit
+          $ref: "../Measures/Measure.yaml#/components/schemas/DistanceWithNilReason"
+        estimatedSurfaceFrictionOrBrakingAction:
+          $ref: "Runway_State.yaml#/components/schemas/RunwayFrictionCoefficient"
+        allRunways:
+          type: string
+          enum: ["All"]
+        cleared:
+          type: string
+          enum: ["Cleared"]
+        fromPreviousReport:
+          type: string
+          enum: ["Previous"]
+
+    AerodromeSeaCondition:
+      description:
+      type: object
+      required:
+        - seaSurfaceTemperature
+      properties:
+        seaSurfaceTemperature:
+          description: http://codes.wmo.int/common/quantity-kind/seaSurfaceTemperature
+          $ref: "../Measures/Measure.yaml#/components/schemas/TemperatureWithNilReason"
+        significantWaveHeight:
+          $ref: "../Measures/Measure.yaml#/components/schemas/DistanceWithNilReason"
+        seaState:
+          $ref: "Runway_State.yaml#/components/schemas/SeaSurfaceState"

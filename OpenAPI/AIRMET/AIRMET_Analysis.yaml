@@ -1,0 +1,70 @@
+openapi: "3.1.0"
+info:
+  title: IWXXM AIRMET Analysis Model
+  version: "1.0"
+  description: |
+    An OpenAPI model of the IWXXM AIRMET Analysis diagram.
+
+components:
+  schemas:
+    AIRMETEvolvingConditionCollection:
+      type: object
+      required:
+      - phenomenonTime
+      - timeIndicator
+      - member
+      properties:
+        phenomenonTime:
+          $ref: "../GML/GML.yaml#/components/schemas/TimePeriod"
+        timeIndicator:
+          $ref: "../Common/Time_Indicator.yaml#/components/schemas/TimeIndicator"
+        member:
+          type: array
+          minItems: 1
+          uniqueItems: true
+          items:
+           $ref: "#/components/schemas/AIRMETEvolvingCondition"
+
+    AIRMETEvolvingCondition:
+      type: object
+      required:
+      - geometry
+      properties:
+        geometry:
+          $ref: "../AIXM/AIXM.yaml#/components/schemas/AirspaceVolume"
+        directionOfMotion:
+          $ref: "../Measures/Measure.yaml#/components/schemas/AngleWithNilReason"
+        speedOfMotion:
+          $ref: "../GML/GML.yaml#/components/schemas/Speed"
+        intensityChange:
+          $ref: "#/components/schemas/AIRMETExpectedIntensityChange"
+        cloudBase:
+          $ref: "../GML/GML.yaml#/components/schemas/Length"
+        cloudBaseReference:
+          $ref: "../AIXM/AIXM.yaml#/components/schemas/CodeVerticalReferenceBase"
+        cloudTop:
+          $ref: "../GML/GML.yaml#/components/schemas/Length"
+        cloudTopReference:
+          $ref: "../AIXM/AIXM.yaml#/components/schemas/CodeVerticalReferenceBase"
+        cloudTopAbove:
+          type: string
+          enum: ["ABV"]
+        surfaceVisibility:
+          $ref: "../GML/GML.yaml#/components/schemas/Length"
+        surfaceVisibilityCause:
+          $ref: "#/components/schemas/WeatherCausingVisibiltyReduction"
+        surfaceWindDirection:
+          $ref: "../GML/GML.yaml#/components/schemas/Angle"
+        surfaceWindSpeed:
+          $ref: "../GML/GML.yaml#/components/schemas/Speed"
+        approximateLocation:
+          type: string
+          enum: ["APPROX"]
+
+    AIRMETExpectedIntensityChange:
+      type: string
+      enum: ["No_Change", Waeken", "Intensify"]
+
+    WeatherCausingVisibiltyReduction:
+      type: string
+      enum: []
