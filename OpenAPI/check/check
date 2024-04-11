@@ -3,6 +3,8 @@ check/checkgml
 check/checkcommon
 check/checkmeasures
 check/checkmeteorologicalfeature
+check/checkmetce
 check/checkmetarspeci
 check/checktaf
 check/checkairmet
+check/checksigmet

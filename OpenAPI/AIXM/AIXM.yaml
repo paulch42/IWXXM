@@ -11,13 +11,28 @@ components:
       type: string
       pattern: "^[A-Z]{4}$"
 
+    Airspace:
+      description: An AIXM airspace feature.
+      type: string
+
     RunwayDirection:
       description: An AIXM runway direction feature.
       type: string
       pattern: "^[0-9]{2}[LCR]?$"
 
     Unit:
-      type: string
+      type: object
+      required:
+      - name
+      - type
+      - designator
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+        designator:
+          type: string
 
     AirspaceVolume:
       type: string

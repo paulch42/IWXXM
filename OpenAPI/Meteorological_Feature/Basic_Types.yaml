@@ -110,4 +110,4 @@ components:
             uom:
               $ref: "../AIXM/AIXM.yaml#/components/schemas/UomDistanceVertical"
             nilReason:
-              $ref: "../GML/GML.yaml#/components/schemas/NilReason"
+              $ref: "Code_Tables.yaml#/components/schemas/NilReason"

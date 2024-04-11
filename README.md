@@ -1,2 +1,2 @@
 # IWXXM
-ICAO Meteorological Information. Exchange Model
+ICAO Meteorological Information Exchange Model

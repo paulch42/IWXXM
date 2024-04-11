@@ -1,0 +1,36 @@
+{
+    "reportStatus": "Normal",
+    "permissibleUsage": "Operational",
+    "issueTime": "2014-05-15T15:20:00Z",
+    "issuingAirTrafficServicesUnit": {
+        "name": "YUDD FIC",
+        "type": "FIC",
+        "designator": "YUDD"
+    },
+    "originatingMeteorologicalWatchOffice": {
+        "name": "YUDD MWO",
+        "type": "MWO",
+        "designator": "YUDD"
+    },
+    "issuingAirTrafficServicesRegion": {
+        "name": "SHANLON FIR",
+        "type": "FIR",
+        "designator": "YUDD"
+    },
+    "sequenceNumber": "1",
+    "validPeriod": {
+        "beginPosition": "2014-05-15T15:20:00Z",
+        "endPosition": "2014-05-15T18:00:00Z"
+    },
+    "phenomenon": "ISOL_TS",
+    "analysis": {
+        "phenomenonTime": "missing",
+        "timeIndicator": "Observation",
+        "member": [
+            {
+                "geometry": {},
+                "intensityChange": "Weaken"
+            }
+        ]
+    }
+}

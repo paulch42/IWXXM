@@ -15,7 +15,7 @@ components:
       - member
       properties:
         phenomenonTime:
-          $ref: "../GML/GML.yaml#/components/schemas/TimePeriod"
+          $ref: "../Measures/Measure.yaml#/components/schemas/DateTimeOrPeriodWithNilReason"
         timeIndicator:
           $ref: "../Common/Time_Indicator.yaml#/components/schemas/TimeIndicator"
         member:

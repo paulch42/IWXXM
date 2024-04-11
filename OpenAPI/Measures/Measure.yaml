@@ -10,41 +10,45 @@ components:
     PressureWithNilReason:
       description:
       oneOf:
-        - $ref: "#/components/schemas/Nil"
+        - $ref: "../Meteorological_Feature/Code_Tables.yaml#/components/schemas/NilReason"
         - $ref: "../GML/GML.yaml#/components/schemas/Pressure"
 
     TemperatureWithNilReason:
       description:
       oneOf:
-        - $ref: "#/components/schemas/Nil"
+        - $ref: "../Meteorological_Feature/Code_Tables.yaml#/components/schemas/NilReason"
         - $ref: "../GML/GML.yaml#/components/schemas/Temperature"
 
     AngleWithNilReason:
       description:
       oneOf:
-        - $ref: "#/components/schemas/Nil"
+        - $ref: "../Meteorological_Feature/Code_Tables.yaml#/components/schemas/NilReason"
         - $ref: "../GML/GML.yaml#/components/schemas/Angle"
 
     VelocityWithNilReason:
       description:
       oneOf:
-        - $ref: "#/components/schemas/Nil"
+        - $ref: "../Meteorological_Feature/Code_Tables.yaml#/components/schemas/NilReason"
         - $ref: "../GML/GML.yaml#/components/schemas/Velocity"
 
     DistanceWithNilReason:
       description:
       oneOf:
-        - $ref: "#/components/schemas/Nil"
+        - $ref: "../Meteorological_Feature/Code_Tables.yaml#/components/schemas/NilReason"
         - $ref: "../GML/GML.yaml#/components/schemas/Length"
 
     LengthWithNilReason:
       description:
       oneOf:
-        - $ref: "#/components/schemas/Nil"
+        - $ref: "../Meteorological_Feature/Code_Tables.yaml#/components/schemas/NilReason"
         - $ref: "../GML/GML.yaml#/components/schemas/Length"
 
-    Nil:
+    DateTimeOrPeriodWithNilReason:
+      description:
+      oneOf:
+        - $ref: "../Meteorological_Feature/Code_Tables.yaml#/components/schemas/NilReason"
+        - $ref: "../GML/GML.yaml#/components/schemas/DateTimeOrPeriod"
+
+    AssociationRole:
+      description: ????
       type: object
-      properties:
-        nilReason:
-          type: string

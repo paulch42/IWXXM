@@ -1,0 +1,46 @@
+openapi: "3.1.0"
+info:
+  title: IWXXM SIGMET Analysis Model
+  version: "1.0"
+  description: |
+    An OpenAPI model of the IWXXM SIGMET Analysis diagram.
+
+components:
+  schemas:
+    SIGMETEvolvingConditionCollection:
+      required:
+        - phenomenonTime
+        - timeIndicator
+        - member
+      properties:
+        phenomenonTime:
+          $ref: "../Measures/Measure.yaml#/components/schemas/DateTimeOrPeriodWithNilReason"
+        timeIndicator:
+          $ref: "../Common/Time_Indicator.yaml#/components/schemas/TimeIndicator"
+        member:
+          type: array
+          minItems: 1
+          items:
+            $ref: "#/components/schemas/SIGMETEvolvingCondition"
+
+    SIGMETEvolvingCondition:
+      required:
+        - geometry
+      properties:
+        tropicalCyclonePosition:
+          $ref: "../GML/GML.yaml#/components/schemas/Point"
+        geometry:
+          $ref: "../AIXM/AIXM.yaml#/components/schemas/AirspaceVolume"
+        directionOfMotion:
+          $ref: "../Measures/Measure.yaml#/components/schemas/AngleWithNilReason"
+        speedOfMotion:
+          $ref: "../GML/GML.yaml#/components/schemas/Speed"
+        intensityChange:
+          $ref: "#/components/schemas/SIGMETExpectedIntensityChange"
+        approximateLocation:
+          type: string
+          enum: ["APPROX"]
+
+    SIGMETExpectedIntensityChange:
+      type: string
+      enum: ["No_Change", "Weaken", "Intensify"]

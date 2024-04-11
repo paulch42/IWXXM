@@ -21,6 +21,10 @@ components:
               format: date-time
             issuingAirTrafficServicesUnit:
               $ref: "../AIXM/AIXM.yaml#/components/schemas/Unit"
+            originatingMeteorologicalWatchOffice:
+              $ref: "../AIXM/AIXM.yaml#/components/schemas/Unit"
+            issuingAirTrafficServicesRegion:
+              $ref: "../AIXM/AIXM.yaml#/components/schemas/Airspace"
             sequenceNumber:
               $ref: "../Common/String.yaml#/components/schemas/StringWithNilReason"
             validPeriod:
@@ -39,4 +43,4 @@ components:
 
     AeronauticalAreaWeatherPhenomenon:
       type: string
-      unum: []
+      enum: []

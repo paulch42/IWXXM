@@ -1,0 +1,33 @@
+openapi: "3.1.0"
+info:
+  title: IWXXM SIGMET Forecast Position Analysis Model
+  version: "1.0"
+  description: |
+    An OpenAPI model of the IWXXM SIGMET Forecast Position Analsis diagram.
+
+components:
+  schemas:
+    SIGMETPositionCollection:
+      required:
+        - phenomenonTime
+        - member
+      properties:
+        phenomenonTime:
+          $ref: "../Measures/Measure.yaml#/components/schemas/DateTimeOrPeriodWithNilReason"
+        member:
+          type: array
+          minItems: 1
+          items:
+            $ref: "#/components/schemas/SIGMETPosition"
+
+    SIGMETPosition:
+      required:
+        - geometry
+      properties:
+        tropicalCyclonePosition:
+          $ref: "../GML/GML.yaml#/components/schemas/Point"
+        geometry:
+          $ref: "../AIXM/AIXM.yaml#/components/schemas/AirspaceVolume"
+        approximateLocation:
+          type: string
+          enum: ["APPROX"]

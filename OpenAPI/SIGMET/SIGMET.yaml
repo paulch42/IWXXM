@@ -1,0 +1,76 @@
+openapi: "3.1.0"
+info:
+  title: IWXXM SIGMET Model
+  version: "1.0"
+  description: |
+    An OpenAPI model of the IWXXM SIGMET diagram.
+
+components:
+  schemas:
+    VolcanicAshSIGMET:
+      allOf:
+        - $ref: "#/components/schemas/SIGMET"
+        - type: object
+          properties:
+            eruptingVolcano:
+              $ref: "../METCE/METCE.yaml#/components/schemas/Volcano"
+            volcanicAshMovedToFIR:
+              $ref: "../AIXM/AIXM.yaml#/components/schemas/Airspace"
+
+    TropicalCycloneSIGMET:
+      allOf:
+        - $ref: "#/components/schemas/SIGMET"
+        - type: object
+          properties:
+            supplementaryAnalysisCollection:
+              type: array
+              items:
+                $ref: "#/components/schemas/AnalysisAndForecastPositionAnalysis"
+            tropicalCyclone:
+              $ref: "../METCE/METCE.yaml#/components/schemas/TropicalCyclone"
+
+    SIGMET:
+      type: object
+      required:
+        - issueTime
+        - issuingAirTrafficServicesUnit
+        - validPeriod
+      properties:
+        issueTime:
+          type: string
+          format: date-time
+        issuingAirTrafficServicesUnit:
+          $ref: "../AIXM/AIXM.yaml#/components/schemas/Unit"
+        originatingMeteorologicalWatchOffice:
+          $ref: "../AIXM/AIXM.yaml#/components/schemas/Unit"
+        issuingAirTrafficServicesRegion:
+          $ref: "../AIXM/AIXM.yaml#/components/schemas/Airspace"
+        sequenceNumber:
+          $ref: "../Common/String.yaml#/components/schemas/StringWithNilReason"
+        validPeriod:
+          $ref: "../GML/GML.yaml#/components/schemas/TimePeriod"
+        cancelledReportSequenceNumber:
+          $ref: "../Common/String.yaml#/components/schemas/CharacterString"
+        cancelledReportValidPeriod:
+          $ref: "../GML/GML.yaml#/components/schemas/TimePeriod"
+        phenomenon:
+          $ref: "#/components/schemas/AeronauticalSignificantWeatherPhenomenon"
+        analysisCollection:
+          type: array
+          items:
+            $ref: "#/components/schemas/AnalysisAndForecastPositionAnalysis"
+        isCancelReport:
+          type: string
+          enum: ["CNL"]
+
+    AeronauticalSignificantWeatherPhenomenon:
+      type: string
+      enum: []
+
+    AnalysisAndForecastPositionAnalysis:
+      type: object
+      properties:
+        analysis:
+          $ref: "SIGMET_Analysis.yaml#/components/schemas/SIGMETEvolvingConditionCollection"
+        forecastPositionAnalysis:
+          $ref: "SIGMET_Forecast_Position_Analysis.yaml#/components/schemas/SIGMETPositionCollection"

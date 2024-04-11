@@ -1,0 +1,30 @@
+{
+    "reportStatus": "Normal",
+    "permissibleUsage": "Operational",
+    "issueTime": "2012-08-10T13:45:00Z",
+    "issuingAirTrafficServicesUnit": {
+        "name": "YUDD FIC",
+        "type": "FIC",
+        "designator": "YUDD"
+    },
+    "originatingMeteorologicalWatchOffice": {
+        "name": "YUSO MWO",
+        "type": "MWO",
+        "designator": "YUSO"
+    },
+    "issuingAirTrafficServicesRegion": {
+        "name": "SHANLON FIR/UIR",
+        "type": "OTHER:FIR_UIR",
+        "designator": "YUDD"
+    },
+    "sequenceNumber": "3",
+    "validPeriod": {
+        "beginPosition": "2012-08-10T13:45:00Z",
+        "endPosition": "2012-08-10T16:00:00Z"
+    },
+    "cancelledReportalidPeriod": {
+        "beginPosition": "2012-08-10T12:00:00Z",
+        "endPosition": "2012-08-10T16:00:00Z"
+    },
+    "isCancelReport": "CNL"
+}

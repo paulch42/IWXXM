@@ -9,3 +9,8 @@ components:
       description: http://codes.wmo.int/49-2/MeteorologicalFeature
       type: string
       enum: []
+
+    NilReason:
+      description: https://codes.wmo.int/common/nil
+      type: string
+      enum: []

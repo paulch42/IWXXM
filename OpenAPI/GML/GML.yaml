@@ -135,10 +135,6 @@ components:
       description: ????
       type: object
 
-    NilReason:
-      description: ????
-      type: object
-
     AbstractGeometricPrimitive:
       description: ????
       type: object

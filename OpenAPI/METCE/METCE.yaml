@@ -1,0 +1,13 @@
+openapi: "3.1.0"
+info:
+  title: METCE Model
+  version: "1.0"
+  description: Minimal model of METCE to support IWXXM model.
+
+components:
+  schemas:
+    Volcano:
+      type: object
+    
+    TropicalCyclone:
+      type: object
