@@ -6,115 +6,35 @@ info:
 
 components:
   schemas:
-    Pressure:
-      description:
-      allOf:
-        - $ref: "#/components/schemas/Measure"
-        - type: object
-          required:
-            - uom
-          properties:
-            uom:
-              $ref: "#/components/schemas/UomPressure"
-
-    UomPressure:
-      type: string
-      enum: ["hPa"]
-
-    Temperature:
-      description:
-      allOf:
-        - $ref: "#/components/schemas/Measure"
-        - type: object
-          required:
-            - uom
-          properties:
-            uom:
-              $ref: "#/components/schemas/UomTemperature"
-
-    UomTemperature:
-      type: string
-      enum: ["Cel"]
-
-    Angle:
-      description:
-      allOf:
-        - $ref: "#/components/schemas/Measure"
-        - type: object
-          required:
-            - uom
-          properties:
-            uom:
-              $ref: "#/components/schemas/UomAngle"
-
-    UomAngle:
-      type: string
-      enum: ["deg"]
-
-    Length:
-      description:
-      allOf:
-        - $ref: "#/components/schemas/Measure"
-        - type: object
-          required:
-            - uom
-          properties:
-            uom:
-              $ref: "#/components/schemas/UomLength"
-
-    UomLength:
-      type: string
-      enum: ["[ft_i]", "m"]
-
-    Velocity:
-      description:
-      allOf:
-        - $ref: "#/components/schemas/Measure"
-        - type: object
-          required:
-            - time
-            - distance
-            - uom
-          properties:
-            time:
-              $ref: "#/components/schemas/UomTime"
-            distance:
-              $ref: "#/components/schemas/UomLength"
-            uom:
-              $ref: "#/components/schemas/UomVelocity"
-
-    UomTime:
+    NilReason:
+      description: http://schemas.opengis.net/gml/3.2.1/basicTypes.xsd
       type: string
       enum: []
 
-    UomVelocity:
-      type: string
-      enum: ["m/s", "[kn_i]"]
+    Angle:
+      $ref: "#/components/schemas/Measure"
+
+    Length:
+      $ref: "#/components/schemas/Measure"
+
+    Velocity:
+      $ref: "#/components/schemas/Measure"
 
     Speed:
-      description:
-      allOf:
-        - $ref: "#/components/schemas/Measure"
-        - type: object
-          required:
-            - uom
-          properties:
-            uom:
-              $ref: "#/components/schemas/UomSpeed"
-
-    UomSpeed:
-      type: string
-      enum: ["m/s", "[kn_i]"]
+      $ref: "#/components/schemas/Measure"
 
     Measure:
       type: object
       required:
         - value
+        - uom
       properties:
         value:
           type: number
+        uom:
+          type: string
 
-    DateTime:
+    TimeInstant:
       type: string
       format: date-time
 

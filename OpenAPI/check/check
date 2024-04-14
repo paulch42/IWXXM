@@ -8,3 +8,7 @@ check/checkmetarspeci
 check/checktaf
 check/checkairmet
 check/checksigmet
+check/checktropicalcycloneadvisory
+check/checkvolcanicashadvisory
+check/checkspaceweatheradvisory
+check/checkwafssignificantweatherforecast

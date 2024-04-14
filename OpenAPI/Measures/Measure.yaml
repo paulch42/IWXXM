@@ -7,48 +7,38 @@ info:
 
 components:
   schemas:
-    PressureWithNilReason:
-      description:
-      oneOf:
-        - $ref: "../Meteorological_Feature/Code_Tables.yaml#/components/schemas/NilReason"
-        - $ref: "../GML/GML.yaml#/components/schemas/Pressure"
-
-    TemperatureWithNilReason:
-      description:
-      oneOf:
-        - $ref: "../Meteorological_Feature/Code_Tables.yaml#/components/schemas/NilReason"
-        - $ref: "../GML/GML.yaml#/components/schemas/Temperature"
-
     AngleWithNilReason:
       description:
-      oneOf:
-        - $ref: "../Meteorological_Feature/Code_Tables.yaml#/components/schemas/NilReason"
+      allOf:
         - $ref: "../GML/GML.yaml#/components/schemas/Angle"
+        - $ref: "#/components/schemas/NilReason"
 
     VelocityWithNilReason:
       description:
-      oneOf:
-        - $ref: "../Meteorological_Feature/Code_Tables.yaml#/components/schemas/NilReason"
-        - $ref: "../GML/GML.yaml#/components/schemas/Velocity"
+      allOf:
+        - $ref: "../GML/GML.yaml#/components/schemas/Speed"
+        - $ref: "#/components/schemas/NilReason"
 
     DistanceWithNilReason:
       description:
-      oneOf:
-        - $ref: "../Meteorological_Feature/Code_Tables.yaml#/components/schemas/NilReason"
+      allOf:
         - $ref: "../GML/GML.yaml#/components/schemas/Length"
+        - $ref: "#/components/schemas/NilReason"
 
     LengthWithNilReason:
       description:
-      oneOf:
-        - $ref: "../Meteorological_Feature/Code_Tables.yaml#/components/schemas/NilReason"
+      allOf:
         - $ref: "../GML/GML.yaml#/components/schemas/Length"
+        - $ref: "#/components/schemas/NilReason"
 
-    DateTimeOrPeriodWithNilReason:
+    MeasureWithNilReason:
       description:
-      oneOf:
-        - $ref: "../Meteorological_Feature/Code_Tables.yaml#/components/schemas/NilReason"
-        - $ref: "../GML/GML.yaml#/components/schemas/DateTimeOrPeriod"
+      allOf:
+        - $ref: "../GML/GML.yaml#/components/schemas/Measure"
+        - $ref: "#/components/schemas/NilReason"
 
-    AssociationRole:
-      description: ????
-      type: object
+    NilReason:
+      object:
+        properties:
+          nilReason:
+            - $ref: "../GML/GML.yaml#/components/schemas/NilReason"

@@ -1,0 +1,60 @@
+openapi: "3.1.0"
+info:
+  title: IWXXM Space Weather Model
+  version: "1.0"
+  description: |
+    An OpenAPI model of the IWXXM Space Weather diagram.
+
+components:
+  schemas:
+    SpaceWeatherAdvisory:
+      allOf:
+        - $ref: "../Common/Report.yaml#/components/schemas/Report"
+        - type: object
+          required:
+            - issueTime
+            - issuingSpaceWeatherCentre
+            - advisoryNumber
+          properties:
+            issueTime:
+              $ref: "../GML/GML.yaml#/components/schemas/TimeInstant"
+            issuingSpaceWeatherCentre:
+              $ref: "../AIXM/AIXM.yaml#/components/schemas/Unit"
+            advisoryNumber:
+              oneOf:
+                - $ref: "../Common/String.yaml#/components/schemas/StringWithNilReason"
+                - $ref: "../Common/Common.yaml#/components/schemas/Nil"
+            replacedAdvisoryNumber:
+              $ref: "../Common/String.yaml#/components/schemas/CharacterString"
+            phenomenon:
+              type: array
+              uniqueItems: true
+              items:
+                $ref: "#/components/schemas/SpaceWeatherPhenomena"
+            analysis:
+              type: array
+              maxItems: 5
+              uniqueItems: true
+              items:
+                $ref: "Space_Weather_Analysis.yaml#/components/schemas/SpaceWeatherAnalysis"
+            remarks:
+              oneOf:
+                - $ref: "../Common/String.yaml#/components/schemas/StringWithNilReason"
+                - $ref: "../Common/Common.yaml#/components/schemas/Nil"
+            nextAdvisoryTime:
+              $ref: "../GML/GML.yaml#/components/schemas/TimeInstant"
+
+    SpaceWeatherPhenomena:
+      description: http://codes.wmo.int/49-2/SpaceWxPhenomena
+      type: string
+      enum:
+        [
+          "HF COM MOD",
+          "HF COM SEV",
+          "SATCOM MOD",
+          "SATCOM SEV",
+          "GNSS MOD",
+          "GNSS SEV",
+          "RADIATION MOD",
+          "RADIATION SEV",
+        ]

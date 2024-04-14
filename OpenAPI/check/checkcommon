@@ -1,3 +1,4 @@
+openapi-spec-validator Common/Common.yaml
 openapi-spec-validator Common/Cloud.yaml
 openapi-spec-validator Common/Permissible_Usage.yaml
 openapi-spec-validator Common/Relational_Operator.yaml

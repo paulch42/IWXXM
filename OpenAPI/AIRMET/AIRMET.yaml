@@ -7,18 +7,17 @@ info:
 
 components:
   schemas:
-    METAR:
+    AIRMET:
       allOf:
         - $ref: "../Common/Report.yaml#/components/schemas/Report"
         - type: object
           required:
-          - issueTime
-          - issuingAirTrafficServicesUnit
-          - validPeriod
+            - issueTime
+            - issuingAirTrafficServicesUnit
+            - validPeriod
           properties:
             issueTime:
-              type: string
-              format: date-time
+              $ref: "../GML/GML.yaml#/components/schemas/TimeInstant"
             issuingAirTrafficServicesUnit:
               $ref: "../AIXM/AIXM.yaml#/components/schemas/Unit"
             originatingMeteorologicalWatchOffice:
@@ -26,7 +25,9 @@ components:
             issuingAirTrafficServicesRegion:
               $ref: "../AIXM/AIXM.yaml#/components/schemas/Airspace"
             sequenceNumber:
-              $ref: "../Common/String.yaml#/components/schemas/StringWithNilReason"
+              oneOf:
+                - $ref: "../Common/String.yaml#/components/schemas/StringWithNilReason"
+                - $ref: "../Common/Common.yaml#/components/schemas/Nil"
             validPeriod:
               $ref: "../GML/GML.yaml#/components/schemas/TimePeriod"
             cancelledReportSequenceNumber:
@@ -42,5 +43,6 @@ components:
               enum: ["CNL"]
 
     AeronauticalAreaWeatherPhenomenon:
+      description: http://codes.wmo.int/49-2/AirWxPhenomena
       type: string
       enum: []

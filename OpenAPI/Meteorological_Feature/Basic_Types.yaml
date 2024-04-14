@@ -14,7 +14,9 @@ components:
             - elevation
           properties:
             elevation:
-              $ref: "#/components/schemas/ValDistanceVertical"
+              oneOf:
+                - $ref: "#/components/schemas/ValDistanceVertical"
+                - $ref: "../Common/Common.yaml#/components/schemas/Nil"
             verticalReference:
               $ref: "../AIXM/AIXM.yaml#/components/schemas/CodeVerticalReferenceBase"
             interpretation:
@@ -29,11 +31,15 @@ components:
             - lowerElevation
           properties:
             upperElevation:
-              $ref: "#/components/schemas/ValDistanceVertical"
+              oneOf:
+                - $ref: "#/components/schemas/ValDistanceVertical"
+                - $ref: "../Common/Common.yaml#/components/schemas/Nil"
             upperVerticalReference:
               $ref: "../AIXM/AIXM.yaml#/components/schemas/CodeVerticalReferenceBase"
             lowerElevation:
-              $ref: "#/components/schemas/ValDistanceVertical"
+              oneOf:
+                - $ref: "#/components/schemas/ValDistanceVertical"
+                - $ref: "../Common/Common.yaml#/components/schemas/Nil"
             lowerVerticalReference:
               $ref: "../AIXM/AIXM.yaml#/components/schemas/CodeVerticalReferenceBase"
 
@@ -59,7 +65,9 @@ components:
             - elevation
           properties:
             elevation:
-              $ref: "#/components/schemas/ValDistanceVertical"
+              oneOf:
+                - $ref: "#/components/schemas/ValDistanceVertical"
+                - $ref: "../Common/Common.yaml#/components/schemas/Nil"
             verticalReference:
               $ref: "../AIXM/AIXM.yaml#/components/schemas/CodeVerticalReferenceBase"
             interpretation:
@@ -73,7 +81,9 @@ components:
             - elevation
           properties:
             elevation:
-              $ref: "#/components/schemas/ValDistanceVertical"
+              oneOf:
+                - $ref: "#/components/schemas/ValDistanceVertical"
+                - $ref: "../Common/Common.yaml#/components/schemas/Nil"
             verticalReference:
               $ref: "../AIXM/AIXM.yaml#/components/schemas/CodeVerticalReferenceBase"
             interpretation:
@@ -88,13 +98,17 @@ components:
             - lowerElevation
           properties:
             upperElevation:
-              $ref: "#/components/schemas/ValDistanceVertical"
+              oneOf:
+                - $ref: "#/components/schemas/ValDistanceVertical"
+                - $ref: "../Common/Common.yaml#/components/schemas/Nil"
             upperVerticalReference:
               $ref: "../AIXM/AIXM.yaml#/components/schemas/CodeVerticalReferenceBase"
             upperInterpretation:
               $ref: "../AIXM/AIXM.yaml#/components/schemas/CodeValueInterrpetationBase"
             lowerElevation:
-              $ref: "#/components/schemas/ValDistanceVertical"
+              oneOf:
+                - $ref: "#/components/schemas/ValDistanceVertical"
+                - $ref: "../Common/Common.yaml#/components/schemas/Nil"
             lowerVerticalReference:
               $ref: "../AIXM/AIXM.yaml#/components/schemas/CodeVerticalReferenceBase"
             lowerInterpretation:
@@ -104,10 +118,7 @@ components:
       allOf:
         - $ref: "../AIXM/AIXM.yaml#/components/schemas/ValDistanceVerticalBase"
         - type: object
-          required:
-            - uom
           properties:
             uom:
               $ref: "../AIXM/AIXM.yaml#/components/schemas/UomDistanceVertical"
-            nilReason:
-              $ref: "Code_Tables.yaml#/components/schemas/NilReason"
+        - $ref: "../Measures/Measure.yaml#/components/schemas/NilReason"

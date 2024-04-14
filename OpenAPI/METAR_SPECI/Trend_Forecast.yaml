@@ -25,13 +25,17 @@ components:
         surfaceWind:
           $ref: "../Common/Surface_Wind.yaml#/components/schemas/AerodromeSurfaceWindTrendForecast"
         weather:
-          type: array
-          maxItems: 3
-          uniqueItems: true
-          items:
-           $ref: "../Common/Weather.yaml#/components/schemas/AerodromeForecastWeather"
+          oneOf:
+            - type: array
+              maxItems: 3
+              uniqueItems: true
+              items:
+                $ref: "../Common/Weather.yaml#/components/schemas/AerodromeForecastWeather"
+            - $ref: "../Common/Common.yaml#/components/schemas/Nil"
         cloud:
-          $ref: "../Common/Cloud.yaml#/components/schemas/AerodromeCloudForecast"
+          oneOf:
+            - $ref: "../Common/Cloud.yaml#/components/schemas/AerodromeCloudForecast"
+            - $ref: "../Common/Common.yaml#/components/schemas/Nil"
         changeIndicator:
           $ref: "#/components/schemas/ForecastChangeIndicator"
         cloudAndVisibilityOK:
@@ -41,9 +45,9 @@ components:
     TrendForecastTimeIndicator:
       description:
       type: string
-      enum: ["From_Until", "From", "Until", "At"]
+      enum: ["AT", "UNTIL", "FROM", "FROM_UNTIL"]
 
     ForecastChangeIndicator:
       description:
       type: string
-      enum: ["Becoming", "Temporary_Fluctuations"]
+      enum: ["BECOMING", "TEMPORARY_FLUCTUATIONS"]

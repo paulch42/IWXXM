@@ -1,6 +1,6 @@
 {
-    "reportStatus": "Normal",
-    "permissibleUsage": "Operational",
+    "reportStatus": "NORMAL",
+    "permissibleUsage": "OPERATIONAL",
     "issueTime": "2012-08-10T13:45:00Z",
     "issuingAirTrafficServicesUnit": {
         "name": "YUDD FIC",
@@ -22,7 +22,7 @@
         "beginPosition": "2012-08-10T13:45:00Z",
         "endPosition": "2012-08-10T16:00:00Z"
     },
-    "cancelledReportalidPeriod": {
+    "cancelledReportValidPeriod": {
         "beginPosition": "2012-08-10T12:00:00Z",
         "endPosition": "2012-08-10T16:00:00Z"
     },

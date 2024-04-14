@@ -13,7 +13,7 @@ components:
         - type: object
           properties:
             eruptingVolcano:
-              $ref: "../METCE/METCE.yaml#/components/schemas/Volcano"
+              $ref: "../METCE/METCE.yaml#/components/schemas/EruptingVolcano"
             volcanicAshMovedToFIR:
               $ref: "../AIXM/AIXM.yaml#/components/schemas/Airspace"
 
@@ -24,6 +24,7 @@ components:
           properties:
             supplementaryAnalysisCollection:
               type: array
+              uniqueItems: true
               items:
                 $ref: "#/components/schemas/AnalysisAndForecastPositionAnalysis"
             tropicalCyclone:
@@ -37,8 +38,7 @@ components:
         - validPeriod
       properties:
         issueTime:
-          type: string
-          format: date-time
+          $ref: "../GML/GML.yaml#/components/schemas/TimeInstant"
         issuingAirTrafficServicesUnit:
           $ref: "../AIXM/AIXM.yaml#/components/schemas/Unit"
         originatingMeteorologicalWatchOffice:
@@ -46,7 +46,9 @@ components:
         issuingAirTrafficServicesRegion:
           $ref: "../AIXM/AIXM.yaml#/components/schemas/Airspace"
         sequenceNumber:
-          $ref: "../Common/String.yaml#/components/schemas/StringWithNilReason"
+          oneOf:
+            - $ref: "../Common/String.yaml#/components/schemas/StringWithNilReason"
+            - $ref: "../Common/Common.yaml#/components/schemas/Nil"
         validPeriod:
           $ref: "../GML/GML.yaml#/components/schemas/TimePeriod"
         cancelledReportSequenceNumber:
@@ -57,6 +59,7 @@ components:
           $ref: "#/components/schemas/AeronauticalSignificantWeatherPhenomenon"
         analysisCollection:
           type: array
+          uniqueItems: true
           items:
             $ref: "#/components/schemas/AnalysisAndForecastPositionAnalysis"
         isCancelReport:
@@ -64,6 +67,7 @@ components:
           enum: ["CNL"]
 
     AeronauticalSignificantWeatherPhenomenon:
+      description: http://codes.wmo.int/49-2/SigWxPhenomena
       type: string
       enum: []
 

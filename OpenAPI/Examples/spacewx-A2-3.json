@@ -1,0 +1,53 @@
+{
+    "reportStatus": "NORMAL",
+    "permissibleUsage": "OPERATIONAL",
+    "issueTime": "2012-08-10T12:00:00Z",
+    "issuingSpaceWeatherCentre": {
+        "name": "DONLON",
+        "type": "OTHER:SWXC"
+    },
+    "advisoryNumber": "2016/2",
+    "replacedAdvisoryNumber": "2016/1",
+    "phenomenon": [
+        "HF_COM_MOD",
+        "GNSS_MOD"
+    ],
+    "analysis": [
+        {
+            "phenomenonTime": "2016-11-08T01:00:00Z",
+            "region": [
+                {
+                    "location": "",
+                    "locationIndicator": "HNH"
+                },
+                {
+                    "location": "",
+                    "locationIndicator": "HSH"
+                }
+            ],
+            "timeIndicator": "OBSERVATION"
+        },
+        {
+            "phenomenonTime": "2016-11-08T07:00:00Z",
+            "region": [],
+            "timeIndicator": "FORECAST"
+        },
+        {
+            "phenomenonTime": "2016-11-08T13:00:00Z",
+            "region": [],
+            "timeIndicator": "FORECAST"
+        },
+        {
+            "phenomenonTime": "2016-11-08T19:00:00Z",
+            "region": [],
+            "timeIndicator": "FORECAST"
+        },
+        {
+            "phenomenonTime": "2016-11-09T01:00:00Z",
+            "region": [],
+            "timeIndicator": "FORECAST"
+        }
+    ],
+    "remarks": "LOW LVL GEOMAGNETIC STORMING CAUSING INCREASED AURORAL ACT AND SUBSEQUENT MOD DEGRADATION OF GNSS AND HF COM AVBL IN THE AURORAL ZONE. THIS STORMING EXP TO SUBSIDE IN THE FCST PERIOD. SEE WWW.SPACEWEATHERPROVIDER.WEB",
+    "nextAdvisoryTime": "inapplicable"
+}

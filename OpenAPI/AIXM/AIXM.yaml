@@ -6,20 +6,6 @@ info:
 
 components:
   schemas:
-    AirportHeliport:
-      description: An AIXM airport/heliport feature.
-      type: string
-      pattern: "^[A-Z]{4}$"
-
-    Airspace:
-      description: An AIXM airspace feature.
-      type: string
-
-    RunwayDirection:
-      description: An AIXM runway direction feature.
-      type: string
-      pattern: "^[0-9]{2}[LCR]?$"
-
     Unit:
       type: object
       required:
@@ -34,21 +20,55 @@ components:
         designator:
           type: string
 
+    Airspace:
+      description: An AIXM airspace feature.
+      type: object
+      required:
+      - name
+      - type
+      - designator
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+        designator:
+          type: string
+
+    AirspaceLayer:
+      type: string
+
     AirspaceVolume:
       type: string
 
+    AirportHeliport:
+      description: An AIXM airport/heliport feature.
+      type: string
+      pattern: "^[A-Z]{4}$"
+
+    Runway:
+      type: string
+
+    RunwayDirection:
+      description: An AIXM runway direction feature.
+      type: string
+      pattern: "^[0-9]{2}[LCR]?$"
+
+    ValDistanceVertical:
+      type: string
+
     CodeVerticalReferenceBase:
-      description: ????
+      description: TODO
       type: object
 
     CodeValueInterrpetationBase:
-      description: ????
+      description: TODO
       type: object
 
     ValDistanceVerticalBase:
-      description: ????
+      description: TODO
       type: object
 
     UomDistanceVertical:
-      description: ????
+      description: TODO
       type: object

@@ -1,0 +1,50 @@
+openapi: "3.1.0"
+info:
+  title: IWXXM Tropical Cyclone Advisory Model
+  version: "1.0"
+  description: |
+    An OpenAPI model of the IWXXM Tropical Cyclone Advisory diagram.
+
+components:
+  schemas:
+    TropicalCycloneObservedConditions:
+      type: object
+      required:
+        - phenomenonTime
+        - tropicalCyclonePosition
+        - movement
+        - intensityChange
+        - centralPressure
+        - maximumSurfaceWindSpeed
+      properties:
+        phenomenonTime:
+          $ref: "../GML/GML.yaml#/components/schemas/DateTimeOrPeriod"
+        tropicalCyclonePosition:
+          $ref: "../GML/GML.yaml#/components/schemas/Point"
+        cumulonimbusCloudLocation:
+          oneOf:
+            - type: array
+              uniqueItems: true
+              items:
+                $ref: "../AIXM/AIXM.yaml#/components/schemas/AirspaceVolume"
+            - $ref: "../Common/Common.yaml#/components/schemas/Nil"
+        movement:
+          $ref: "#/components/schemas/TropicalCycloneMovement"
+        movementDirection:
+          $ref: "../GML/GML.yaml#/components/schemas/Angle"
+        movementSpeed:
+          $ref: "../GML/GML.yaml#/components/schemas/Speed"
+        intensityChange:
+          $ref: "#/components/schemas/TropicalCycloneIntensityChange"
+        centralPressure:
+          $ref: "../GML/GML.yaml#/components/schemas/Measure"
+        maximumSurfaceWindSpeed:
+          $ref: "../GML/GML.yaml#/components/schemas/Speed"
+
+    TropicalCycloneMovement:
+      type: string
+      enum: ["MOVING", "STATIONARY"]
+
+    TropicalCycloneIntensityChange:
+      type: string
+      enum: ["NO_CHANGE", "WEAKEN", "INTENSIFY"]

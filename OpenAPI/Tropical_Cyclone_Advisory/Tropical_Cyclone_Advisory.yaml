@@ -1,0 +1,40 @@
+openapi: "3.1.0"
+info:
+  title: IWXXM Tropical Cyclone Advisory Model
+  version: "1.0"
+  description: |
+    An OpenAPI model of the IWXXM Tropical Cyclone Advisory diagram.
+
+components:
+  schemas:
+    TropicalCycloneAdvisory:
+      allOf:
+        - $ref: "../Common/Report.yaml#/components/schemas/Report"
+        - type: object
+          required:
+            - issueTime
+            - issuingTropicalCycloneAdvisoryCentre
+          properties:
+            issueTime:
+              $ref: "../GML/GML.yaml#/components/schemas/TimeInstant"
+            issuingTropicalCycloneAdvisoryCentre:
+              $ref: "../AIXM/AIXM.yaml#/components/schemas/Unit"
+            tropicalCycloneName:
+              $ref: "../METCE/METCE.yaml#/components/schemas/TropicalCyclone"
+            advisoryNumber:
+              oneOf:
+                - $ref: "../Common/String.yaml#/components/schemas/StringWithNilReason"
+                - $ref: "../Common/Common.yaml#/components/schemas/Nil"
+            observation:
+              $ref: "Tropical_Cyclone_Observed_Conditions.yaml#/components/schemas/TropicalCycloneObservedConditions"
+            forecast:
+              type: array
+              uniqueItems: true
+              items:
+                $ref: "Tropical_Cyclone_Forecast_Conditions.yaml#/components/schemas/TropicalCycloneForecastConditions"
+            remarks:
+              oneOf:
+                - $ref: "../Common/String.yaml#/components/schemas/StringWithNilReason"
+                - $ref: "../Common/Common.yaml#/components/schemas/Nil"
+            nextAdvisoryTime:
+              $ref: "../GML/GML.yaml#/components/schemas/TimeInstant"

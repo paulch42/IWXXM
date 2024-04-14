@@ -35,7 +35,7 @@ components:
           items:
             $ref: "#/components/schemas/AerodromeAirTemperatureForecast"
         changeIndicator:
-          $ref: "#/components/schemas/AerodromeChangeForecastIndicator"
+          $ref: "#/components/schemas/AerodromeForecastChangeIndicator"
         cloudAndVisibilityOK:
           type: string
           enum: ["CAVOK"]
@@ -49,25 +49,23 @@ components:
         - minimumAirTemperatureTime
       properties:
         maximumAirTemperature:
-          $ref: "../GML/GML.yaml#/components/schemas/Temperature"
+          $ref: "../GML/GML.yaml#/components/schemas/Measure"
         maximumAirTemperatureTime:
-          type: string
-          format: date-time
+          $ref: "../GML/GML.yaml#/components/schemas/TimeInstant"
         minimumAirTemperature:
-          $ref: "../GML/GML.yaml#/components/schemas/Temperature"
+          $ref: "../GML/GML.yaml#/components/schemas/Measure"
         minimumAirTemperatureTime:
-          type: string
-          format: date-time
+          $ref: "../GML/GML.yaml#/components/schemas/TimeInstant"
 
-    AerodromeChangeForecastIndicator:
+    AerodromeForecastChangeIndicator:
       type: string
       enum:
         [
-          "Becoming",
-          "Temporary_Fluctuations",
-          "From",
-          "Probability_30",
-          "Probability_30_Temporary_Fluctuations",
-          "Probability_40",
-          "Probability_40_Temporary_Fluctuations",
+          "BECOMING",
+          "TEMPORARY_FLUCTUATIONS",
+          "FROM",
+          "PROBABILITY_30",
+          "PROBABILITY_30_TEMPORARY_FLUCTUATIONS",
+          "PROBABILITY_40",
+          "PROBABILITY_40_TEMPORARY_FLUCTUATIONS",
         ]

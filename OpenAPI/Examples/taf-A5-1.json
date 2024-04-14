@@ -1,6 +1,6 @@
 {
-    "reportStatus": "Normal",
-    "permissibleUsage": "Operational",
+    "reportStatus": "NORMAL",
+    "permissibleUsage": "OPERATIONAL",
     "issueTime": "2012-08-15T18:00:00Z",
     "aerodrome": "YUDO",
     "validPeriod": {
@@ -63,7 +63,7 @@
                     }
                 ]
             },
-            "changeIndicator": "Becoming"
+            "changeIndicator": "BECOMING"
         },
         {
             "phenomenonTime": {
@@ -110,7 +110,7 @@
                     }
                 ]
             },
-            "changeIndicator": "Temporary_Fluctuations"
+            "changeIndicator": "TEMPORARY_FLUCTUATIONS"
         },
         {
             "phenomenonTime": {
@@ -121,7 +121,7 @@
                 "value": 10000,
                 "uom": "m"
             },
-            "prevailingVisibilityOperator": "Above",
+            "prevailingVisibilityOperator": "ABOVE",
             "surfaceWind": {
                 "meanWindDirection": {
                     "value": 150,

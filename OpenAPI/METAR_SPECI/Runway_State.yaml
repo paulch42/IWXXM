@@ -11,7 +11,7 @@ components:
       enum: []
 
     RunwayContamination:
-      description: http://codes.wmo.int/common/quantity-kind/runwayContaminationCoverage
+      description: http://codes.wmo.int/bufr4/codeflag/0-20-087
       type: string
       enum: []
 

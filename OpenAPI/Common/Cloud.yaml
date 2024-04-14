@@ -12,13 +12,20 @@ components:
       properties:
         verticalVisibility:
           description: http://codes.wmo.int/common/quantity-kind/verticalVisibility
-          $ref: "../Measures/Measure.yaml#/components/schemas/LengthWithNilReason"
+          oneOf:
+            - $ref: "../Measures/Measure.yaml#/components/schemas/LengthWithNilReason"
+            - $ref: "../Common/Common.yaml#/components/schemas/Nil"
         layer:
           type: array
           maxItems: 4
           uniqueItems: true
           items:
             $ref: "#/components/schemas/CloudLayer"
+
+    CloudLayerWithNilReason:
+      allOf:
+        - $ref: "#/components/schemas/CloudLayer"
+        - $ref: "../Measures/Measure.yaml#/components/schemas/NilReason"
 
     CloudLayer:
       type: object
@@ -27,12 +34,18 @@ components:
         - base
       properties:
         amount:
-          $ref: "#/components/schemas/CloudAmountReportedAtAerodrome"
+          oneOf:
+            - $ref: "#/components/schemas/CloudAmountReportedAtAerodrome"
+            - $ref: "../Common/Common.yaml#/components/schemas/Nil"
         base:
           description: http://codes.wmo.int/common/quantity-kind/heightOfBaseOfCloud
-          $ref: "../Measures/Measure.yaml#/components/schemas/DistanceWithNilReason"
+          oneOf:
+            - $ref: "../Measures/Measure.yaml#/components/schemas/DistanceWithNilReason"
+            - $ref: "../Common/Common.yaml#/components/schemas/Nil"
         cloudType:
-          $ref: "#/components/schemas/SigConvectiveCloudType"
+          oneOf:
+            - $ref: "#/components/schemas/SigConvectiveCloudType"
+            - $ref: "../Common/Common.yaml#/components/schemas/Nil"
 
     CloudAmountReportedAtAerodrome:
       description: http://codes.wmo.int/49-2/CloudAmountReportedAtAerodrome

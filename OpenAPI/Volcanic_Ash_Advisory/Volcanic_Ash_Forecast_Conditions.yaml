@@ -1,0 +1,43 @@
+openapi: "3.1.0"
+info:
+  title: IWXXM Volcanic Ash Forecast Conditions Model
+  version: "1.0"
+  description: |
+    An OpenAPI model of the IWXXM Volcanic Ash Forecast Conditions diagram.
+
+components:
+  schemas:
+    VolcanicAshForecastConditions:
+      type: object
+      required:
+        - phenomenonTime
+        - status
+      properties:
+        phenomenonTime:
+          $ref: "../GML/GML.yaml#/components/schemas/DateTimeOrPeriod"
+        ashCloud:
+          oneOf:
+            - type: array
+              items:
+                $ref: "#/components/schemas/VolcanicAshCloudForecast"
+            - $ref: "../Common/Common.yaml#/components/schemas/Nil"
+        status:
+          $ref: "#/components/schemas/VolcanicAshCloudForecastStatus"
+
+    VolcanicAshCloudForecast:
+      type: object
+      required:
+        - ashCloudExtent
+      properties:
+        ashCloudExtent:
+          $ref: "../AIXM/AIXM.yaml#/components/schemas/AirspaceVolume"
+
+    VolcanicAshCloudForecastStatus:
+      type: string
+      enum:
+        [
+          "NOT_PROVIDED",
+          "NOT_AVAILABLE",
+          "NO_VOLCANIC_ASH_EXPECTED",
+          "PROVIDED",
+        ]

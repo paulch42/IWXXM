@@ -1,6 +1,6 @@
 {
-    "reportStatus": "Normal",
-    "permissibleUsage": "Operational",
+    "reportStatus": "NORMAL",
+    "permissibleUsage": "OPERATIONAL",
     "issueTime": "2012-08-22T16:30:00Z",
     "aerodrome": "YUDO",
     "observationTime": "2012-08-22T16:30:00Z",
@@ -40,7 +40,7 @@
                     "value": 1000,
                     "uom": "m"
                 },
-                "pastTendency": "Upward"
+                "pastTendency": "UPWARD"
             }
         ],
         "presentWeather": [
@@ -77,7 +77,9 @@
                 "value": 800,
                 "uom": "m"
             },
-            "weather": ["FG"]
+            "weather": [
+                "FG"
+            ]
         },
         {
             "phenomenonTime": {
@@ -90,7 +92,7 @@
                 "uom": "m"
             },
             "prevailingVisibilityOperator": "ABOVE",
-            "weather": []
+            "weather": "nil"
         }
     ]
 }

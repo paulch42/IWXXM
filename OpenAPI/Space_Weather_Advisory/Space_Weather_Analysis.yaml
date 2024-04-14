@@ -1,0 +1,42 @@
+openapi: "3.1.0"
+info:
+  title: IWXXM Space Weather Analysis Model
+  version: "1.0"
+  description: |
+    An OpenAPI model of the IWXXM Space Weather Analysis diagram.
+
+components:
+  schemas:
+    SpaceWeatherAnalysis:
+      type: object
+      required:
+        - phenomenonTime
+        - region
+        - timeIndicator
+      properties:
+        phenomenonTime:
+          $ref: "../GML/GML.yaml#/components/schemas/DateTimeOrPeriod"
+        region:
+          type: array
+          minItems: 1
+          uniqueItems: true
+          items:
+            $ref: "#/components/schemas/SpaceWeatherRegion"
+        timeIndicator:
+          $ref: "../Common/Time_Indicator.yaml#/components/schemas/TimeIndicator"
+
+    SpaceWeatherRegion:
+      type: object
+      required:
+        - location
+        - locationIndicator
+      properties:
+        location:
+          $ref: "../AIXM/AIXM.yaml#/components/schemas/AirspaceVolume"
+        locationIndicator:
+          $ref: "#/components/schemas/SpaceWeatherLocation"
+
+    SpaceWeatherLocation:
+      description: http://codes.wmo.int/49-2/SpaceWxLocation
+      type: string
+      enum: ["HNH", "MNH", "EQN", "EQS", "MSH", "HSH", "DAYLIGHT_SIDE"]

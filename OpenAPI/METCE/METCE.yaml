@@ -6,8 +6,8 @@ info:
 
 components:
   schemas:
-    Volcano:
+    EruptingVolcano:
       type: object
     
     TropicalCyclone:
-      type: object
+      type: string

@@ -17,8 +17,7 @@ components:
             - aerodrome
           properties:
             issueTime:
-              type: string
-              format: date-time
+              $ref: "../GML/GML.yaml#/components/schemas/TimeInstant"
             aerodrome:
               $ref: "../AIXM/AIXM.yaml#/components/schemas/AirportHeliport"
             validPeriod:

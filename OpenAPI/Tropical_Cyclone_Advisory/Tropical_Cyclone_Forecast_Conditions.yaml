@@ -1,0 +1,26 @@
+openapi: "3.1.0"
+info:
+  title: IWXXM Tropical Cyclone Forecast Conditions Model
+  version: "1.0"
+  description: |
+    An OpenAPI model of the IWXXM Tropical Cyclone Forecast Conditions diagram.
+
+components:
+  schemas:
+    TropicalCycloneForecastConditions:
+      type: object
+      required:
+        - phenomenonTime
+        - tropicalCyclonePosition
+        - maximumSurfaceWindSpeed
+      properties:
+        phenomenonTime:
+          $ref: "../GML/GML.yaml#/components/schemas/DateTimeOrPeriod"
+        tropicalCyclonePosition:
+          oneOf:
+            - $ref: "../GML/GML.yaml#/components/schemas/Point"
+            - $ref: "../Common/Common.yaml#/components/schemas/Nil"
+        maximumSurfaceWindSpeed:
+          oneOf:
+            - $ref: "../Measures/Measure.yaml#/components/schemas/VelocityWithNilReason"
+            - $ref: "../Common/Common.yaml#/components/schemas/Nil"

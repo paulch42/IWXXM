@@ -1,6 +1,6 @@
 {
-    "reportStatus": "Normal",
-    "permissibleUsage": "Operational",
+    "reportStatus": "NORMAL",
+    "permissibleUsage": "OPERATIONAL",
     "issueTime": "2012-08-10T12:00:00Z",
     "issuingAirTrafficServicesUnit": {
         "name": "YUDD FIC",
@@ -27,7 +27,7 @@
         {
             "analysis": {
                 "phenomenonTime": "missing",
-                "timeIndicator": "Forecast",
+                "timeIndicator": "FORECAST",
                 "member": [
                     {
                         "geometry": {},
@@ -39,7 +39,7 @@
                             "value": 20,
                             "uom": "[kn_i]"
                         },
-                        "intensityChange": "Weaken"
+                        "intensityChange": "WEAKEN"
                     }
                 ]
             }

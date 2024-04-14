@@ -13,12 +13,14 @@ components:
         - member
       properties:
         phenomenonTime:
-          $ref: "../Measures/Measure.yaml#/components/schemas/DateTimeOrPeriodWithNilReason"
+          $ref: "../GML/GML.yaml#/components/schemas/DateTimeOrPeriod"
         member:
-          type: array
-          minItems: 1
-          items:
-            $ref: "#/components/schemas/SIGMETPosition"
+          oneOf:
+          - type: array
+            minItems: 1
+            items:
+              $ref: "#/components/schemas/SIGMETPosition"
+          - $ref: "../Common/Common.yaml#/components/schemas/Nil"
 
     SIGMETPosition:
       required:

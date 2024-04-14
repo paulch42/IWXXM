@@ -7,8 +7,8 @@ components:
   schemas:
     PermissibleUsage:
       type: string
-      enum: ["Operational", "Non-Operational"]
+      enum: ["OPERATIONAL", "NON-OPERATIONAL"]
 
     PermissibleUsageReason:
       type: string
-      enum: ["Test", "Exercise"]
+      enum: ["TEST", "EXERCISE"]

@@ -28,3 +28,4 @@ components:
     StringWithNilReason:
       allOf:
         - $ref: "#/components/schemas/CharacterString"
+        - $ref: "../Measures/Measure.yaml#/components/schemas/NilReason"

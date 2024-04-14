@@ -20,11 +20,11 @@ components:
         permissibleUsageReason:
           $ref: "Permissible_Usage.yaml#/components/schemas/PermissibleUsageReason"
         permissibleUsageSupplementary:
-          type: string
+          $ref: "String.yaml#/components/schemas/CharacterString"
 
     ReportStatus:
       type: string
-      enum: ["Normal", "Amendment", "Correction"]
+      enum: ["CORRECTION", "AMENDMENT", "NORMAL"]
 
     Report:
       allOf:

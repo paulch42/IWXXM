@@ -14,14 +14,15 @@ components:
         - member
       properties:
         phenomenonTime:
-          $ref: "../Measures/Measure.yaml#/components/schemas/DateTimeOrPeriodWithNilReason"
-        timeIndicator:
-          $ref: "../Common/Time_Indicator.yaml#/components/schemas/TimeIndicator"
+          $ref: "../GML/GML.yaml#/components/schemas/DateTimeOrPeriod"
         member:
           type: array
           minItems: 1
+          uniqueItems: true
           items:
             $ref: "#/components/schemas/SIGMETEvolvingCondition"
+        timeIndicator:
+          $ref: "../Common/Time_Indicator.yaml#/components/schemas/TimeIndicator"
 
     SIGMETEvolvingCondition:
       required:
@@ -32,7 +33,9 @@ components:
         geometry:
           $ref: "../AIXM/AIXM.yaml#/components/schemas/AirspaceVolume"
         directionOfMotion:
-          $ref: "../Measures/Measure.yaml#/components/schemas/AngleWithNilReason"
+          oneOf:
+            - $ref: "../Measures/Measure.yaml#/components/schemas/AngleWithNilReason"
+            - $ref: "../Common/Common.yaml#/components/schemas/Nil"
         speedOfMotion:
           $ref: "../GML/GML.yaml#/components/schemas/Speed"
         intensityChange:
@@ -43,4 +46,4 @@ components:
 
     SIGMETExpectedIntensityChange:
       type: string
-      enum: ["No_Change", "Weaken", "Intensify"]
+      enum: ["NO_CHANGE", "WEAKEN", "INTENSIFY"]

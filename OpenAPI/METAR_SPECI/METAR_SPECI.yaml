@@ -26,19 +26,22 @@ components:
             - observationTime
           properties:
             issueTime:
-              type: string
-              format: date-time
+              $ref: "../GML/GML.yaml#/components/schemas/TimeInstant"
             aerodrome:
               $ref: "../AIXM/AIXM.yaml#/components/schemas/AirportHeliport"
             observationTime:
-              type: string
-              format: date-time
+              $ref: "../GML/GML.yaml#/components/schemas/TimeInstant"
             observation:
-              $ref: "Observation.yaml#/components/schemas/MeteorologicalAerodromeObservation"
-            trendFroecast:
-              type: array
-              items:
-                $ref: "Trend_Forecast.yaml#/components/schemas/MeteorologicalAerodromeTrendForecast"
+              oneOf:
+                - $ref: "Observation.yaml#/components/schemas/MeteorologicalAerodromeObservation"
+                - $ref: "../Common/Common.yaml#/components/schemas/Nil"
+            trendForecast:
+              oneOf:
+                - type: array
+                  uniqueItems: true
+                  items:
+                    $ref: "Trend_Forecast.yaml#/components/schemas/MeteorologicalAerodromeTrendForecast"
+                - $ref: "../Common/Common.yaml#/components/schemas/Nil"
             automatedStation:
               type: string
               enum: ["AUTO"]

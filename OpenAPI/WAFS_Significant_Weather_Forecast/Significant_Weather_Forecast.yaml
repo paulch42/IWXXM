@@ -1,0 +1,15 @@
+openapi: "3.1.0"
+info:
+  title: IWXXM WAFS Significant Weather Forecast Model
+  version: "1.0"
+  description: |
+    An OpenAPI model of the IWXXM WAFS Significant Weather Forecast diagram.
+
+components:
+  schemas:
+    WAFSSignificantWeatherForecast:
+      $ref: "../Meteorological_Feature/Meteorological_Feature_and_Collection.yaml#/components/schemas/MeteorologicalFeatureCollection"
+
+    WorldAreaForecastCentre:
+      type: string
+      enum: ["Washington", "London"]

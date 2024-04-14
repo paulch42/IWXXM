@@ -10,34 +10,34 @@ components:
     AIRMETEvolvingConditionCollection:
       type: object
       required:
-      - phenomenonTime
-      - timeIndicator
-      - member
+        - phenomenonTime
+        - timeIndicator
+        - member
       properties:
         phenomenonTime:
-          $ref: "../Measures/Measure.yaml#/components/schemas/DateTimeOrPeriodWithNilReason"
-        timeIndicator:
-          $ref: "../Common/Time_Indicator.yaml#/components/schemas/TimeIndicator"
+          $ref: "../GML/GML.yaml#/components/schemas/DateTimeOrPeriod"
         member:
           type: array
           minItems: 1
           uniqueItems: true
           items:
-           $ref: "#/components/schemas/AIRMETEvolvingCondition"
+            $ref: "#/components/schemas/AIRMETEvolvingCondition"
+        timeIndicator:
+          $ref: "../Common/Time_Indicator.yaml#/components/schemas/TimeIndicator"
 
     AIRMETEvolvingCondition:
       type: object
       required:
-      - geometry
+        - geometry
       properties:
         geometry:
           $ref: "../AIXM/AIXM.yaml#/components/schemas/AirspaceVolume"
         directionOfMotion:
-          $ref: "../Measures/Measure.yaml#/components/schemas/AngleWithNilReason"
+          oneOf:
+            - $ref: "../Measures/Measure.yaml#/components/schemas/AngleWithNilReason"
+            - $ref: "../Common/Common.yaml#/components/schemas/Nil"
         speedOfMotion:
           $ref: "../GML/GML.yaml#/components/schemas/Speed"
-        intensityChange:
-          $ref: "#/components/schemas/AIRMETExpectedIntensityChange"
         cloudBase:
           $ref: "../GML/GML.yaml#/components/schemas/Length"
         cloudBaseReference:
@@ -57,14 +57,17 @@ components:
           $ref: "../GML/GML.yaml#/components/schemas/Angle"
         surfaceWindSpeed:
           $ref: "../GML/GML.yaml#/components/schemas/Speed"
+        intensityChange:
+          $ref: "#/components/schemas/AIRMETExpectedIntensityChange"
         approximateLocation:
           type: string
           enum: ["APPROX"]
 
     AIRMETExpectedIntensityChange:
       type: string
-      enum: ["No_Change", Waeken", "Intensify"]
+      enum: ["NO_CHANGE", "WEAKEN", "INTENSIFY"]
 
     WeatherCausingVisibiltyReduction:
+      description: http://codes.wmo.int/49-2/WeatherCausingVisibilityReduction
       type: string
       enum: []

@@ -1,0 +1,70 @@
+openapi: "3.1.0"
+info:
+  title: IWXXM Volcanic Ash Observed Conditions Model
+  version: "1.0"
+  description: |
+    An OpenAPI model of the IWXXM Volcanic Ash Observed Conditions diagram.
+
+components:
+  schemas:
+    VolcanicAshObservedOrEstimatedConditions:
+      type: object
+      required:
+        - phenomenonTime
+        - status
+      properties:
+        phenomenonTime:
+          $ref: "../GML/GML.yaml#/components/schemas/DateTimeOrPeriod"
+        wind:
+          type: array
+          uniqueItems: true
+          items:
+            $ref: "#/components/schemas/WindObservedOrEstimated"
+        ashCloud:
+          oneOf:
+            - type: array
+              uniqueItems: true
+              items:
+                $ref: "#/components/schemas/VolcanicAshCloudObservedOrEstimated"
+            - $ref: "../Common/Common.yaml#/components/schemas/Nil"
+        isEstimated:
+          type: string
+          enum: ["EST"]
+        status:
+          $ref: "#/components/schemas/VolcanicAshObservedOrEstimatedStatus"
+
+    VolcanicAshCloudObservedOrEstimated:
+      type: object
+      required:
+        - ashCloudExtent
+        - directionOfMotion
+        - speedOfMotion
+      properties:
+        ashCloudExtent:
+          oneOf:
+            - $ref: "../AIXM/AIXM.yaml#/components/schemas/AirspaceVolume"
+            - $ref: "../Common/Common.yaml#/components/schemas/Nil"
+        directionOfMotion:
+          $ref: "../GML/GML.yaml#/components/schemas/Angle"
+        speedOfMotion:
+          $ref: "../GML/GML.yaml#/components/schemas/Speed"
+
+    WindObservedOrEstimated:
+      type: object
+      required:
+        - verticalLayer
+        - windSpeed
+      properties:
+        verticalLayer:
+          $ref: "../AIXM/AIXM.yaml#/components/schemas/AirspaceLayer"
+        windDirection:
+          $ref: "../GML/GML.yaml#/components/schemas/Angle"
+        windSpeed:
+          $ref: "../GML/GML.yaml#/components/schemas/Speed"
+        variableWindDirection:
+          type: string
+          enum: ["VRB"]
+
+    VolcanicAshObservedOrEstimatedStatus:
+      type: string
+      enum: ["NOT_IDENTIFIABLE", "IDENTIFIABLE"]

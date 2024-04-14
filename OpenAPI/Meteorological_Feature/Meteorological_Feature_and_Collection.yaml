@@ -21,23 +21,23 @@ components:
               $ref: "Basic_Types.yaml#/components/schemas/ElevatedEnvelope"
             phenomenaList:
               type: array
+              uniqueItems: true
               items:
                 $ref: "Code_Tables.yaml#/components/schemas/MeteorologicalPhenomenon"
             issueTime:
-              type: string
-              format: date-time
+              $ref: "../GML/GML.yaml#/components/schemas/TimeInstant"
             originatingCentre:
               $ref: "../GML/GML.yaml#/components/schemas/AssociationRole"
             phenomenonCategory:
               $ref: "#/components/schemas/WMOCategoryCode"
             phenomenonBaseTime:
-              type: string
-              format: date-time
+              $ref: "../GML/GML.yaml#/components/schemas/TimeInstant"
             phenomenonTime:
               $ref: "../GML/GML.yaml#/components/schemas/DateTimeOrPeriod"
             feature:
               type: array
               minItems: 1
+              uniqueItems: true
               items:
                 $ref: "#/components/schemas/MeteorologicalFeature"
 
@@ -47,15 +47,13 @@ components:
         - phenomenon
       properties:
         issueTime:
-          type: string
-          format: date-time
+          $ref: "../GML/GML.yaml#/components/schemas/TimeInstant"
         originatingCentre:
           $ref: "../GML/GML.yaml#/components/schemas/AssociationRole"
         phenomenonCategory:
           $ref: "#/components/schemas/WMOCategoryCode"
         phenomenonBaseTime:
-          type: string
-          format: date-time
+          $ref: "../GML/GML.yaml#/components/schemas/TimeInstant"
         phenomenonTime:
           $ref: "../GML/GML.yaml#/components/schemas/DateTimeOrPeriod"
         phenomenon:
@@ -64,6 +62,7 @@ components:
           $ref: "../GML/GML.yaml#/components/schemas/AssociationRole"
         phenomenonProperty:
           type: array
+          uniqueItems: true
           items:
             $ref: "../GML/GML.yaml#/components/schemas/AssociationRole"
 

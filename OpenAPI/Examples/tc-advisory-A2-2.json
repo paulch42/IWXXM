@@ -1,0 +1,43 @@
+{
+    "reportStatus": "NORMAL",
+    "permissibleUsage": "OPERATIONAL",
+    "issueTime": "2004-09-25T16:00:00Z",
+    "issuingTropicalCycloneAdvisoryCentre": {
+        "type": "OTHER:TCAC",
+        "designator": "YUFO"
+    },
+    "tropicalCycloneName": "GLORIA",
+    "advisoryNumber": "2004/13",
+    "observation": {
+        "phenomenonTime": "2004-09-25T16:00:00Z",
+        "tropicalCyclonePosition": {},
+        "cumulonimbusCloudLocation": [
+            {}
+        ],
+        "movement": "MOVING",
+        "movementDirection": {
+            "value": 315,
+            "uom": "deg"
+        },
+        "movementSpeed": {
+            "value": 20,
+            "uom": "km/h"
+        },
+        "intensityChange": "INTENSIFY",
+        "centralPressure": {
+            "value": 965,
+            "uom": "hPa"
+        },
+        "maximumSurfaceWindSpeed": {
+            "value": 22,
+            "uom": "m/s"
+        }
+    },
+    "forecast": [
+        {},
+        {},
+        {},
+        {}
+    ],
+    "nextAdvisoryTime": "2004-09-25T20:00:00Z"
+}
