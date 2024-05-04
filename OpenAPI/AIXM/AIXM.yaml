@@ -9,9 +9,9 @@ components:
     Unit:
       type: object
       required:
-      - name
-      - type
-      - designator
+        - name
+        - type
+        - designator
       properties:
         name:
           type: string
@@ -21,12 +21,12 @@ components:
           type: string
 
     Airspace:
-      description: An AIXM airspace feature.
+      description: An AIXM Airspace feature.
       type: object
       required:
-      - name
-      - type
-      - designator
+        - name
+        - type
+        - designator
       properties:
         name:
           type: string
@@ -42,9 +42,18 @@ components:
       type: string
 
     AirportHeliport:
-      description: An AIXM airport/heliport feature.
-      type: string
-      pattern: "^[A-Z]{4}$"
+      description: An AIXM Airport/Heliport feature.
+      type: object
+        - name
+        - type
+        - designator
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+        designator:
+          type: string
 
     Runway:
       type: string
