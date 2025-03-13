@@ -8,7 +8,8 @@ info:
 components:
   schemas:
     WAFSSignificantWeatherForecast:
-      $ref: "../Meteorological_Feature/Meteorological_Feature_and_Collection.yaml#/components/schemas/MeteorologicalFeatureCollection"
+      oneOf:
+        - $ref: "../Meteorological_Feature/Meteorological_Feature_and_Collection.yaml#/components/schemas/MeteorologicalFeatureCollection"
 
     WorldAreaForecastCentre:
       type: string

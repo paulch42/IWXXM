@@ -12,16 +12,20 @@ components:
       enum: []
 
     Angle:
-      $ref: "#/components/schemas/Measure"
+      oneOf:
+        - $ref: "#/components/schemas/Measure"
 
     Length:
-      $ref: "#/components/schemas/Measure"
+      oneOf:
+        - $ref: "#/components/schemas/Measure"
 
     Velocity:
-      $ref: "#/components/schemas/Measure"
+      oneOf:
+        - $ref: "#/components/schemas/Measure"
 
     Speed:
-      $ref: "#/components/schemas/Measure"
+      oneOf:
+        - $ref: "#/components/schemas/Measure"
 
     Measure:
       type: object
@@ -42,14 +46,14 @@ components:
       type: object
       properties:
         beginPosition:
-          ref: "#/components/schemas/DateTime"
+          $ref: "#/components/schemas/TimeInstant"
         endPosition:
-          ref: "#/components/schemas/DateTime"
+          $ref: "#/components/schemas/TimeInstant"
 
     DateTimeOrPeriod:
       oneOf:
-        - ref: "#/components/schemas/DateTime"
-        - ref: "#/components/schemas/DateTimeOrPeriod"
+        - $ref: "#/components/schemas/TimeInstant"
+        - $ref: "#/components/schemas/TimePeriod"
 
     AssociationRole:
       description: ????

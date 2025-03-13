@@ -20,6 +20,5 @@ The contents of the model are:
 | AIXM | A minimal model of AIXM features to support the IWXXM model. |
 | GML | A minimal model of GML entities to support the IWXXM model. |
 | Examples | Example messages that comply with the OpenAPI schema. |
-| check | Scripts that validate the IWXXM OpenAPI schema files. Depends on Python and the [openapi-spec-validator](https://pypi.org/project/openapi-spec-validator/) package. |
 
 Lower level detail is not covered, particularly relating to AIXM, GML and METCE.

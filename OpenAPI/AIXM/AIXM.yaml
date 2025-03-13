@@ -44,6 +44,7 @@ components:
     AirportHeliport:
       description: An AIXM Airport/Heliport feature.
       type: object
+      required:
         - name
         - type
         - designator

@@ -8,37 +8,37 @@ info:
 components:
   schemas:
     AngleWithNilReason:
-      description:
+      description: TO DO
       allOf:
         - $ref: "../GML/GML.yaml#/components/schemas/Angle"
         - $ref: "#/components/schemas/NilReason"
 
     VelocityWithNilReason:
-      description:
+      description: TO DO
       allOf:
         - $ref: "../GML/GML.yaml#/components/schemas/Speed"
         - $ref: "#/components/schemas/NilReason"
 
     DistanceWithNilReason:
-      description:
+      description: TO DO
       allOf:
         - $ref: "../GML/GML.yaml#/components/schemas/Length"
         - $ref: "#/components/schemas/NilReason"
 
     LengthWithNilReason:
-      description:
+      description: TO DO
       allOf:
         - $ref: "../GML/GML.yaml#/components/schemas/Length"
         - $ref: "#/components/schemas/NilReason"
 
     MeasureWithNilReason:
-      description:
+      description: TO DO
       allOf:
         - $ref: "../GML/GML.yaml#/components/schemas/Measure"
         - $ref: "#/components/schemas/NilReason"
 
     NilReason:
-      object:
-        properties:
-          nilReason:
-            - $ref: "../GML/GML.yaml#/components/schemas/NilReason"
+      type: object
+      properties:
+        nilReason:
+          $ref: "../GML/GML.yaml#/components/schemas/NilReason"

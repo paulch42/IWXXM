@@ -43,11 +43,11 @@ components:
           enum: ["CAVOK"]
 
     TrendForecastTimeIndicator:
-      description:
+      description: TO DO
       type: string
       enum: ["AT", "UNTIL", "FROM", "FROM_UNTIL"]
 
     ForecastChangeIndicator:
-      description:
+      description: TO DO
       type: string
       enum: ["BECOMING", "TEMPORARY_FLUCTUATIONS"]

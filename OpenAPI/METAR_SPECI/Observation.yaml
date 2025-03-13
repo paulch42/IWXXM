@@ -8,7 +8,7 @@ info:
 components:
   schemas:
     MeteorologicalAerodromeObservation:
-      description:
+      description: TO DO
       type: object
       required:
         - airTemperature
@@ -90,7 +90,7 @@ components:
         - $ref: "../Measures/Measure.yaml#/components/schemas/NilReason"
 
     AerodromeSurfaceWind:
-      description:
+      description: TO DO
       type: object
       required:
         - meanWindSpeed
@@ -138,7 +138,7 @@ components:
         - $ref: "../Measures/Measure.yaml#/components/schemas/NilReason"
 
     AerodromeHorizontalVisibility:
-      description:
+      description: TO DO
       type: object
       required:
         - prevailingVisibility
@@ -158,7 +158,7 @@ components:
             - $ref: "../Measures/Measure.yaml#/components/schemas/DistanceWithNilReason"
             - $ref: "../Common/Common.yaml#/components/schemas/Nil"
         minimumVisibilityDirection:
-          desciption: http://codes.wmo.int/common/quantity-kind/aerodromeMinimumVisibilityDirection
+          description: http://codes.wmo.int/common/quantity-kind/aerodromeMinimumVisibilityDirection
           oneOf:
             - $ref: "../Measures/Measure.yaml#/components/schemas/AngleWithNilReason"
             - $ref: "../Common/Common.yaml#/components/schemas/Nil"
@@ -169,7 +169,7 @@ components:
         - $ref: "../Measures/Measure.yaml#/components/schemas/NilReason"
 
     AerodromeRunwayVisualRange:
-      description:
+      description: TO DO
       type: object
       required:
         - runway
@@ -197,7 +197,7 @@ components:
         - $ref: "../Measures/Measure.yaml#/components/schemas/NilReason"
 
     AerodromeCloud:
-      description:
+      description: TO DO
       type: object
       properties:
         verticalVisibility:
@@ -220,7 +220,7 @@ components:
         - $ref: "../Measures/Measure.yaml#/components/schemas/NilReason"
 
     AerodromeWindShear:
-      description:
+      description: TO DO
       type: object
       properties:
         runway:
@@ -240,7 +240,7 @@ components:
         - $ref: "../Measures/Measure.yaml#/components/schemas/NilReason"
 
     AerodromeSeaCondition:
-      description:
+      description: TO DO
       type: object
       required:
         - seaSurfaceTemperature
@@ -299,6 +299,6 @@ components:
           enum: ["Previous"]
 
     VisualRangeTendency:
-      description:
+      description: TO DO
       type: string
       enum: ["UPWARD", "NO_CHANGE", "DOWNWARD", "MISSING_VALUE"]

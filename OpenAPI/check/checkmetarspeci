@@ -1,5 +1,0 @@
-openapi-spec-validator METAR_SPECI/Runway_State.yaml
-openapi-spec-validator METAR_SPECI/Weather.yaml
-openapi-spec-validator METAR_SPECI/Observation.yaml
-openapi-spec-validator METAR_SPECI/Trend_Forecast.yaml
-openapi-spec-validator METAR_SPECI/METAR_SPECI.yaml
