@@ -8,6 +8,7 @@ info:
 components:
   schemas:
     VolcanicAshAdvisory:
+      description: An advisory of volcanic ash conditions of significance to aviation as represented in ICAO Annex 3 and PANS-MET (Doc 10157).
       allOf:
         - $ref: "../Common/Report.yaml#/components/schemas/Report"
         - type: object
@@ -20,31 +21,17 @@ components:
             issuingVolcanicAshAdvisoryCentre:
               $ref: "../AIXM/AIXM.yaml#/components/schemas/Unit"
             volcano:
-              $ref: "../METCE/METCE.yaml#/components/schemas/EruptingVolcano"
+              $ref: "../Meteorological_Feature/Property_Types.yaml#/components/schemas/Volcano"
             stateOrRegion:
-              oneOf:
-                - $ref: "../Common/String.yaml#/components/schemas/StringWithNilReason"
-                - $ref: "../Common/Common.yaml#/components/schemas/Nil"
-            summitElevation:
-              oneOf:
-                - $ref: "../Measures/Measure.yaml#/components/schemas/LengthWithNilReason"
-                - $ref: "../Common/Common.yaml#/components/schemas/Nil"
+              $ref: "../Common/String.yaml#/components/schemas/StringWithNilReason"
+            sourceElevantionAMSL:
+              $ref: "../Common/Measure.yaml#/components/schemas/DistanceWithNilReason"
             advisoryNumber:
-              oneOf:
-                - $ref: "../Common/String.yaml#/components/schemas/StringWithNilReason"
-                - $ref: "../Common/Common.yaml#/components/schemas/Nil"
+              $ref: "../Common/String.yaml#/components/schemas/StringWithNilReason"
             informationSource:
-              oneOf:
-                - $ref: "../Common/String.yaml#/components/schemas/StringWithNilReason"
-                - $ref: "../Common/Common.yaml#/components/schemas/Nil"
-            colourCode:
-              oneOf:
-                - $ref: "#/components/schemas/AviationColourCode"
-                - $ref: "../Common/Common.yaml#/components/schemas/Nil"
+              $ref: "../Common/String.yaml#/components/schemas/StringWithNilReason"
             eruptionDetails:
-              oneOf:
-                - $ref: "../Common/String.yaml#/components/schemas/StringWithNilReason"
-                - $ref: "../Common/Common.yaml#/components/schemas/Nil"
+              $ref: "../Common/String.yaml#/components/schemas/StringWithNilReason"
             observation:
               $ref: "Volcanic_Ash_Observed_Conditions.yaml#/components/schemas/VolcanicAshObservedOrEstimatedConditions"
             forecast:
@@ -52,13 +39,6 @@ components:
               items:
                 $ref: "Volcanic_Ash_Forecast_Conditions.yaml#/components/schemas/VolcanicAshForecastConditions"
             remarks:
-              oneOf:
-                - $ref: "../Common/String.yaml#/components/schemas/StringWithNilReason"
-                - $ref: "../Common/Common.yaml#/components/schemas/Nil"
+              $ref: "../Common/String.yaml#/components/schemas/StringWithNilReason"
             nextAdvisoryTime:
               $ref: "../GML/GML.yaml#/components/schemas/TimeInstant"
-
-    AviationColourCode:
-      description: http://codes.wmo.int/49-2/AviationColourCode
-      type: string
-      enum: []

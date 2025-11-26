@@ -8,6 +8,7 @@ info:
 components:
   schemas:
     BasicReport:
+      description: The base type for all reports, including information that is common across all report types.
       type: object
       required:
         - reportStatus
@@ -27,21 +28,22 @@ components:
       enum: ["CORRECTION", "AMENDMENT", "NORMAL"]
 
     Report:
+      description: The fundamental type for all legacy reports in Annex 3.
       allOf:
         - $ref: "#/components/schemas/BasicReport"
         - type: object
           properties:
             translatedBulletinID:
-              type: string
+              $ref: "String.yaml#/components/schemas/CharacterString"
             translatedBulletinReceptionTime:
               type: string
               format: date-time
             translationCentreDesignator:
-              type: string
+              $ref: "String.yaml#/components/schemas/CharacterString"
             translationCentreName:
-              type: string
+              $ref: "String.yaml#/components/schemas/CharacterString"
             translationTime:
               type: string
               format: date-time
             translationFailedTAC:
-              type: string
+              $ref: "String.yaml#/components/schemas/CharacterString"

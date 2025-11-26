@@ -3,16 +3,20 @@ info:
   title: IWXXM METAR/SPECI Model
   version: "1.0"
   description: |
-    An OpenAPI model of the IWXXM METAR/SPECI diagram.
+    METAR and SPECI reporting constructs as defined in ICAO Annex 3 and PANS-MET (Doc 10157).
+
+    METAR and SPECI reports include identical information but are issued for different purposes.
 
 components:
   schemas:
     METAR:
-      allOf:
+      description: A routine observation made at an aerodrome throughout the day.  METAR observations are made (and distributed) at intervals of one hour or, if so determined by regional air navigation agreement, at intervals of one half-hour.
+      oneOf:
         - $ref: "#/components/schemas/MeteorologicalAerodromeObservationReport"
 
     SPECI:
-      allOf:
+      description: A special (i.e., non-routine) observation made at an aerodrome as needed. SPECI observations are made (and distributed) in accordance with criteria established by the meteorological authority, in consultation with the appropriate ATS authority, operators and others concerned.
+      oneOf:
         - $ref: "#/components/schemas/MeteorologicalAerodromeObservationReport"
 
     MeteorologicalAerodromeObservationReport:
@@ -32,16 +36,12 @@ components:
             observationTime:
               $ref: "../GML/GML.yaml#/components/schemas/TimeInstant"
             observation:
-              oneOf:
-                - $ref: "Observation.yaml#/components/schemas/MeteorologicalAerodromeObservation"
-                - $ref: "../Common/Common.yaml#/components/schemas/Nil"
+              $ref: "Observation.yaml#/components/schemas/MeteorologicalAerodromeObservation"
             trendForecast:
-              oneOf:
-                - type: array
-                  uniqueItems: true
-                  items:
-                    $ref: "Trend_Forecast.yaml#/components/schemas/MeteorologicalAerodromeTrendForecast"
-                - $ref: "../Common/Common.yaml#/components/schemas/Nil"
+              type: array
+              uniqueItems: true
+              items:
+                $ref: "Trend_Forecast.yaml#/components/schemas/MeteorologicalAerodromeTrendForecast"
             automatedStation:
               type: string
               enum: ["AUTO"]

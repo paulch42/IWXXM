@@ -3,11 +3,12 @@ info:
   title: IWXXM TAF Model
   version: "1.0"
   description: |
-    An OpenAPI model of the IWXXM TAF diagram.
+    An OpenAPI model of the IWXXM TAF Forecast diagram.
 
 components:
   schemas:
     MeteorologicalAerodromeForecast:
+      description: Meteorological conditions forecast at an aerodrome.
       type: object
       required:
         - phenomenonTime
@@ -15,7 +16,7 @@ components:
         phenomenonTime:
           $ref: "../GML/GML.yaml#/components/schemas/TimePeriod"
         prevailingVisibility:
-          $ref: "../GML/GML.yaml#/components/schemas/Length"
+          $ref: "../GML/GML.yaml#/components/schemas/Distance"
         prevailingVisibilityOperator:
           $ref: "../Common/Relational_Operator.yaml#/components/schemas/RelationalOperator"
         surfaceWind:
@@ -41,6 +42,7 @@ components:
           enum: ["CAVOK"]
 
     AerodromeAirTemperatureForecast:
+      description: An aggregation of air temperature forecast conditions typically reported together at an aerodrome, including the minimum and maximum anticipated air temperatures and when they occur.
       type: object
       required:
         - maximumAirTemperature
@@ -58,6 +60,7 @@ components:
           $ref: "../GML/GML.yaml#/components/schemas/TimeInstant"
 
     AerodromeForecastChangeIndicator:
+      description: The forecast change indicator type, including temporary, permanent, or probable conditions.
       type: string
       enum:
         [

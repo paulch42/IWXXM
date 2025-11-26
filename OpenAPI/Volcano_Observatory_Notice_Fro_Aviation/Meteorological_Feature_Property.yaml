@@ -1,0 +1,43 @@
+openapi: "3.1.0"
+info:
+  title: IWXXM VONA Model
+  version: "1.0"
+  description: |
+    An OpenAPI model of the IWXXM Meteorological Feature Property diagram.
+
+components:
+  schemas:
+    ResuspendedVolcanicAsh:
+      description: Re-suspended volcanic ash.
+      oneOf:
+        - $ref: "../Meteorological_Feature/Geometry_Types.yaml#/components/schemas/ElevatedLevel"
+
+    VolcanicAshCloudVerticalExtent:
+      description: Volcanic ash cloud vertical extent.
+      type: object
+      required:
+        - heightSource
+        - movement
+      properties:
+        heightSource:
+          $ref: "../Common/String.yaml#/components/schemas/StringWithNilReason"
+        movement:
+          $ref: "#/components/schemas/VolcanicAshCloudMovement"
+
+    VolcanicAshCloudMovement:
+      description: Volcanic ash cloud movement.
+      type: string
+      enum:
+        [
+          "N",
+          "NE",
+          "E",
+          "SE",
+          "S",
+          "SW",
+          "W",
+          "NW",
+          "VERTICAL",
+          "OBSCURED",
+          "UNKNOWN",
+        ]

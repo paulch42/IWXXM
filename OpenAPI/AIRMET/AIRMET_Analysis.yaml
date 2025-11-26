@@ -8,6 +8,7 @@ info:
 components:
   schemas:
     AIRMETEvolvingConditionCollection:
+      description: A collection of AIRMETEvolvingConditions, each representing a location where AIRMET observed or forecast conditions exist.
       type: object
       required:
         - phenomenonTime
@@ -26,6 +27,7 @@ components:
           $ref: "../Common/Time_Indicator.yaml#/components/schemas/TimeIndicator"
 
     AIRMETEvolvingCondition:
+      description: Conditions that indicate the presence of a specific AIRMET phenomenon such as mountain obscuration or a thunderstorm, along with expected changes to the phenomena such as intensity, speed, and direction.
       type: object
       required:
         - geometry
@@ -33,41 +35,43 @@ components:
         geometry:
           $ref: "../AIXM/AIXM.yaml#/components/schemas/AirspaceVolume"
         directionOfMotion:
-          oneOf:
-            - $ref: "../Measures/Measure.yaml#/components/schemas/AngleWithNilReason"
-            - $ref: "../Common/Common.yaml#/components/schemas/Nil"
+          $ref: "../Common/Measure.yaml#/components/schemas/AngleWithNilReason"
         speedOfMotion:
-          $ref: "../GML/GML.yaml#/components/schemas/Speed"
+          $ref: "../GML/GML.yaml#/components/schemas/Velocity"
+        intensityChange:
+          $ref: "#/components/schemas/AIRMETExpectedIntensityChange"
         cloudBase:
-          $ref: "../GML/GML.yaml#/components/schemas/Length"
+          $ref: "../GML/GML.yaml#/components/schemas/Distance"
         cloudBaseReference:
           $ref: "../AIXM/AIXM.yaml#/components/schemas/CodeVerticalReferenceBase"
         cloudTop:
-          $ref: "../GML/GML.yaml#/components/schemas/Length"
+          $ref: "../GML/GML.yaml#/components/schemas/Distance"
         cloudTopReference:
           $ref: "../AIXM/AIXM.yaml#/components/schemas/CodeVerticalReferenceBase"
         cloudTopAbove:
           type: string
           enum: ["ABV"]
         surfaceVisibility:
-          $ref: "../GML/GML.yaml#/components/schemas/Length"
+          $ref: "../GML/GML.yaml#/components/schemas/Distance"
         surfaceVisibilityCause:
           $ref: "#/components/schemas/WeatherCausingVisibiltyReduction"
         surfaceWindDirection:
           $ref: "../GML/GML.yaml#/components/schemas/Angle"
         surfaceWindSpeed:
-          $ref: "../GML/GML.yaml#/components/schemas/Speed"
-        intensityChange:
-          $ref: "#/components/schemas/AIRMETExpectedIntensityChange"
+          $ref: "../GML/GML.yaml#/components/schemas/Velocity"
         approximateLocation:
           type: string
           enum: ["APPROX"]
 
     AIRMETExpectedIntensityChange:
+      description: Expected change in intensity for AIRMET phenomena.
       type: string
       enum: ["NO_CHANGE", "WEAKEN", "INTENSIFY"]
 
     WeatherCausingVisibiltyReduction:
-      description: http://codes.wmo.int/49-2/WeatherCausingVisibilityReduction
+      description: |
+        A weather condition reducing visibility, such as dust, rain or volcanic ash.
+
+        http://codes.wmo.int/49-2/WeatherCausingVisibilityReduction
       type: string
       enum: []

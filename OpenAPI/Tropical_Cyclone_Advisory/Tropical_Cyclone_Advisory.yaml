@@ -8,6 +8,7 @@ info:
 components:
   schemas:
     TropicalCycloneAdvisory:
+      description: An advisory of tropical cyclone conditions of significance to aviation as represented in ICAO Annex 3 and PANS-MET (Doc 10157).
       allOf:
         - $ref: "../Common/Report.yaml#/components/schemas/Report"
         - type: object
@@ -20,11 +21,9 @@ components:
             issuingTropicalCycloneAdvisoryCentre:
               $ref: "../AIXM/AIXM.yaml#/components/schemas/Unit"
             tropicalCycloneName:
-              $ref: "../METCE/METCE.yaml#/components/schemas/TropicalCyclone"
+              $ref: "../Meteorological_Feature/Property_Types.yaml#/components/schemas/TropicalCyclone"
             advisoryNumber:
-              oneOf:
-                - $ref: "../Common/String.yaml#/components/schemas/StringWithNilReason"
-                - $ref: "../Common/Common.yaml#/components/schemas/Nil"
+              $ref: "../Common/String.yaml#/components/schemas/StringWithNilReason"
             observation:
               $ref: "Tropical_Cyclone_Observed_Conditions.yaml#/components/schemas/TropicalCycloneObservedConditions"
             forecast:
@@ -33,8 +32,6 @@ components:
               items:
                 $ref: "Tropical_Cyclone_Forecast_Conditions.yaml#/components/schemas/TropicalCycloneForecastConditions"
             remarks:
-              oneOf:
-                - $ref: "../Common/String.yaml#/components/schemas/StringWithNilReason"
-                - $ref: "../Common/Common.yaml#/components/schemas/Nil"
+              $ref: "../Common/String.yaml#/components/schemas/StringWithNilReason"
             nextAdvisoryTime:
               $ref: "../GML/GML.yaml#/components/schemas/TimeInstant"

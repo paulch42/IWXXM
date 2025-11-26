@@ -6,6 +6,7 @@ info:
 components:
   schemas:
     MeteorologicalFeatureCollection:
+      description: A collective for meteorological features.
       allOf:
         - $ref: "../Common/Report.yaml#/components/schemas/Report"
         - type: object
@@ -18,7 +19,7 @@ components:
             boundingPeriod:
               $ref: "../GML/GML.yaml#/components/schemas/TimePeriod"
             boundingVolume:
-              $ref: "Basic_Types.yaml#/components/schemas/ElevatedEnvelope"
+              $ref: "Geometry_Types.yaml#/components/schemas/ElevatedEnvelope"
             phenomenaList:
               type: array
               uniqueItems: true
@@ -27,7 +28,7 @@ components:
             issueTime:
               $ref: "../GML/GML.yaml#/components/schemas/TimeInstant"
             originatingCentre:
-              $ref: "../GML/GML.yaml#/components/schemas/AssociationRole"
+              type: string
             phenomenonCategory:
               $ref: "#/components/schemas/WMOCategoryCode"
             phenomenonBaseTime:
@@ -42,6 +43,7 @@ components:
                 $ref: "#/components/schemas/MeteorologicalFeature"
 
     MeteorologicalFeature:
+      description: Basic feature for describing a meteorological and related phenomenon.
       type: object
       required:
         - phenomenon
@@ -49,23 +51,22 @@ components:
         issueTime:
           $ref: "../GML/GML.yaml#/components/schemas/TimeInstant"
         originatingCentre:
-          $ref: "../GML/GML.yaml#/components/schemas/AssociationRole"
+          type: "string"
         phenomenonCategory:
           $ref: "#/components/schemas/WMOCategoryCode"
-        phenomenonBaseTime:
-          $ref: "../GML/GML.yaml#/components/schemas/TimeInstant"
         phenomenonTime:
           $ref: "../GML/GML.yaml#/components/schemas/DateTimeOrPeriod"
         phenomenon:
           $ref: "Code_Tables.yaml#/components/schemas/MeteorologicalPhenomenon"
         phenomenonGeometry:
-          $ref: "../GML/GML.yaml#/components/schemas/AssociationRole"
+          type: "string"
         phenomenonProperty:
           type: array
           uniqueItems: true
           items:
-            $ref: "../GML/GML.yaml#/components/schemas/AssociationRole"
+            type: "string"
 
     WMOCategoryCode:
+      description: WHERE DOES THIS GO?
       type: string
       enum: ["weatherObservations", "weatherForecasts"]

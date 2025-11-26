@@ -6,11 +6,16 @@ info:
 components:
   schemas:
     AerodromeRecentWeather:
-      description: http://codes.wmo.int/49-2/AerodromeRecentWeather
+      description: |
+        Weather phenomenon of operational significance to aviation observed during the period since the last routine report, or last hour, whichever is shorter, but not at the time of observation.
+        
+        http://codes.wmo.int/49-2/AerodromeRecentWeather
       type: string
       enum: []
 
     AerodromePresentWeather:
-      description: http://codes.wmo.int/49-2/AerodromePresentOrForecastWeather
+      description: |
+        The present weather observed at, or in near vicinity of, an aerodrome.
+        http://codes.wmo.int/49-2/AerodromePresentOrForecastWeather
       type: string
       enum: []

@@ -1,0 +1,40 @@
+openapi: "3.1.0"
+info:
+  title: IWXXM VONA Model
+  version: "1.0"
+  description: |
+    An OpenAPI model of the IWXXM Volcano Observatory Notice for Aviation diagram.
+
+components:
+  schemas:
+    VolcanoObservatoryNoticeForAviation:
+      description: A product issued by the State Volcano Observatory (SVO) with a summary of volcanic activity and observations about ash emission (or lack thereof) which is intended for aviation users.
+      type: object
+      required:
+        - stateOrRegion
+        - noticeNumber
+        - currentColourCode
+        - prviousColoutCode
+        - contacts
+        - remarks
+        - nextNotice
+      properties:
+        stateOrRegion:
+          $ref: "../Common/String.yaml#/components/schemas/StringWithNilReason"
+        noticeNumber:
+          $ref: "../Common/String.yaml#/components/schemas/StringWithNilReason"
+        currentColourCode:
+          $ref: "#/components/schemas/AviationColourCode"
+        prviousColoutCode:
+          $ref: "#/components/schemas/AviationColourCode"
+        contacts:
+          $ref: "../Common/String.yaml#/components/schemas/StringWithNilReason"
+        remarks:
+          $ref: "../Common/String.yaml#/components/schemas/StringWithNilReason"
+        nextNotice:
+          $ref: "../Common/String.yaml#/components/schemas/StringWithNilReason"
+
+    AviationColourCode:
+      description: Volcano level of alert colour codes for aviation.
+      type: string
+      enum: ["green", "yellow", "orange", "red", "Unassigned"]

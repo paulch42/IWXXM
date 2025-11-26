@@ -8,10 +8,10 @@ info:
 components:
   schemas:
     TAF:
+      description: An Aerodrome Forecast (TAF) report is a routine aerodrome forecast intended for distribution beyond an aerodrome.  TAF reports report base forecast conditions, and modifications to those conditions throughout the valid period.
       allOf:
         - $ref: "../Common/Report.yaml#/components/schemas/Report"
         - type: object
-          description: A model of an aerodrome observation report.
           required:
             - issueTime
             - aerodrome

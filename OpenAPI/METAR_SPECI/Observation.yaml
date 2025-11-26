@@ -8,7 +8,7 @@ info:
 components:
   schemas:
     MeteorologicalAerodromeObservation:
-      description: TO DO
+      description: Meteorological conditions observed at an aerodrome.
       type: object
       required:
         - airTemperature
@@ -17,69 +17,38 @@ components:
         - surfaceWind
       properties:
         airTemperature:
-          oneOf:
-            - $ref: "../Measures/Measure.yaml#/components/schemas/MeasureWithNilReason"
-            - $ref: "../Common/Common.yaml#/components/schemas/Nil"
+          $ref: "../Common/Measure.yaml#/components/schemas/MeasureWithNilReason"
         dewpointTemperature:
-          oneOf:
-            - $ref: "../Measures/Measure.yaml#/components/schemas/MeasureWithNilReason"
-            - $ref: "../Common/Common.yaml#/components/schemas/Nil"
+          $ref: "../Common/Measure.yaml#/components/schemas/MeasureWithNilReason"
         qnh:
-          oneOf:
-            - $ref: "../Measures/Measure.yaml#/components/schemas/MeasureWithNilReason"
-            - $ref: "../Common/Common.yaml#/components/schemas/Nil"
+          $ref: "../Common/Measure.yaml#/components/schemas/MeasureWithNilReason"
         surfaceWind:
-          oneOf:
-            - $ref: "#/components/schemas/AerodromeSurfaceWindWithNilReason"
-            - $ref: "../Common/Common.yaml#/components/schemas/Nil"
+          $ref: "#/components/schemas/AerodromeSurfaceWind"
         visibility:
-          oneOf:
-            - $ref: "#/components/schemas/AerodromeHorizontalVisibilityWithNilReason"
-            - $ref: "../Common/Common.yaml#/components/schemas/Nil"
+          $ref: "#/components/schemas/AerodromeHorizontalVisibility"
         rvr:
-          oneOf:
-            - type: array
-              maxItems: 4
-              uniqueItems: true
-              items:
-                $ref: "#/components/schemas/AerodromeRunwayVisualRangeWithNilReason"
-            - $ref: "../Common/Common.yaml#/components/schemas/Nil"
+          type: array
+          uniqueItems: true
+          items:
+            $ref: "#/components/schemas/AerodromeRunwayVisualRange"
         presentWeather:
-          oneOf:
-            - type: array
-              maxItems: 3
-              uniqueItems: true
-              items:
-                $ref: "Weather.yaml#/components/schemas/AerodromePresentWeather"
-            - $ref: "../Common/Common.yaml#/components/schemas/Nil"
+          type: array
+          maxItems: 3
+          uniqueItems: true
+          items:
+            $ref: "Weather.yaml#/components/schemas/AerodromePresentWeather"
         cloud:
-          oneOf:
-            - $ref: "#/components/schemas/AerodromeCloudWithNilReason"
-            - $ref: "../Common/Common.yaml#/components/schemas/Nil"
+          $ref: "#/components/schemas/AerodromeCloud"
         recentWeather:
-          oneOf:
-            - type: array
-              maxItems: 3
-              uniqueItems: true
-              items:
-                $ref: "Weather.yaml#/components/schemas/AerodromeRecentWeather"
-            - $ref: "../Common/Common.yaml#/components/schemas/Nil"
+          type: array
+          maxItems: 3
+          uniqueItems: true
+          items:
+            $ref: "Weather.yaml#/components/schemas/AerodromeRecentWeather"
         windShear:
-          oneOf:
-            - $ref: "#/components/schemas/AerodromeWindShear"
-            - $ref: "../Common/Common.yaml#/components/schemas/Nil"
+          $ref: "#/components/schemas/AerodromeWindShear"
         seaCondition:
-          oneOf:
-            - $ref: "#/components/schemas/AerodromeSeaConditionWithNilReason"
-            - $ref: "../Common/Common.yaml#/components/schemas/Nil"
-        runwayState:
-          oneOf:
-            - type: array
-              maxItems: 3
-              uniqueItems: true
-              items:
-                $ref: "#/components/schemas/AerodromeRunwayStateWithNilReason"
-            - $ref: "../Common/Common.yaml#/components/schemas/Nil"
+          $ref: "#/components/schemas/AerodromeSeaCondition"
         cloudAndVisibilityOK:
           type: string
           enum: ["CAVOK"]
@@ -87,218 +56,114 @@ components:
     AerodromeSurfaceWindWithNilReason:
       allOf:
         - $ref: "#/components/schemas/AerodromeSurfaceWind"
-        - $ref: "../Measures/Measure.yaml#/components/schemas/NilReason"
+        - $ref: "../Common/Measure.yaml#/components/schemas/NilReason"
 
     AerodromeSurfaceWind:
-      description: TO DO
+      description: An aggregation of surface wind conditions typically reported together at an aerodrome, including wind direction information, wind speed, and wind gusts.
       type: object
       required:
         - meanWindSpeed
       properties:
         meanWindDirection:
           description: http://codes.wmo.int/common/quantity-kind/windDirection
-          oneOf:
-            - $ref: "../Measures/Measure.yaml#/components/schemas/AngleWithNilReason"
-            - $ref: "../Common/Common.yaml#/components/schemas/Nil"
+          $ref: "../Common/Measure.yaml#/components/schemas/AngleWithNilReason"
         meanWindSpeed:
           description: http://codes.wmo.int/common/quantity-kind/windSpeed
-          oneOf:
-            - $ref: "../Measures/Measure.yaml#/components/schemas/VelocityWithNilReason"
-            - $ref: "../Common/Common.yaml#/components/schemas/Nil"
+          $ref: "../Common/Measure.yaml#/components/schemas/VelocityWithNilReason"
         meanWindSpeedOperator:
-          oneOf:
-            - $ref: "../Common/Relational_Operator.yaml#/components/schemas/RelationalOperator"
-            - $ref: "../Common/Common.yaml#/components/schemas/Nil"
+          $ref: "../Common/Relational_Operator.yaml#/components/schemas/RelationalOperator"
         windGustSpeed:
           description: http://codes.wmo.int/common/quantity-kind/maximumWindGustSpeed
-          oneOf:
-            - $ref: "../Measures/Measure.yaml#/components/schemas/VelocityWithNilReason"
-            - $ref: "../Common/Common.yaml#/components/schemas/Nil"
+          $ref: "../Common/Measure.yaml#/components/schemas/VelocityWithNilReason"
         windGustSpeedOperator:
-          oneOf:
-            - $ref: "../Common/Relational_Operator.yaml#/components/schemas/RelationalOperator"
-            - $ref: "../Common/Common.yaml#/components/schemas/Nil"
+          $ref: "../Common/Relational_Operator.yaml#/components/schemas/RelationalOperator"
         extremeClockwiseWindDirection:
           description: http://codes.wmo.int/common/quantity-kind/windDirection
-          oneOf:
-            - $ref: "../Measures/Measure.yaml#/components/schemas/AngleWithNilReason"
-            - $ref: "../Common/Common.yaml#/components/schemas/Nil"
+          $ref: "../Common/Measure.yaml#/components/schemas/AngleWithNilReason"
         extremeCounterClockwiseWindDirection:
           description: http://codes.wmo.int/common/quantity-kind/windDirection
-          oneOf:
-            - $ref: "../Measures/Measure.yaml#/components/schemas/AngleWithNilReason"
-            - $ref: "../Common/Common.yaml#/components/schemas/Nil"
+          $ref: "../Common/Measure.yaml#/components/schemas/AngleWithNilReason"
         variableWindDirection:
           type: string
           enum: ["VRB"]
 
-    AerodromeHorizontalVisibilityWithNilReason:
-      allOf:
-        - $ref: "#/components/schemas/AerodromeHorizontalVisibility"
-        - $ref: "../Measures/Measure.yaml#/components/schemas/NilReason"
-
     AerodromeHorizontalVisibility:
-      description: TO DO
+      description: An aggregation of horizontal visibility conditions typically reported together at an aerodrome, including the prevailing visibility and minimum visibility.
       type: object
       required:
         - prevailingVisibility
       properties:
         prevailingVisibility:
           description: http://codes.wmo.int/common/quantity-kind/aeronauticalPrevailingHorizontalVisibility
-          oneOf:
-            - $ref: "../Measures/Measure.yaml#/components/schemas/DistanceWithNilReason"
-            - $ref: "../Common/Common.yaml#/components/schemas/Nil"
+          $ref: "../Common/Measure.yaml#/components/schemas/DistanceWithNilReason"
         prevailingVisibilityOperator:
-          oneOf:
-            - $ref: "../Common/Relational_Operator.yaml#/components/schemas/RelationalOperator"
-            - $ref: "../Common/Common.yaml#/components/schemas/Nil"
+          $ref: "../Common/Relational_Operator.yaml#/components/schemas/RelationalOperator"
         minimumVisibility:
           description: http://codes.wmo.int/common/quantity-kind/aeronauticalVisibility
-          oneOf:
-            - $ref: "../Measures/Measure.yaml#/components/schemas/DistanceWithNilReason"
-            - $ref: "../Common/Common.yaml#/components/schemas/Nil"
+          $ref: "../Common/Measure.yaml#/components/schemas/DistanceWithNilReason"
         minimumVisibilityDirection:
           description: http://codes.wmo.int/common/quantity-kind/aerodromeMinimumVisibilityDirection
-          oneOf:
-            - $ref: "../Measures/Measure.yaml#/components/schemas/AngleWithNilReason"
-            - $ref: "../Common/Common.yaml#/components/schemas/Nil"
-
-    AerodromeRunwayVisualRangeWithNilReason:
-      allOf:
-        - $ref: "#/components/schemas/AerodromeRunwayVisualRange"
-        - $ref: "../Measures/Measure.yaml#/components/schemas/NilReason"
+          $ref: "../Common/Measure.yaml#/components/schemas/AngleWithNilReason"
 
     AerodromeRunwayVisualRange:
-      description: TO DO
+      description: An aggregation of runway visual range conditions for a single runway, typically reported together at an aerodrome.
       type: object
       required:
         - runway
         - meanRVR
       properties:
         runway:
-          oneOf:
-            - $ref: "../AIXM/AIXM.yaml#/components/schemas/RunwayDirection"
-            - $ref: "../Common/Common.yaml#/components/schemas/Nil"
+          $ref: "../AIXM/AIXM.yaml#/components/schemas/RunwayDirection"
         meanRVR:
           description: http://codes.wmo.int/common/quantity-kind/runwayVisualRangeRvr
-          oneOf:
-            - $ref: "../Measures/Measure.yaml#/components/schemas/DistanceWithNilReason"
-            - $ref: "../Common/Common.yaml#/components/schemas/Nil"
+          $ref: "../Common/Measure.yaml#/components/schemas/DistanceWithNilReason"
         meamRVROperator:
-          oneOf:
-            - $ref: "../Common/Relational_Operator.yaml#/components/schemas/RelationalOperator"
-            - $ref: "../Common/Common.yaml#/components/schemas/Nil"
+          $ref: "../Common/Relational_Operator.yaml#/components/schemas/RelationalOperator"
         pastTendency:
           $ref: "#/components/schemas/VisualRangeTendency"
 
-    AerodromeCloudWithNilReason:
-      allOf:
-        - $ref: "#/components/schemas/AerodromeCloud"
-        - $ref: "../Measures/Measure.yaml#/components/schemas/NilReason"
-
     AerodromeCloud:
-      description: TO DO
+      description: An aggregation of observed cloud conditions typically reported together at an aerodrome, including cloud types, cloud layers, and vertical visibility.
       type: object
       properties:
         verticalVisibility:
           description: http://codes.wmo.int/common/quantity-kind/verticalVisibility
-          oneOf:
-            - $ref: "../Measures/Measure.yaml#/components/schemas/LengthWithNilReason"
-            - $ref: "../Common/Common.yaml#/components/schemas/Nil"
+          $ref: "../Common/Measure.yaml#/components/schemas/LengthWithNilReason"
         layer:
-          oneOf:
-            - type: array
-              maxItems: 4
-              uniqueItems: true
-              items:
-                $ref: "../Common/Cloud.yaml#/components/schemas/CloudLayerWithNilReason"
-            - $ref: "../Common/Common.yaml#/components/schemas/Nil"
-
-    AerodromeWindShearWithNilReason:
-      allOf:
-        - $ref: "#/components/schemas/AerodromeWindShear"
-        - $ref: "../Measures/Measure.yaml#/components/schemas/NilReason"
+          type: array
+          maxItems: 4
+          uniqueItems: true
+          items:
+            $ref: "../Common/Cloud.yaml#/components/schemas/CloudLayer"
 
     AerodromeWindShear:
-      description: TO DO
+      description: An aggregation of wind shear conditions typically reported together at an aerodrome, including the set of affected runways.
       type: object
       properties:
         runway:
-          oneOf:
-            - type: array
-              uniqueItems: true
-              items:
-                $ref: "../AIXM/AIXM.yaml#/components/schemas/RunwayDirection"
-            - $ref: "../Common/Common.yaml#/components/schemas/Nil"
+          type: array
+          uniqueItems: true
+          items:
+            $ref: "../AIXM/AIXM.yaml#/components/schemas/RunwayDirection"
         allRunways:
           type: string
           enum: ["All"]
 
-    AerodromeSeaConditionWithNilReason:
-      allOf:
-        - $ref: "#/components/schemas/AerodromeSeaCondition"
-        - $ref: "../Measures/Measure.yaml#/components/schemas/NilReason"
-
     AerodromeSeaCondition:
-      description: TO DO
+      description: An aggregation of sea state conditions typically reported together at an aerodrome.
       type: object
       required:
         - seaSurfaceTemperature
       properties:
         seaSurfaceTemperature:
           description: http://codes.wmo.int/common/quantity-kind/seaSurfaceTemperature
-          oneOf:
-            - $ref: "../Measures/Measure.yaml#/components/schemas/MeasureWithNilReason"
-            - $ref: "../Common/Common.yaml#/components/schemas/Nil"
+          $ref: "../Common/Measure.yaml#/components/schemas/MeasureWithNilReason"
         significantWaveHeight:
-          oneOf:
-            - $ref: "../Measures/Measure.yaml#/components/schemas/DistanceWithNilReason"
-            - $ref: "../Common/Common.yaml#/components/schemas/Nil"
+          $ref: "../Common/Measure.yaml#/components/schemas/DistanceWithNilReason"
         seaState:
-          oneOf:
-            - $ref: "Runway_State.yaml#/components/schemas/SeaSurfaceState"
-            - $ref: "../Common/Common.yaml#/components/schemas/Nil"
-
-    AerodromeRunwayStateWithNilReason:
-      allOf:
-        - $ref: "#/components/schemas/AerodromeRunwayState"
-        - $ref: "../Measures/Measure.yaml#/components/schemas/NilReason"
-
-    AerodromeRunwayState:
-      type: object
-      properties:
-        runway:
-          oneOf:
-            - $ref: "../AIXM/AIXM.yaml#/components/schemas/RunwayDirection"
-            - $ref: "../Common/Common.yaml#/components/schemas/Nil"
-        depositType:
-          oneOf:
-            - $ref: "Runway_State.yaml#/components/schemas/RunwayDeposits"
-            - $ref: "../Common/Common.yaml#/components/schemas/Nil"
-        contamination:
-          oneOf:
-            - $ref: "Runway_State.yaml#/components/schemas/RunwayContamination"
-            - $ref: "../Common/Common.yaml#/components/schemas/Nil"
-        depthOfDeposit:
-          description: http://codes.wmo.int/common/quantity-kind/depthOfRunwayDeposit
-          oneOf:
-            - $ref: "../Measures/Measure.yaml#/components/schemas/DistanceWithNilReason"
-            - $ref: "../Common/Common.yaml#/components/schemas/Nil"
-        estimatedSurfaceFrictionOrBrakingAction:
-          oneOf:
-            - $ref: "Runway_State.yaml#/components/schemas/RunwayFrictionCoefficient"
-            - $ref: "../Common/Common.yaml#/components/schemas/Nil"
-        allRunways:
-          type: string
-          enum: ["All"]
-        cleared:
-          type: string
-          enum: ["Cleared"]
-        fromPreviousReport:
-          type: string
-          enum: ["Previous"]
+          $ref: "SeaSurface_State.yaml#/components/schemas/SeaSurfaceState"
 
     VisualRangeTendency:
-      description: TO DO
+      description: The tendency of visual range (e.g., upward, downward).
       type: string
       enum: ["UPWARD", "NO_CHANGE", "DOWNWARD", "MISSING_VALUE"]

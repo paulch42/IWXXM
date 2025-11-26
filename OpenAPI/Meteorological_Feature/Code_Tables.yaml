@@ -6,6 +6,8 @@ info:
 components:
   schemas:
     MeteorologicalPhenomenon:
-      description: http://codes.wmo.int/49-2/MeteorologicalFeature
+      description: |
+        MeteorologicalFeatures identifies the indicated meteorological phenomenon.
+        http://codes.wmo.int/bufr4/codeflag/0-08-011
       type: string
       enum: []

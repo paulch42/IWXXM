@@ -1,0 +1,23 @@
+openapi: "3.1.0"
+info:
+  title: Sea Surface State
+  version: "1.0"
+
+components:
+  schemas:
+    SeaSurfaceState:
+      description: Categorical assessment of sea surface state (or other large open body of water) based on height of waves.
+      type: string
+      enum:
+        [
+          "Calm (glassy)",
+          "Calm (rippled)",
+          "Smooth",
+          "Slight",
+          "Moderate",
+          "Rough",
+          "Very rough",
+          "High",
+          "Very high",
+          "Phenomenal",
+        ]

@@ -14,12 +14,12 @@ components:
           $ref: "../GML/GML.yaml#/components/schemas/Angle"
         meanWindSpeed:
           description: http://codes.wmo.int/common/quantity-kind/windSpeed
-          $ref: "../GML/GML.yaml#/components/schemas/Speed"
+          $ref: "../GML/GML.yaml#/components/schemas/Velocity"
         meanWindSpeedOperator:
           $ref: "Relational_Operator.yaml#/components/schemas/RelationalOperator"
         windGustSpeed:
           description: http://codes.wmo.int/common/quantity-kind/maximumWindGustSpeed
-          $ref: "../GML/GML.yaml#/components/schemas/Speed"
+          $ref: "../GML/GML.yaml#/components/schemas/Velocity"
         windGustSpeedOperator:
           $ref: "Relational_Operator.yaml#/components/schemas/RelationalOperator"
 

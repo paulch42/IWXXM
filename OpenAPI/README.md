@@ -1,5 +1,5 @@
 # OpenAPI
-An [OpenAPI](https://www.openapis.org) model of [IWXXM, version 2023-1](https://schemas.wmo.int/iwxxm/2023-1/). The structure of the model is based on the [IWXXM logical model](https://schemas.wmo.int/iwxxm/2023-1/html/) (i.e., the UML model). There is one folder for each package in the UML model, and one _yaml_ file for each diagram.
+An [OpenAPI, version 3.1](https://spec.openapis.org/oas/v3.1.0.html) model of [IWXXM, version 2025-2](https://schemas.wmo.int/iwxxm/2025-2/). The structure of the model is based on the [IWXXM logical model](https://schemas.wmo.int/iwxxm/2025-2/html/) (i.e., the UML model). There is one folder for each package in the UML model, and one _yaml_ file for each diagram.
 
 The contents of the model are:
 

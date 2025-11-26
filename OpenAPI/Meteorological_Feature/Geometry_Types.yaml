@@ -1,12 +1,13 @@
 openapi: "3.1.0"
 info:
-  title: IWXXM Basic Types Model
+  title: IWXXM Geometry Types Model
   version: "1.0"
   description: TO DO
 
 components:
   schemas:
     ElevatedPoint:
+      description: Describes a 3 dimensional point in terms of a horizontal position and an elevation, the latter of which can be expressed in metrics commonly used in the aviation domain.
       allOf:
         - $ref: "../GML/GML.yaml#/components/schemas/Point"
         - type: object
@@ -14,15 +15,14 @@ components:
             - elevation
           properties:
             elevation:
-              oneOf:
-                - $ref: "#/components/schemas/ValDistanceVertical"
-                - $ref: "../Common/Common.yaml#/components/schemas/Nil"
+              $ref: "../AIXM/AIXM.yaml#/components/schemas/ValDistanceVertical"
             verticalReference:
               $ref: "../AIXM/AIXM.yaml#/components/schemas/CodeVerticalReferenceBase"
             interpretation:
               $ref: "../AIXM/AIXM.yaml#/components/schemas/CodeValueInterrpetationBase"
 
     ElevatedEnvelope:
+      description: Describes a 3 dimensional envelope in terms of a horizontal area and an elevation, the latter of which can be expressed in metrics commonly used in the aviation domain.
       allOf:
         - $ref: "../GML/GML.yaml#/components/schemas/Envelope"
         - type: object
@@ -31,33 +31,31 @@ components:
             - lowerElevation
           properties:
             upperElevation:
-              oneOf:
-                - $ref: "#/components/schemas/ValDistanceVertical"
-                - $ref: "../Common/Common.yaml#/components/schemas/Nil"
+              $ref: "../AIXM/AIXM.yaml#/components/schemas/ValDistanceVertical"
             upperVerticalReference:
               $ref: "../AIXM/AIXM.yaml#/components/schemas/CodeVerticalReferenceBase"
             lowerElevation:
-              oneOf:
-                - $ref: "#/components/schemas/ValDistanceVertical"
-                - $ref: "../Common/Common.yaml#/components/schemas/Nil"
+              $ref: "../AIXM/AIXM.yaml#/components/schemas/ValDistanceVertical"
             lowerVerticalReference:
               $ref: "../AIXM/AIXM.yaml#/components/schemas/CodeVerticalReferenceBase"
 
     ElevatedLevel:
+      description: Describes a vertical level in terms of an elevation which can be expressed in metrics commonly used in the aviation domain.
       allOf:
-        - $ref: "../GML/GML.yaml#/components/schemas/AbstractGeometricPrimitive"
+        - $ref: "../GML/GML.yaml#/components/schemas/GeometricPrimitive"
         - type: object
           required:
             - elevation
           properties:
             elevation:
-              $ref: "#/components/schemas/ValDistanceVertical"
+              $ref: "../AIXM/AIXM.yaml#/components/schemas/ValDistanceVertical"
             verticalReference:
               $ref: "../AIXM/AIXM.yaml#/components/schemas/CodeVerticalReferenceBase"
             interpretation:
               $ref: "../AIXM/AIXM.yaml#/components/schemas/CodeValueInterrpetationBase"
 
     ElevatedCurve:
+      description: Describes a horizontal curve in 3 dimensional space in terms of its horizontal position and an elevation, the latter of which can be expressed in metrics commonly used in the aviation domain.
       allOf:
         - $ref: "../GML/GML.yaml#/components/schemas/Curve"
         - type: object
@@ -65,15 +63,14 @@ components:
             - elevation
           properties:
             elevation:
-              oneOf:
-                - $ref: "#/components/schemas/ValDistanceVertical"
-                - $ref: "../Common/Common.yaml#/components/schemas/Nil"
+              $ref: "../AIXM/AIXM.yaml#/components/schemas/ValDistanceVertical"
             verticalReference:
               $ref: "../AIXM/AIXM.yaml#/components/schemas/CodeVerticalReferenceBase"
             interpretation:
               $ref: "../AIXM/AIXM.yaml#/components/schemas/CodeValueInterrpetationBase"
 
     ElevatedSurface:
+      description: Describes a horizontal surface in 3 dimensional space in terms of its horizontal position and an elevation, the latter of which can be expressed in metrics commonly used in the aviation domain.
       allOf:
         - $ref: "../GML/GML.yaml#/components/schemas/Surface"
         - type: object
@@ -81,15 +78,14 @@ components:
             - elevation
           properties:
             elevation:
-              oneOf:
-                - $ref: "#/components/schemas/ValDistanceVertical"
-                - $ref: "../Common/Common.yaml#/components/schemas/Nil"
+              $ref: "../AIXM/AIXM.yaml#/components/schemas/ValDistanceVertical"
             verticalReference:
               $ref: "../AIXM/AIXM.yaml#/components/schemas/CodeVerticalReferenceBase"
             interpretation:
               $ref: "../AIXM/AIXM.yaml#/components/schemas/CodeValueInterrpetationBase"
 
     ElevatedVolume:
+      description: Describes a 3 dimensional volume in terms of a horizontal area and an elevation, the latter of which can be expressed in metrics commonly used in the aviation domain.
       allOf:
         - $ref: "../GML/GML.yaml#/components/schemas/Surface"
         - type: object
@@ -98,27 +94,14 @@ components:
             - lowerElevation
           properties:
             upperElevation:
-              oneOf:
-                - $ref: "#/components/schemas/ValDistanceVertical"
-                - $ref: "../Common/Common.yaml#/components/schemas/Nil"
+              $ref: "../AIXM/AIXM.yaml#/components/schemas/ValDistanceVertical"
             upperVerticalReference:
               $ref: "../AIXM/AIXM.yaml#/components/schemas/CodeVerticalReferenceBase"
             upperInterpretation:
               $ref: "../AIXM/AIXM.yaml#/components/schemas/CodeValueInterrpetationBase"
             lowerElevation:
-              oneOf:
-                - $ref: "#/components/schemas/ValDistanceVertical"
-                - $ref: "../Common/Common.yaml#/components/schemas/Nil"
+              $ref: "../AIXM/AIXM.yaml#/components/schemas/ValDistanceVertical"
             lowerVerticalReference:
               $ref: "../AIXM/AIXM.yaml#/components/schemas/CodeVerticalReferenceBase"
             lowerInterpretation:
               $ref: "../AIXM/AIXM.yaml#/components/schemas/CodeValueInterrpetationBase"
-
-    ValDistanceVertical:
-      allOf:
-        - $ref: "../AIXM/AIXM.yaml#/components/schemas/ValDistanceVerticalBase"
-        - type: object
-          properties:
-            uom:
-              $ref: "../AIXM/AIXM.yaml#/components/schemas/UomDistanceVertical"
-        - $ref: "../Measures/Measure.yaml#/components/schemas/NilReason"

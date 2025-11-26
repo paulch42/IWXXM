@@ -8,16 +8,18 @@ info:
 components:
   schemas:
     VolcanicAshSIGMET:
+      description: A SIGMET that reports the presence of volcanic ash conditions hazardous to flight.
       allOf:
         - $ref: "#/components/schemas/SIGMET"
         - type: object
           properties:
             eruptingVolcano:
-              $ref: "../METCE/METCE.yaml#/components/schemas/EruptingVolcano"
+              $ref: "../Meteorological_Feature/Property_Types.yaml#/components/schemas/Volcano"
             volcanicAshMovedToFIR:
               $ref: "../AIXM/AIXM.yaml#/components/schemas/Airspace"
 
     TropicalCycloneSIGMET:
+      description: A SIGMET that reports the presence of a tropical cyclone conditions.
       allOf:
         - $ref: "#/components/schemas/SIGMET"
         - type: object
@@ -28,9 +30,10 @@ components:
               items:
                 $ref: "#/components/schemas/AnalysisAndForecastPositionAnalysis"
             tropicalCyclone:
-              $ref: "../METCE/METCE.yaml#/components/schemas/TropicalCyclone"
+              $ref: "../Meteorological_Feature/Property_Types.yaml#/components/schemas/TropicalCyclone"
 
     SIGMET:
+      description: A SIGMET (significant meteorological) report. SIGMETs report the occurrence and/or expected occurrence of specified en-route weather phenomena which may affect the safety of aircraft operations, and of the development of those phenomena over time.
       type: object
       required:
         - issueTime
@@ -46,9 +49,7 @@ components:
         issuingAirTrafficServicesRegion:
           $ref: "../AIXM/AIXM.yaml#/components/schemas/Airspace"
         sequenceNumber:
-          oneOf:
-            - $ref: "../Common/String.yaml#/components/schemas/StringWithNilReason"
-            - $ref: "../Common/Common.yaml#/components/schemas/Nil"
+          $ref: "../Common/String.yaml#/components/schemas/StringWithNilReason"
         validPeriod:
           $ref: "../GML/GML.yaml#/components/schemas/TimePeriod"
         cancelledReportSequenceNumber:
@@ -67,11 +68,15 @@ components:
           enum: ["CNL"]
 
     AeronauticalSignificantWeatherPhenomenon:
-      description: http://codes.wmo.int/49-2/SigWxPhenomena
+      description: |
+        Weather phenomenon of significance to aviation operations; used in SIGMET and AIRMET reports. 
+
+        http://codes.wmo.int/49-2/SigWxPhenomena
       type: string
       enum: []
 
     AnalysisAndForecastPositionAnalysis:
+      description: Conditions observed and/or forecast of the SIGMET phenomenon.
       type: object
       properties:
         analysis:

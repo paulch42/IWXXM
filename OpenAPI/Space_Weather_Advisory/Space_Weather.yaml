@@ -8,29 +8,31 @@ info:
 components:
   schemas:
     SpaceWeatherAdvisory:
+      description: An advisory of space weather conditions of significance to aviation as represented in ICAO Annex 3 and PANS-MET (Doc 10157).
       allOf:
         - $ref: "../Common/Report.yaml#/components/schemas/Report"
         - type: object
           required:
             - issueTime
             - issuingSpaceWeatherCentre
-            - advisoryNumber
           properties:
             issueTime:
               $ref: "../GML/GML.yaml#/components/schemas/TimeInstant"
             issuingSpaceWeatherCentre:
               $ref: "../AIXM/AIXM.yaml#/components/schemas/Unit"
             advisoryNumber:
-              oneOf:
-                - $ref: "../Common/String.yaml#/components/schemas/StringWithNilReason"
-                - $ref: "../Common/Common.yaml#/components/schemas/Nil"
+              $ref: "../Common/String.yaml#/components/schemas/StringWithNilReason"
             replacedAdvisoryNumber:
-              $ref: "../Common/String.yaml#/components/schemas/CharacterString"
-            phenomenon:
+              type: array
+              maxItems: 4
+              uniqueItems: true
+              items:
+                $ref: "../Common/String.yaml#/components/schemas/CharacterString"
+            effect:
               type: array
               uniqueItems: true
               items:
-                $ref: "#/components/schemas/SpaceWeatherPhenomena"
+                $ref: "#/components/schemas/SpaceWeatherEffect"
             analysis:
               type: array
               maxItems: 5
@@ -38,23 +40,11 @@ components:
               items:
                 $ref: "Space_Weather_Analysis.yaml#/components/schemas/SpaceWeatherAnalysis"
             remarks:
-              oneOf:
-                - $ref: "../Common/String.yaml#/components/schemas/StringWithNilReason"
-                - $ref: "../Common/Common.yaml#/components/schemas/Nil"
+              $ref: "../Common/String.yaml#/components/schemas/StringWithNilReason"
             nextAdvisoryTime:
               $ref: "../GML/GML.yaml#/components/schemas/TimeInstant"
 
-    SpaceWeatherPhenomena:
-      description: http://codes.wmo.int/49-2/SpaceWxPhenomena
+    SpaceWeatherEffect:
+      description: Effect of the space weather phenomena.
       type: string
-      enum:
-        [
-          "HF COM MOD",
-          "HF COM SEV",
-          "SATCOM MOD",
-          "SATCOM SEV",
-          "GNSS MOD",
-          "GNSS SEV",
-          "RADIATION MOD",
-          "RADIATION SEV",
-        ]
+      enum: ["HF_COM", "SATCOM", "GNSS", "RADIATION"]

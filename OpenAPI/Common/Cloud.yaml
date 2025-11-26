@@ -8,13 +8,12 @@ info:
 components:
   schemas:
     AerodromeCloudForecast:
+      description: Forecast cloud conditions, including predicted vertical visibility and cloud layers.
       type: object
       properties:
         verticalVisibility:
           description: http://codes.wmo.int/common/quantity-kind/verticalVisibility
-          oneOf:
-            - $ref: "../Measures/Measure.yaml#/components/schemas/LengthWithNilReason"
-            - $ref: "../Common/Common.yaml#/components/schemas/Nil"
+          $ref: "Measure.yaml#/components/schemas/LengthWithNilReason"
         layer:
           type: array
           maxItems: 4
@@ -22,37 +21,31 @@ components:
           items:
             $ref: "#/components/schemas/CloudLayer"
 
-    CloudLayerWithNilReason:
-      allOf:
-        - $ref: "#/components/schemas/CloudLayer"
-        - $ref: "../Measures/Measure.yaml#/components/schemas/NilReason"
-
     CloudLayer:
+      description: A cloud layer, including a cloud amount, cloud base and cloud type.
       type: object
       required:
         - amount
         - base
       properties:
         amount:
-          oneOf:
-            - $ref: "#/components/schemas/CloudAmountReportedAtAerodrome"
-            - $ref: "../Common/Common.yaml#/components/schemas/Nil"
+          $ref: "#/components/schemas/CloudAmountReportedAtAerodrome"
         base:
           description: http://codes.wmo.int/common/quantity-kind/heightOfBaseOfCloud
-          oneOf:
-            - $ref: "../Measures/Measure.yaml#/components/schemas/DistanceWithNilReason"
-            - $ref: "../Common/Common.yaml#/components/schemas/Nil"
+          $ref: "Measure.yaml#/components/schemas/DistanceWithNilReason"
         cloudType:
-          oneOf:
-            - $ref: "#/components/schemas/SigConvectiveCloudType"
-            - $ref: "../Common/Common.yaml#/components/schemas/Nil"
+          $ref: "#/components/schemas/SigConvectiveCloudType"
 
     CloudAmountReportedAtAerodrome:
-      description: http://codes.wmo.int/49-2/CloudAmountReportedAtAerodrome
+      description: |
+        Amount of cloud.
+        http://codes.wmo.int/49-2/CloudAmountReportedAtAerodrome
       type: string
       enum: []
 
     SigConvectiveCloudType:
-      description: http://codes.wmo.int/49-2/SigConvectiveCloudType
+      description: |
+        Genus of cloud of operational significance to aviation: significant convective clouds only.
+        http://codes.wmo.int/49-2/SigConvectiveCloudType
       type: string
       enum: []

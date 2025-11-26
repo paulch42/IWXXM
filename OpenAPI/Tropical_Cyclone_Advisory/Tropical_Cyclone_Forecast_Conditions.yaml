@@ -8,6 +8,7 @@ info:
 components:
   schemas:
     TropicalCycloneForecastConditions:
+      description: Forecast conditions of a tropical cyclone.
       type: object
       required:
         - phenomenonTime
@@ -17,10 +18,6 @@ components:
         phenomenonTime:
           $ref: "../GML/GML.yaml#/components/schemas/DateTimeOrPeriod"
         tropicalCyclonePosition:
-          oneOf:
-            - $ref: "../GML/GML.yaml#/components/schemas/Point"
-            - $ref: "../Common/Common.yaml#/components/schemas/Nil"
+             $ref: "../GML/GML.yaml#/components/schemas/Point"
         maximumSurfaceWindSpeed:
-          oneOf:
-            - $ref: "../Measures/Measure.yaml#/components/schemas/VelocityWithNilReason"
-            - $ref: "../Common/Common.yaml#/components/schemas/Nil"
+             $ref: "../Common/Measure.yaml#/components/schemas/VelocityWithNilReason"

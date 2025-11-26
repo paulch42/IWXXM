@@ -8,7 +8,7 @@ info:
 components:
   schemas:
     MeteorologicalAerodromeTrendForecast:
-      description: A model of an aerodrome trend forecast.
+      description: Meteorological conditions for trend forecasting at an aerodrome.
       type: object
       required:
         - phenomenonTime
@@ -19,23 +19,19 @@ components:
         timeIndicator:
           $ref: "#/components/schemas/TrendForecastTimeIndicator"
         prevailingVisibility:
-          $ref: "../GML/GML.yaml#/components/schemas/Length"
+          $ref: "../GML/GML.yaml#/components/schemas/Distance"
         prevailingVisibilityOperator:
           $ref: "../Common/Relational_Operator.yaml#/components/schemas/RelationalOperator"
         surfaceWind:
           $ref: "../Common/Surface_Wind.yaml#/components/schemas/AerodromeSurfaceWindTrendForecast"
         weather:
-          oneOf:
-            - type: array
+              type: array
               maxItems: 3
               uniqueItems: true
               items:
                 $ref: "../Common/Weather.yaml#/components/schemas/AerodromeForecastWeather"
-            - $ref: "../Common/Common.yaml#/components/schemas/Nil"
         cloud:
-          oneOf:
-            - $ref: "../Common/Cloud.yaml#/components/schemas/AerodromeCloudForecast"
-            - $ref: "../Common/Common.yaml#/components/schemas/Nil"
+             $ref: "../Common/Cloud.yaml#/components/schemas/AerodromeCloudForecast"
         changeIndicator:
           $ref: "#/components/schemas/ForecastChangeIndicator"
         cloudAndVisibilityOK:
@@ -43,11 +39,11 @@ components:
           enum: ["CAVOK"]
 
     TrendForecastTimeIndicator:
-      description: TO DO
+      description: Time indicators for trend forecast conditions.
       type: string
       enum: ["AT", "UNTIL", "FROM", "FROM_UNTIL"]
 
     ForecastChangeIndicator:
-      description: TO DO
+      description: Change qualifier of a trend-type forecast or an aerodrome forecast.
       type: string
       enum: ["BECOMING", "TEMPORARY_FLUCTUATIONS"]

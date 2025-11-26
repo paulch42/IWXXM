@@ -14,33 +14,17 @@ components:
         - windSpeed
       properties:
         location:
-          $ref: "../Meteorological_Feature/Basic_Types.yaml#/components/schemas/ElevatedPoint"
+          $ref: "../Meteorological_Feature/Geometry_Types.yaml#/components/schemas/ElevatedPoint"
         windSpeed:
-          oneOf:
-            - $ref: "../Measures/Measure.yaml#/components/schemas/VelocityWithNilReason"
-            - $ref: "../Common/Common.yaml#/components/schemas/Nil"
+          $ref: "../Common/Measure.yaml#/components/schemas/VelocityWithNilReason"
         IsotachUpperElevation:
-          oneOf:
-            - $ref: "../AIXM/AIXM.yaml#/components/schemas/ValDistanceVerticalBase"
-            - $ref: "../Common/Common.yaml#/components/schemas/Nil"
+          $ref: "../AIXM/AIXM.yaml#/components/schemas/ValDistanceVerticalBase"
         IsotachUpperVerticalReference:
           $ref: "../AIXM/AIXM.yaml#/components/schemas/CodeVerticalReferenceBase"
         IsotachLowerElevation:
-          oneOf:
-            - $ref: "../AIXM/AIXM.yaml#/components/schemas/ValDistanceVerticalBase"
-            - $ref: "../Common/Common.yaml#/components/schemas/Nil"
+          $ref: "../AIXM/AIXM.yaml#/components/schemas/ValDistanceVerticalBase"
         IsotachLowerVerticalReference:
           $ref: "../AIXM/AIXM.yaml#/components/schemas/CodeVerticalReferenceBase"
-
-    Volcano:
-      oneOf:
-        - $ref: "../Common/String.yaml#/components/schemas/StringWithNilReason"
-        - $ref: "../Common/Common.yaml#/components/schemas/Nil"
-
-    TropicalCyclone:
-      oneOf:
-        - $ref: "../Common/String.yaml#/components/schemas/StringWithNilReason"
-        - $ref: "../Common/Common.yaml#/components/schemas/Nil"
 
     RadiationIncident:
       required:
@@ -48,28 +32,34 @@ components:
         - incidentTime
       properties:
         siteName:
-          oneOf:
-            - $ref: "../Common/String.yaml#/components/schemas/StringWithNilReason"
-            - $ref: "../Common/Common.yaml#/components/schemas/Nil"
+          $ref: "../Common/String.yaml#/components/schemas/StringWithNilReason"
         incidentTime:
           $ref: "../GML/GML.yaml#/components/schemas/TimeInstant"
 
     DegreeOfTurbulence:
-      description: http://codes.wmo.int/bufr4/codeflag/0-11-030
+      description: |
+        See the Manual on Codes (WMO No. 306), Vol I.2 FM 94 BUFR Code table 0 11 030 "Extended Degree of Turbulence".
+        http://codes.wmo.int/bufr4/codeflag/0-11-030
       type: string
       enum: []
 
     DegreeOfIcing:
-      description: http://codes.wmo.int/bufr4/codeflag/0-20-041
+      description: |
+        See the Manual on Codes (WMO No. 306), Vol I.2 FM 94 BUFR Code table 0 20 041 "Airframe Icing".
+        http://codes.wmo.int/bufr4/codeflag/0-20-041
       type: string
       enum: []
 
     CloudDistribution:
-      description: http://codes.wmo.int/bufr4/codeflag/0-20-008
+      description:
+        See the Manual on Codes (WMO No. 306), Vol I.2 FM 94 BUFR Code table 0 20 008 "Cloud Distribution for Aviation".
+        http://codes.wmo.int/bufr4/codeflag/0-20-008
       type: string
       enum: []
 
     CloudType:
-      description: http://codes.wmo.int/bufr4/codeflag/0-20-012
+      description: |
+        See the Manual on Codes (WMO No. 306), Vol I.2 FM 94 BUFR Code table 0 20 012 "Cloud Type".
+        http://codes.wmo.int/bufr4/codeflag/0-20-012
       type: string
       enum: []

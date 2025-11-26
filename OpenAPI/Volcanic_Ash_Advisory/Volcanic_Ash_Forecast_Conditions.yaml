@@ -8,6 +8,7 @@ info:
 components:
   schemas:
     VolcanicAshForecastConditions:
+      description: Forecast conditions of volcanic ash clouds.
       type: object
       required:
         - phenomenonTime
@@ -16,15 +17,14 @@ components:
         phenomenonTime:
           $ref: "../GML/GML.yaml#/components/schemas/DateTimeOrPeriod"
         ashCloud:
-          oneOf:
-            - type: array
-              items:
-                $ref: "#/components/schemas/VolcanicAshCloudForecast"
-            - $ref: "../Common/Common.yaml#/components/schemas/Nil"
+          type: array
+          items:
+            $ref: "#/components/schemas/VolcanicAshCloudForecast"
         status:
           $ref: "#/components/schemas/VolcanicAshCloudForecastStatus"
 
     VolcanicAshCloudForecast:
+      description: A forecast volcanic ash cloud, including a horizontal and vertical extent.
       type: object
       required:
         - ashCloudExtent
@@ -33,11 +33,12 @@ components:
           $ref: "../AIXM/AIXM.yaml#/components/schemas/AirspaceVolume"
 
     VolcanicAshCloudForecastStatus:
+      description: The volcanic ash cloud forecast status indicates the condition other than providing a valid forecast of the volcanic ash cloud.
       type: string
       enum:
         [
-          "NOT_PROVIDED",
-          "NOT_AVAILABLE",
-          "NO_VOLCANIC_ASH_EXPECTED",
           "PROVIDED",
+          "NO_VOLCANIC_ASH_EXPECTED",
+          "NOT_AVAILABLE",
+          "NOT_PROVIDED",
         ]

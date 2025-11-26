@@ -8,6 +8,7 @@ info:
 components:
   schemas:
     VolcanicAshObservedOrEstimatedConditions:
+      description: Observed (or estimated) conditions of volcanic ash clouds.
       type: object
       required:
         - phenomenonTime
@@ -21,12 +22,10 @@ components:
           items:
             $ref: "#/components/schemas/WindObservedOrEstimated"
         ashCloud:
-          oneOf:
-            - type: array
-              uniqueItems: true
-              items:
-                $ref: "#/components/schemas/VolcanicAshCloudObservedOrEstimated"
-            - $ref: "../Common/Common.yaml#/components/schemas/Nil"
+          type: array
+          uniqueItems: true
+          items:
+            $ref: "#/components/schemas/VolcanicAshCloudObservedOrEstimated"
         isEstimated:
           type: string
           enum: ["EST"]
@@ -34,6 +33,7 @@ components:
           $ref: "#/components/schemas/VolcanicAshObservedOrEstimatedStatus"
 
     VolcanicAshCloudObservedOrEstimated:
+      description: An observed or estimated volcanic ash cloud, including a horizontal and vertical extent, as well as the speed and direction of motion.
       type: object
       required:
         - ashCloudExtent
@@ -41,15 +41,14 @@ components:
         - speedOfMotion
       properties:
         ashCloudExtent:
-          oneOf:
-            - $ref: "../AIXM/AIXM.yaml#/components/schemas/AirspaceVolume"
-            - $ref: "../Common/Common.yaml#/components/schemas/Nil"
+          $ref: "../AIXM/AIXM.yaml#/components/schemas/AirspaceVolume"
         directionOfMotion:
           $ref: "../GML/GML.yaml#/components/schemas/Angle"
         speedOfMotion:
-          $ref: "../GML/GML.yaml#/components/schemas/Speed"
+          $ref: "../GML/GML.yaml#/components/schemas/Velocity"
 
     WindObservedOrEstimated:
+      description: Wind information within a vertical layer to be provided when volcanic ash is not identifiable from satellite data.
       type: object
       required:
         - verticalLayer
@@ -60,11 +59,12 @@ components:
         windDirection:
           $ref: "../GML/GML.yaml#/components/schemas/Angle"
         windSpeed:
-          $ref: "../GML/GML.yaml#/components/schemas/Speed"
+          $ref: "../GML/GML.yaml#/components/schemas/Velocity"
         variableWindDirection:
           type: string
           enum: ["VRB"]
 
     VolcanicAshObservedOrEstimatedStatus:
+      description: Observed or estimated volcanic ash cloud information status. .
       type: string
-      enum: ["NOT_IDENTIFIABLE", "IDENTIFIABLE"]
+      enum: ["PROVIDED", "NOT_IDENTIFIABLE", "NOT_AVAIALABLE", "NOT_PROVIDED"]

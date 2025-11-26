@@ -1,0 +1,50 @@
+openapi: "3.1.0"
+info:
+  title: IWXXM Property Types Model
+  version: "1.0"
+  description: |
+    An OpenAPI model of the IWXXM Property Types diagram.
+
+components:
+  schemas:
+    Volcano:
+      description: Information of a volcano.
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          $ref: "../Common/String.yaml#/components/schemas/StringWithNilReason"
+        IAVCEINumber:
+          $ref: "../Common/String.yaml#/components/schemas/StringWithNilReason"
+        sourceElevation:
+          $ref: "../Meteorological_Feature/Geometry_Types.yaml#/components/schemas/ElevatedLevel"
+        activityStatus:
+          $ref: "#/components/schemas/VolcanoActivityStatus"
+        lastVolcanicAshEmission:
+          $ref: "../GML/GML.yaml#/components/schemas/TimeInstant"
+        onsetTime:
+          $ref: "../GML/GML.yaml#/components/schemas/TimeInstant"
+        duration:
+          $ref: "../GML/GML.yaml#/components/schemas/TimePeriod"
+
+    TropicalCyclone:
+      description: A tropical cyclone.
+      type: object
+      required:
+        - name
+      items:
+        $ref: "../Common/String.yaml#/components/schemas/StringWithNilReason"
+
+    VolcanoActivityStatus:
+      description: Volcano activity status.
+      type: string
+      enum:
+        [
+          "ERUPTION_OCCURRED",
+          "ERUPTION_ONGOING",
+          "HEIGHTENED_UNREST",
+          "DECREASED_ACTIVITY",
+          "UNKNOWN",
+          "NIL",
+        ]

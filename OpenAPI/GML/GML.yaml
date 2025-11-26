@@ -19,6 +19,10 @@ components:
       oneOf:
         - $ref: "#/components/schemas/Measure"
 
+    Distance:
+      oneOf:
+        - $ref: "#/components/schemas/Measure"
+
     Velocity:
       oneOf:
         - $ref: "#/components/schemas/Measure"
@@ -55,11 +59,7 @@ components:
         - $ref: "#/components/schemas/TimeInstant"
         - $ref: "#/components/schemas/TimePeriod"
 
-    AssociationRole:
-      description: ????
-      type: object
-
-    AbstractGeometricPrimitive:
+    GeometricPrimitive:
       description: ????
       type: object
 

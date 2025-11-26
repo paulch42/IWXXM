@@ -33,11 +33,9 @@ components:
         geometry:
           $ref: "../AIXM/AIXM.yaml#/components/schemas/AirspaceVolume"
         directionOfMotion:
-          oneOf:
-            - $ref: "../Measures/Measure.yaml#/components/schemas/AngleWithNilReason"
-            - $ref: "../Common/Common.yaml#/components/schemas/Nil"
+          $ref: "../Common/Measure.yaml#/components/schemas/AngleWithNilReason"
         speedOfMotion:
-          $ref: "../GML/GML.yaml#/components/schemas/Speed"
+          $ref: "../GML/GML.yaml#/components/schemas/Velocity"
         intensityChange:
           $ref: "#/components/schemas/SIGMETExpectedIntensityChange"
         approximateLocation:
