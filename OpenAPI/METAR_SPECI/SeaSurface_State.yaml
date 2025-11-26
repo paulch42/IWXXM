@@ -1,7 +1,9 @@
 openapi: "3.1.0"
 info:
-  title: Sea Surface State
+  title: IWXXM METAR/SPECI Sea Surface State
   version: "1.0"
+  description: |
+    An OpenAPI model of the IWXXM METAR/SPECI Sea Surface State diagram.
 
 components:
   schemas:

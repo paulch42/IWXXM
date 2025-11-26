@@ -1,14 +1,15 @@
 openapi: "3.1.0"
 info:
-  title: WMO Code Lists Model
+  title: IWXXM METAR/SPECI Weather Model
   version: "1.0"
+  description: |
+    An OpenAPI model of the IWXXM METAR/SPECI Weather diagram.
 
 components:
   schemas:
     AerodromeRecentWeather:
       description: |
         Weather phenomenon of operational significance to aviation observed during the period since the last routine report, or last hour, whichever is shorter, but not at the time of observation.
-        
         http://codes.wmo.int/49-2/AerodromeRecentWeather
       type: string
       enum: []

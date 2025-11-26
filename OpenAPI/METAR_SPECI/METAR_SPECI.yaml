@@ -4,13 +4,12 @@ info:
   version: "1.0"
   description: |
     METAR and SPECI reporting constructs as defined in ICAO Annex 3 and PANS-MET (Doc 10157).
-
     METAR and SPECI reports include identical information but are issued for different purposes.
 
 components:
   schemas:
     METAR:
-      description: A routine observation made at an aerodrome throughout the day.  METAR observations are made (and distributed) at intervals of one hour or, if so determined by regional air navigation agreement, at intervals of one half-hour.
+      description: A routine observation made at an aerodrome throughout the day. METAR observations are made (and distributed) at intervals of one hour or, if so determined by regional air navigation agreement, at intervals of one half-hour.
       oneOf:
         - $ref: "#/components/schemas/MeteorologicalAerodromeObservationReport"
 
@@ -23,25 +22,30 @@ components:
       allOf:
         - $ref: "../Common/Report.yaml#/components/schemas/Report"
         - type: object
-          description: A model of an aerodrome observation report.
+          description: A report of observed and trend forecast weather phenomenon from the surface near an aerodrome.
           required:
             - issueTime
             - aerodrome
             - observationTime
           properties:
             issueTime:
+              description: The time at which this report was issued.
               $ref: "../GML/GML.yaml#/components/schemas/TimeInstant"
             aerodrome:
+              description: The aerodrome location for this report.
               $ref: "../AIXM/AIXM.yaml#/components/schemas/AirportHeliport"
             observationTime:
+              description: The time at which phenomena were observed. This may differ from the times reported for forecast conditions.
               $ref: "../GML/GML.yaml#/components/schemas/TimeInstant"
             observation:
+              description: The observation which resulted in the current meteorological conditions at an aerodrome.
               $ref: "Observation.yaml#/components/schemas/MeteorologicalAerodromeObservation"
             trendForecast:
+              description: The process that results in a trend forecast. When no change is expected to occur during a forecast period ("NOSIG") this is indicated by a single missing trend forecast with a nil reason of noSignificantChange.
               type: array
               uniqueItems: true
               items:
                 $ref: "Trend_Forecast.yaml#/components/schemas/MeteorologicalAerodromeTrendForecast"
             automatedStation:
-              type: string
-              enum: ["AUTO"]
+              description: When true, this report was reported by an automated station.
+              type: boolean

@@ -17,46 +17,52 @@ components:
         - surfaceWind
       properties:
         airTemperature:
+          description: The observed air temperature.
           $ref: "../Common/Measure.yaml#/components/schemas/MeasureWithNilReason"
         dewpointTemperature:
+          description: The observed dew point temperature.
           $ref: "../Common/Measure.yaml#/components/schemas/MeasureWithNilReason"
         qnh:
+          description: The observed QNH altimeter setting.
           $ref: "../Common/Measure.yaml#/components/schemas/MeasureWithNilReason"
         surfaceWind:
+          description: Representative surface wind observations.
           $ref: "#/components/schemas/AerodromeSurfaceWind"
         visibility:
+          description: Visibility reported as prevailing visibility or the lowest visibility as appropriate.
           $ref: "#/components/schemas/AerodromeHorizontalVisibility"
         rvr:
+          description: RVR conditions are required if horizontal visibility or RVR is less than 1500 meters.
           type: array
           uniqueItems: true
           items:
             $ref: "#/components/schemas/AerodromeRunwayVisualRange"
         presentWeather:
+          description: When observed, between one and three present weather conditions.
           type: array
           maxItems: 3
           uniqueItems: true
           items:
             $ref: "Weather.yaml#/components/schemas/AerodromePresentWeather"
         cloud:
+          description: Observed cloud conditions.
           $ref: "#/components/schemas/AerodromeCloud"
         recentWeather:
+          description: Recent weather is one of the recent weather phenomena to be reported as supplementary information.
           type: array
           maxItems: 3
           uniqueItems: true
           items:
             $ref: "Weather.yaml#/components/schemas/AerodromeRecentWeather"
         windShear:
+          description: Wind shear is one of the recent weather phenomena to be reported as supplementary information.
           $ref: "#/components/schemas/AerodromeWindShear"
         seaCondition:
+          description: Sea surface temperature and state of the sea or significant wave height are recent weather phenomena to be reported as supplementary information.
           $ref: "#/components/schemas/AerodromeSeaCondition"
         cloudAndVisibilityOK:
-          type: string
-          enum: ["CAVOK"]
-
-    AerodromeSurfaceWindWithNilReason:
-      allOf:
-        - $ref: "#/components/schemas/AerodromeSurfaceWind"
-        - $ref: "../Common/Measure.yaml#/components/schemas/NilReason"
+          description: When true, indicates that the following conditions occur simultaneously at the time of observation (also know as "CAVOK").
+          type: boolean
 
     AerodromeSurfaceWind:
       description: An aggregation of surface wind conditions typically reported together at an aerodrome, including wind direction information, wind speed, and wind gusts.
@@ -65,27 +71,29 @@ components:
         - meanWindSpeed
       properties:
         meanWindDirection:
-          description: http://codes.wmo.int/common/quantity-kind/windDirection
+          description: he observed average wind direction from which the wind is blowing over the past ten minutes.  Not reported when winds are variable.
           $ref: "../Common/Measure.yaml#/components/schemas/AngleWithNilReason"
         meanWindSpeed:
-          description: http://codes.wmo.int/common/quantity-kind/windSpeed
+          description: The average observed wind speed over the past ten minutes
           $ref: "../Common/Measure.yaml#/components/schemas/VelocityWithNilReason"
         meanWindSpeedOperator:
+          description: ndication that the mean wind speed is above or below the reported value.
           $ref: "../Common/Relational_Operator.yaml#/components/schemas/RelationalOperator"
         windGustSpeed:
-          description: http://codes.wmo.int/common/quantity-kind/maximumWindGustSpeed
+          description: Variations from the mean wind speed (gusts) during the past 10 minutes.
           $ref: "../Common/Measure.yaml#/components/schemas/VelocityWithNilReason"
         windGustSpeedOperator:
+          description: Indication that the wind gust speed is above or below the reported value.
           $ref: "../Common/Relational_Operator.yaml#/components/schemas/RelationalOperator"
         extremeClockwiseWindDirection:
-          description: http://codes.wmo.int/common/quantity-kind/windDirection
+          description: The extreme clockwise direction from which the wind has varied, inclusive.
           $ref: "../Common/Measure.yaml#/components/schemas/AngleWithNilReason"
         extremeCounterClockwiseWindDirection:
-          description: http://codes.wmo.int/common/quantity-kind/windDirection
+          description: The extreme counter-clockwise direction from which the wind has varied, inclusive.
           $ref: "../Common/Measure.yaml#/components/schemas/AngleWithNilReason"
         variableWindDirection:
-          type: string
-          enum: ["VRB"]
+          description: When true, indicates that the wind direction is variable.
+          type: boolean
 
     AerodromeHorizontalVisibility:
       description: An aggregation of horizontal visibility conditions typically reported together at an aerodrome, including the prevailing visibility and minimum visibility.
@@ -94,15 +102,16 @@ components:
         - prevailingVisibility
       properties:
         prevailingVisibility:
-          description: http://codes.wmo.int/common/quantity-kind/aeronauticalPrevailingHorizontalVisibility
+          description: The reported prevailing horizontal visibility at the surface that is representative of the aerodrome.
           $ref: "../Common/Measure.yaml#/components/schemas/DistanceWithNilReason"
         prevailingVisibilityOperator:
+          description: The reported relational operator for the prevailing horizontal visibility.
           $ref: "../Common/Relational_Operator.yaml#/components/schemas/RelationalOperator"
         minimumVisibility:
-          description: http://codes.wmo.int/common/quantity-kind/aeronauticalVisibility
+          description: hThe minimum observed visibility.
           $ref: "../Common/Measure.yaml#/components/schemas/DistanceWithNilReason"
         minimumVisibilityDirection:
-          description: http://codes.wmo.int/common/quantity-kind/aerodromeMinimumVisibilityDirection
+          description: The direction of the minimum visibility relative to the reporting station.
           $ref: "../Common/Measure.yaml#/components/schemas/AngleWithNilReason"
 
     AerodromeRunwayVisualRange:
@@ -113,13 +122,16 @@ components:
         - meanRVR
       properties:
         runway:
+          description: The runway to which reported runway visual range information applies.
           $ref: "../AIXM/AIXM.yaml#/components/schemas/RunwayDirection"
         meanRVR:
-          description: http://codes.wmo.int/common/quantity-kind/runwayVisualRangeRvr
+          description: The mean recent runway visual range value observed.
           $ref: "../Common/Measure.yaml#/components/schemas/DistanceWithNilReason"
-        meamRVROperator:
+        meanRVROperator:
+          description: The reported relational operator for the mean RVR.
           $ref: "../Common/Relational_Operator.yaml#/components/schemas/RelationalOperator"
         pastTendency:
+          description: The runway visual range tendency (up, down, no_change).
           $ref: "#/components/schemas/VisualRangeTendency"
 
     AerodromeCloud:
@@ -127,9 +139,10 @@ components:
       type: object
       properties:
         verticalVisibility:
-          description: http://codes.wmo.int/common/quantity-kind/verticalVisibility
+          description: The reported vertical visibility.  Vertical visibility is defined as the vertical visual range into an obscuring medium.
           $ref: "../Common/Measure.yaml#/components/schemas/LengthWithNilReason"
         layer:
+          description: The observed cloud groups, up to four may be included.
           type: array
           maxItems: 4
           uniqueItems: true
@@ -141,13 +154,14 @@ components:
       type: object
       properties:
         runway:
+          description: The specific runway(s) affected by wind shear at this aerodrome.
           type: array
           uniqueItems: true
           items:
             $ref: "../AIXM/AIXM.yaml#/components/schemas/RunwayDirection"
         allRunways:
-          type: string
-          enum: ["All"]
+          description: When true, all runways are observed to have wind shear.
+          type: boolean
 
     AerodromeSeaCondition:
       description: An aggregation of sea state conditions typically reported together at an aerodrome.
@@ -156,11 +170,13 @@ components:
         - seaSurfaceTemperature
       properties:
         seaSurfaceTemperature:
-          description: http://codes.wmo.int/common/quantity-kind/seaSurfaceTemperature
+          description: The sea-surface temperature observed by aeronautical meteorological stations established on offshore structures in support of helicopter operations.
           $ref: "../Common/Measure.yaml#/components/schemas/MeasureWithNilReason"
         significantWaveHeight:
+          description: The significant wave height observed.
           $ref: "../Common/Measure.yaml#/components/schemas/DistanceWithNilReason"
         seaState:
+          description: The state of the sea observed by aeronautical meteorological stations established on offshore structures in support of helicopter operations.
           $ref: "SeaSurface_State.yaml#/components/schemas/SeaSurfaceState"
 
     VisualRangeTendency:

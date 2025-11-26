@@ -15,28 +15,36 @@ components:
         - changeIndicator
       properties:
         phenomenonTime:
+          description: The time at which meteorological phenomena occur.
           $ref: "../GML/GML.yaml#/components/schemas/DateTimeOrPeriod"
         timeIndicator:
+          description: The human-readable time indicator for this trend forecast.
           $ref: "#/components/schemas/TrendForecastTimeIndicator"
         prevailingVisibility:
+          description: The prevailing horizontal visibility reported in a trend forecast.
           $ref: "../GML/GML.yaml#/components/schemas/Distance"
         prevailingVisibilityOperator:
+          description: The reported relational operator for the prevailing horizontal visibility.
           $ref: "../Common/Relational_Operator.yaml#/components/schemas/RelationalOperator"
         surfaceWind:
+          description: Forecast of surface wind.
           $ref: "../Common/Surface_Wind.yaml#/components/schemas/AerodromeSurfaceWindTrendForecast"
         weather:
-              type: array
-              maxItems: 3
-              uniqueItems: true
-              items:
-                $ref: "../Common/Weather.yaml#/components/schemas/AerodromeForecastWeather"
+          description: Forecast of weather phenomena.
+          type: array
+          maxItems: 3
+          uniqueItems: true
+          items:
+            $ref: "../Common/Weather.yaml#/components/schemas/AerodromeForecastWeather"
         cloud:
-             $ref: "../Common/Cloud.yaml#/components/schemas/AerodromeCloudForecast"
+          description: Forecast of cloud.
+          $ref: "../Common/Cloud.yaml#/components/schemas/AerodromeCloudForecast"
         changeIndicator:
+          description: The change indicator for this trend forecast - becoming, temporary conditions, or no significant change.
           $ref: "#/components/schemas/ForecastChangeIndicator"
         cloudAndVisibilityOK:
-          type: string
-          enum: ["CAVOK"]
+          description: When true, indicates that the following conditions occur simultaneously at the time of forecast (also know as "CAVOK").
+          type: boolean
 
     TrendForecastTimeIndicator:
       description: Time indicators for trend forecast conditions.
