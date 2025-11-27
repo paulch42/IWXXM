@@ -20,18 +20,25 @@ components:
         - nextNotice
       properties:
         stateOrRegion:
+          description: State or region involved.
           $ref: "../Common/String.yaml#/components/schemas/StringWithNilReason"
         noticeNumber:
+          description: VONA Notice Number.
           $ref: "../Common/String.yaml#/components/schemas/StringWithNilReason"
         currentColourCode:
+          description: Current aviation colour code.
           $ref: "#/components/schemas/AviationColourCode"
-        prviousColoutCode:
+        previousColourCode:
+          description: Previous aviation colour code.
           $ref: "#/components/schemas/AviationColourCode"
         contacts:
+          description: State Volcano Observatory (SVO) contact details.
           $ref: "../Common/String.yaml#/components/schemas/StringWithNilReason"
         remarks:
+          description: Remarks.
           $ref: "../Common/String.yaml#/components/schemas/StringWithNilReason"
         nextNotice:
+          description: Indication of the issuance of next VONA.
           $ref: "../Common/String.yaml#/components/schemas/StringWithNilReason"
 
     AviationColourCode:

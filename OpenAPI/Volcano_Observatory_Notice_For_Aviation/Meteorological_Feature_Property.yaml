@@ -9,8 +9,13 @@ components:
   schemas:
     ResuspendedVolcanicAsh:
       description: Re-suspended volcanic ash.
-      oneOf:
-        - $ref: "../Meteorological_Feature/Geometry_Types.yaml#/components/schemas/ElevatedLevel"
+      type: object
+      required:
+        - height
+      properties:
+        height:
+          description: Average height of re-suspended volcanic ash field.
+          $ref: "../Meteorological_Feature/Geometry_Types.yaml#/components/schemas/ElevatedLevel"
 
     VolcanicAshCloudVerticalExtent:
       description: Volcanic ash cloud vertical extent.
@@ -20,8 +25,10 @@ components:
         - movement
       properties:
         heightSource:
+          description: Source of height data (e.g. ground observer, air-report, radar, LIDAR, satellite, webcam, etc.).
           $ref: "../Common/String.yaml#/components/schemas/StringWithNilReason"
         movement:
+          description: Direction of movement of the observed cloud.
           $ref: "#/components/schemas/VolcanicAshCloudMovement"
 
     VolcanicAshCloudMovement:
