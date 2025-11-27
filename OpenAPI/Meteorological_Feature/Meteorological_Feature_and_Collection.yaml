@@ -2,13 +2,15 @@ openapi: "3.1.0"
 info:
   title: IWXXM Meteorological Feature Model
   version: "1.0"
+  description: |
+    An OpenAPI model of the IWXXM Meteorological Featrue and Collection diagram.
 
 components:
   schemas:
     MeteorologicalFeatureCollection:
       description: A collective for meteorological features.
       allOf:
-        - $ref: "../Common/Report.yaml#/components/schemas/Report"
+        - $ref: "../Common/Report.yaml#/components/schemas/BasicReport"
         - type: object
           required:
             - issueTime
@@ -17,25 +19,34 @@ components:
             - feature
           properties:
             boundingPeriod:
+              description: The period covering all of the phenomena mentioned in the collective.
               $ref: "../GML/GML.yaml#/components/schemas/TimePeriod"
             boundingVolume:
+              description: The volume containing all of the phenomena mentioned in the collective during the bounding period.
               $ref: "Geometry_Types.yaml#/components/schemas/ElevatedEnvelope"
             phenomenaList:
+              description: List of meteorological phenomena involved in the collection.
               type: array
               uniqueItems: true
               items:
                 $ref: "Code_Tables.yaml#/components/schemas/MeteorologicalPhenomenon"
             issueTime:
+              description: The time the collective is issued.
               $ref: "../GML/GML.yaml#/components/schemas/TimeInstant"
             originatingCentre:
+              description: Institution that creates the reports.
               type: string
             phenomenonCategory:
+              description: The category of the meteorological phenomenon which is either weatherObservations or weatherForecasts.
               $ref: "#/components/schemas/WMOCategoryCode"
             phenomenonBaseTime:
+              description: The data time of the forecast, usually provided to identify different sets of numerical weather prediction product.
               $ref: "../GML/GML.yaml#/components/schemas/TimeInstant"
             phenomenonTime:
+              description: The time instant or period during which the indicated meteorological phenomenon occurred or is expected to occur.
               $ref: "../GML/GML.yaml#/components/schemas/DateTimeOrPeriod"
             feature:
+              description: Meteorological feature(s) of the collection.
               type: array
               minItems: 1
               uniqueItems: true
@@ -49,24 +60,40 @@ components:
         - phenomenon
       properties:
         issueTime:
+          description: The time the report is issued.
           $ref: "../GML/GML.yaml#/components/schemas/TimeInstant"
         originatingCentre:
+          description: Institution that creates the reports.
           type: "string"
+        phenomenonBaseTime:
+          description: The data time of the forecast, usually provided to identify different sets of numerical weather prediction product.
+          $ref: "../GML/GML.yaml#/components/schemas/TimeInstant"
         phenomenonCategory:
+          description: The category of the meteorological phenomenon which is either weatherObservations or weatherForecasts.
           $ref: "#/components/schemas/WMOCategoryCode"
         phenomenonTime:
+          description: The time instant or period during which the indicated meteorological phenomenon occurred or is expected to occur.
           $ref: "../GML/GML.yaml#/components/schemas/DateTimeOrPeriod"
         phenomenon:
+          description: The meteorological phenomenon mentioned in the report.
           $ref: "Code_Tables.yaml#/components/schemas/MeteorologicalPhenomenon"
         phenomenonGeometry:
+          description: Geometry of the meteorological phenomenon.
           type: "string"
         phenomenonProperty:
+          description: Properties of the meteorological phenomenon.
           type: array
           uniqueItems: true
           items:
             type: "string"
 
     WMOCategoryCode:
-      description: WHERE DOES THIS GO?
+      description: Additional topic categories for WMO community.
       type: string
-      enum: ["weatherObservations", "weatherForecasts"]
+      enum:
+        [
+          "weatherObservations",
+          "weatherForecasts",
+          "volcanicObservations",
+          "volcanicForecasts",
+        ]

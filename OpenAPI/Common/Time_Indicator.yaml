@@ -1,10 +1,13 @@
 openapi: "3.1.0"
 info:
-  title: IWXXM Report Model
+  title: IWXXM Time Indicator Model
   version: "1.0"
+  description: |
+    An OpenAPI model of the IWXXM Time Indicator diagram.
 
 components:
   schemas:
     TimeIndicator:
+      description: Whether the information is observed and expected to continue, or forecast.
       type: string
       enum: ["OBSERVATION", "FORECAST"]

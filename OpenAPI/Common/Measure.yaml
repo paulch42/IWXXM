@@ -8,31 +8,31 @@ info:
 components:
   schemas:
     AngleWithNilReason:
-      description: TO DO
+      description: A nillable Angle quantity.
       allOf:
         - $ref: "../GML/GML.yaml#/components/schemas/Angle"
         - $ref: "#/components/schemas/NilReason"
 
     VelocityWithNilReason:
-      description: TO DO
+      description: A nillable Velocity quantity.
       allOf:
         - $ref: "../GML/GML.yaml#/components/schemas/Speed"
         - $ref: "#/components/schemas/NilReason"
 
     DistanceWithNilReason:
-      description: TO DO
+      description: A nillable Distance quantity.
       allOf:
-        - $ref: "../GML/GML.yaml#/components/schemas/Length"
+        - $ref: "../GML/GML.yaml#/components/schemas/Distance"
         - $ref: "#/components/schemas/NilReason"
 
     LengthWithNilReason:
-      description: TO DO
+      description: A nillable Length quantity.
       allOf:
         - $ref: "../GML/GML.yaml#/components/schemas/Length"
         - $ref: "#/components/schemas/NilReason"
 
     MeasureWithNilReason:
-      description: TO DO
+      description: A nillable Measure quantity.
       allOf:
         - $ref: "../GML/GML.yaml#/components/schemas/Measure"
         - $ref: "#/components/schemas/NilReason"

@@ -1,33 +1,39 @@
 openapi: "3.1.0"
 info:
-  title: Surface Wind
+  title: IWXXM Surface Wind Model
   version: "1.0"
+  description: |
+    An OpenAPI model of the IWXXM Surface Wind diagram.
 
 components:
   schemas:
     AerodromeSurfaceWindTrendForecast:
+      description: A trend forecast of surface wind conditions at an aerodrome.
       required:
         - meanWindSpeed
       properties:
         meanWindDirection:
-          description: http://codes.wmo.int/common/quantity-kind/windDirection
+          description: The forecast average wind direction from which wind is blowing.
           $ref: "../GML/GML.yaml#/components/schemas/Angle"
         meanWindSpeed:
-          description: http://codes.wmo.int/common/quantity-kind/windSpeed
+          description: The forecast average wind speed.
           $ref: "../GML/GML.yaml#/components/schemas/Velocity"
         meanWindSpeedOperator:
+          description: ndication that the mean wind speed is above or below the reported value.
           $ref: "Relational_Operator.yaml#/components/schemas/RelationalOperator"
         windGustSpeed:
-          description: http://codes.wmo.int/common/quantity-kind/maximumWindGustSpeed
+          description: Forecast variations from the mean wind speed (gusts).
           $ref: "../GML/GML.yaml#/components/schemas/Velocity"
         windGustSpeedOperator:
+          description: Indication that the wind gust speed is above or below the reported value.
           $ref: "Relational_Operator.yaml#/components/schemas/RelationalOperator"
 
     AerodromeSurfaceWindForecast:
+      description: A forecast of wind conditions at an aerodrome.
       allOf:
         - $ref: "#/components/schemas/AerodromeSurfaceWindTrendForecast"
         - type: object
           properties:
             variableWindDirection:
-              type: string
-              enum: ["VRB"]
+              description: Indicates variable wind direction. Cannot be reported with a mean wind direction.
+              type: boolean

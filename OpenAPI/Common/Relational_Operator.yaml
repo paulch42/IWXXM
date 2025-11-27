@@ -2,9 +2,12 @@ openapi: "3.1.0"
 info:
   title: IWXXM Report Model
   version: "1.0"
+  description: |
+    An OpenAPI model of the IWXXM Relational Operator diagram.
 
 components:
   schemas:
     RelationalOperator:
+      description: These operators are used in cases where a precise value is not measurable, not precisely known due to measurement limitations, or not reported due to reporting restrictions.
       type: string
       enum: ["ABOVE", "BELOW"]

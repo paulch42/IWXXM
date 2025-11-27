@@ -1,7 +1,9 @@
 openapi: "3.1.0"
 info:
-  title: IWXXM Report Model
+  title: IWXXM String Model
   version: "1.0"
+  description: |
+    An OpenAPI model of the IWXXM Common/String diagram.
 
 components:
   schemas:
@@ -26,6 +28,7 @@ components:
           minimum: 0
 
     StringWithNilReason:
+      description: A nillable string quantity.  References to this type may be nil and may include a nilReason.
       allOf:
         - $ref: "#/components/schemas/CharacterString"
         - $ref: "Measure.yaml#/components/schemas/NilReason"

@@ -15,15 +15,20 @@ components:
         - permissibleUsage
       properties:
         reportStatus:
+          description: The issuance status of the report.
           $ref: "#/components/schemas/ReportStatus"
         permissibleUsage:
+          description: The permissible usage of this report (OPERATIONAL or NON-OPERATIONAL).
           $ref: "Permissible_Usage.yaml#/components/schemas/PermissibleUsage"
         permissibleUsageReason:
+          description: The permissible usage reason of this report. Only populated when the permissible usage is NON-OPERATIONAL.
           $ref: "Permissible_Usage.yaml#/components/schemas/PermissibleUsageReason"
         permissibleUsageSupplementary:
+          description: Additional human-readable descriptive information regarding the permissible usage.
           $ref: "String.yaml#/components/schemas/CharacterString"
 
     ReportStatus:
+      description: This indicates the issuance status of the report.
       type: string
       enum: ["CORRECTION", "AMENDMENT", "NORMAL"]
 
@@ -34,16 +39,22 @@ components:
         - type: object
           properties:
             translatedBulletinID:
+              description: The TAC bulletin ID that was translated, of the form 'TTAAiiCCCYYGGgg'.
               $ref: "String.yaml#/components/schemas/CharacterString"
             translatedBulletinReceptionTime:
+              description: The time at which the translated TAC bulletin was received by the translation centre.
               type: string
               format: date-time
             translationCentreDesignator:
+              description: The ICAO designator of the centre which performed translation from TAC to XML.
               $ref: "String.yaml#/components/schemas/CharacterString"
             translationCentreName:
+              description: The name of the translation centre which performed translation from TAC to XML.
               $ref: "String.yaml#/components/schemas/CharacterString"
             translationTime:
+              description: The time at which translation was performed from TAC to XML.
               type: string
               format: date-time
             translationFailedTAC:
+              description: The full, original TAC that could not be translated.
               $ref: "String.yaml#/components/schemas/CharacterString"

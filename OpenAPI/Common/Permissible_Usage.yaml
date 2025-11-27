@@ -1,14 +1,18 @@
 openapi: "3.1.0"
 info:
-  title: IWXXM Report Model
+  title: IWXXM Permissible Usage Model
   version: "1.0"
+  description: |
+    An OpenAPI model of the IWXXM Permissible Usage diagram.
 
 components:
   schemas:
     PermissibleUsage:
+      description: PermissibleUsage defines the restricted set of permitted usages of data.
       type: string
       enum: ["OPERATIONAL", "NON-OPERATIONAL"]
 
     PermissibleUsageReason:
+      description: PermissibleUsageReason defines the restricted set of reasons for non-operational data.
       type: string
       enum: ["TEST", "EXERCISE"]

@@ -2,7 +2,8 @@ openapi: "3.1.0"
 info:
   title: IWXXM Geometry Types Model
   version: "1.0"
-  description: TO DO
+  description: |
+    An OpenAPI model of the IWXXM Geometry Types diagram.
 
 components:
   schemas:
@@ -15,10 +16,13 @@ components:
             - elevation
           properties:
             elevation:
+              description: The vertical distance of the point measured from the vertical reference.
               $ref: "../AIXM/AIXM.yaml#/components/schemas/ValDistanceVertical"
             verticalReference:
+              description: A code indicating the reference for a vertical distance.
               $ref: "../AIXM/AIXM.yaml#/components/schemas/CodeVerticalReferenceBase"
             interpretation:
+              description: A code indicating how a value needs to be interpreted when used as a filter or condition.
               $ref: "../AIXM/AIXM.yaml#/components/schemas/CodeValueInterrpetationBase"
 
     ElevatedEnvelope:
@@ -31,12 +35,16 @@ components:
             - lowerElevation
           properties:
             upperElevation:
+              description: The vertical distance of the upper surface measured from the vertical reference.
               $ref: "../AIXM/AIXM.yaml#/components/schemas/ValDistanceVertical"
             upperVerticalReference:
+              description: A code indicating the reference for a vertical distance.
               $ref: "../AIXM/AIXM.yaml#/components/schemas/CodeVerticalReferenceBase"
             lowerElevation:
+              description: The vertical distance of the lower surface measured from the vertical reference.
               $ref: "../AIXM/AIXM.yaml#/components/schemas/ValDistanceVertical"
             lowerVerticalReference:
+              description: A code indicating the reference for a vertical distance.
               $ref: "../AIXM/AIXM.yaml#/components/schemas/CodeVerticalReferenceBase"
 
     ElevatedLevel:
@@ -48,10 +56,13 @@ components:
             - elevation
           properties:
             elevation:
+              description: The vertical distance of the curve measured from the vertical reference.
               $ref: "../AIXM/AIXM.yaml#/components/schemas/ValDistanceVertical"
             verticalReference:
+              description: A code indicating the reference for a vertical distance.
               $ref: "../AIXM/AIXM.yaml#/components/schemas/CodeVerticalReferenceBase"
             interpretation:
+              description: A code indicating how a value needs to be interpreted when used as a filter or condition.
               $ref: "../AIXM/AIXM.yaml#/components/schemas/CodeValueInterrpetationBase"
 
     ElevatedCurve:
@@ -63,10 +74,13 @@ components:
             - elevation
           properties:
             elevation:
+              description: The vertical distance of the curve measured from the vertical reference.
               $ref: "../AIXM/AIXM.yaml#/components/schemas/ValDistanceVertical"
             verticalReference:
+              description: A code indicating the reference for a vertical distance.
               $ref: "../AIXM/AIXM.yaml#/components/schemas/CodeVerticalReferenceBase"
             interpretation:
+              description: A code indicating how a value needs to be interpreted when used as a filter or condition.
               $ref: "../AIXM/AIXM.yaml#/components/schemas/CodeValueInterrpetationBase"
 
     ElevatedSurface:
@@ -78,10 +92,13 @@ components:
             - elevation
           properties:
             elevation:
+              description: The vertical distance of the surface measured from the vertical reference.
               $ref: "../AIXM/AIXM.yaml#/components/schemas/ValDistanceVertical"
             verticalReference:
+              description: A code indicating the reference for a vertical distance.
               $ref: "../AIXM/AIXM.yaml#/components/schemas/CodeVerticalReferenceBase"
             interpretation:
+              description: A code indicating how a value needs to be interpreted when used as a filter or condition.
               $ref: "../AIXM/AIXM.yaml#/components/schemas/CodeValueInterrpetationBase"
 
     ElevatedVolume:
@@ -94,14 +111,20 @@ components:
             - lowerElevation
           properties:
             upperElevation:
+              description: The vertical distance of the upper surface measured from the vertical reference.
               $ref: "../AIXM/AIXM.yaml#/components/schemas/ValDistanceVertical"
             upperVerticalReference:
+              description: A code indicating the reference for a vertical distance.
               $ref: "../AIXM/AIXM.yaml#/components/schemas/CodeVerticalReferenceBase"
             upperInterpretation:
+              description: A code indicating how a value needs to be interpreted when used as a filter or condition.
               $ref: "../AIXM/AIXM.yaml#/components/schemas/CodeValueInterrpetationBase"
             lowerElevation:
+              description: The vertical distance of the lower surface measured from the vertical reference.
               $ref: "../AIXM/AIXM.yaml#/components/schemas/ValDistanceVertical"
             lowerVerticalReference:
+              description: A code indicating the reference for a vertical distance.
               $ref: "../AIXM/AIXM.yaml#/components/schemas/CodeVerticalReferenceBase"
             lowerInterpretation:
+              description: A code indicating how a value needs to be interpreted when used as a filter or condition.
               $ref: "../AIXM/AIXM.yaml#/components/schemas/CodeValueInterrpetationBase"

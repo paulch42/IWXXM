@@ -14,18 +14,25 @@ components:
         - name
       properties:
         name:
+          description: Name of the Volcano.
           $ref: "../Common/String.yaml#/components/schemas/StringWithNilReason"
         IAVCEINumber:
+          description: International Association of Volcanology and Chemistry of the Earth's Interior (IAVCEI) number of the volcano.
           $ref: "../Common/String.yaml#/components/schemas/StringWithNilReason"
         sourceElevation:
+          description: Elevation of the vent of the volcano from mean sea level.
           $ref: "../Meteorological_Feature/Geometry_Types.yaml#/components/schemas/ElevatedLevel"
         activityStatus:
+          description: Description of current activity status of the volcano.
           $ref: "#/components/schemas/VolcanoActivityStatus"
         lastVolcanicAshEmission:
+          description: Time of last volcanic ash emission.
           $ref: "../GML/GML.yaml#/components/schemas/TimeInstant"
         onsetTime:
+          description: Time of onset of eruptive activity.
           $ref: "../GML/GML.yaml#/components/schemas/TimeInstant"
         duration:
+          description: Duration of volcanic ash producing eruption.
           $ref: "../GML/GML.yaml#/components/schemas/TimePeriod"
 
     TropicalCyclone:
@@ -33,8 +40,10 @@ components:
       type: object
       required:
         - name
-      items:
-        $ref: "../Common/String.yaml#/components/schemas/StringWithNilReason"
+      properties:
+        name:
+          description: Name of the tropical cyclone.
+          $ref: "../Common/String.yaml#/components/schemas/StringWithNilReason"
 
     VolcanoActivityStatus:
       description: Volcano activity status.

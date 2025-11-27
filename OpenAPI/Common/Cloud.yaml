@@ -1,6 +1,6 @@
 openapi: "3.1.0"
 info:
-  title: IWXXM Report Model
+  title: IWXXM Cloud Model
   version: "1.0"
   description: |
     An OpenAPI model of the IWXXM Common/Cloud diagram.
@@ -12,9 +12,10 @@ components:
       type: object
       properties:
         verticalVisibility:
-          description: http://codes.wmo.int/common/quantity-kind/verticalVisibility
+          description: The vertical visibility.  Vertical visibility is defined as the vertical visual range into an obscuring medium.
           $ref: "Measure.yaml#/components/schemas/LengthWithNilReason"
         layer:
+          description: Description of individual layer of cloud.
           type: array
           maxItems: 4
           uniqueItems: true
@@ -29,11 +30,13 @@ components:
         - base
       properties:
         amount:
+          description: The observed cloud amount.
           $ref: "#/components/schemas/CloudAmountReportedAtAerodrome"
         base:
-          description: http://codes.wmo.int/common/quantity-kind/heightOfBaseOfCloud
+          description: For a given cloud or cloud layer, height of the lowest level in the atmosphere at which the air contains a perceptible quantity of cloud particles.
           $ref: "Measure.yaml#/components/schemas/DistanceWithNilReason"
         cloudType:
+          description: The observed significant cloud types - cumulonimbus or towering cumulus.
           $ref: "#/components/schemas/SigConvectiveCloudType"
 
     CloudAmountReportedAtAerodrome:

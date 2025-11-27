@@ -1,11 +1,15 @@
 openapi: "3.1.0"
 info:
-  title: WMO Code Lists Model
+  title: IWXXM Weather Model
   version: "1.0"
+  description: |
+    An OpenAPI model of the IWXXM Common/Weather diagram.
 
 components:
   schemas:
     AerodromeForecastWeather:
-      description: http://codes.wmo.int/49-2/AerodromePresentOrForecastWeather
+      description: |
+        AerodromeForecastWeather enables the forecast weather at an aerodrome to be reported.
+        http://codes.wmo.int/49-2/AerodromePresentOrForecastWeather
       type: string
       enum: []
