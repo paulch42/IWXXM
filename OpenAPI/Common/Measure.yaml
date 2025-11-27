@@ -10,35 +10,35 @@ components:
     AngleWithNilReason:
       description: A nillable Angle quantity.
       allOf:
-        - $ref: "../GML/GML.yaml#/components/schemas/Angle"
+        - $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/Angle"
         - $ref: "#/components/schemas/NilReason"
 
     VelocityWithNilReason:
       description: A nillable Velocity quantity.
       allOf:
-        - $ref: "../GML/GML.yaml#/components/schemas/Speed"
+        - $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/Velocity"
         - $ref: "#/components/schemas/NilReason"
 
     DistanceWithNilReason:
       description: A nillable Distance quantity.
       allOf:
-        - $ref: "../GML/GML.yaml#/components/schemas/Distance"
+        - $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/Distance"
         - $ref: "#/components/schemas/NilReason"
 
     LengthWithNilReason:
       description: A nillable Length quantity.
       allOf:
-        - $ref: "../GML/GML.yaml#/components/schemas/Length"
+        - $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/Length"
         - $ref: "#/components/schemas/NilReason"
 
     MeasureWithNilReason:
       description: A nillable Measure quantity.
       allOf:
-        - $ref: "../GML/GML.yaml#/components/schemas/Measure"
+        - $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/Measure"
         - $ref: "#/components/schemas/NilReason"
 
     NilReason:
       type: object
       properties:
         nilReason:
-          $ref: "../GML/GML.yaml#/components/schemas/NilReason"
+          $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/NilReason"

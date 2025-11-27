@@ -44,7 +44,7 @@ components:
           $ref: "../Common/String.yaml#/components/schemas/StringWithNilReason"
         incidentTime:
           description: Incident time.
-          $ref: "../GML/GML.yaml#/components/schemas/TimeInstant"
+          $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/TimeInstant"
 
     DegreeOfTurbulence:
       description: |

@@ -16,7 +16,7 @@ components:
       properties:
         phenomenonTime:
           description: The day and time (in UTC) of forecast of volcanic ash.
-          $ref: "../GML/GML.yaml#/components/schemas/DateTimeOrPeriod"
+          $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/DateTimeOrPeriod"
         ashCloud:
           description: Information on the volcanic ash cloud.
           type: array

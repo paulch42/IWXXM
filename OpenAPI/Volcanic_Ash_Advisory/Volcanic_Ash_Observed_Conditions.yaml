@@ -16,7 +16,7 @@ components:
       properties:
         phenomenonTime:
           description: The day and time (in UTC) of observation (or estimation) of volcanic ash.
-          $ref: "../GML/GML.yaml#/components/schemas/DateTimeOrPeriod"
+          $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/DateTimeOrPeriod"
         wind:
           description: Wind information to be provided when volcanic ash is not identifiable from satellite data.
           type: array
@@ -49,10 +49,10 @@ components:
           $ref: "../AIXM/AIXM.yaml#/components/schemas/AirspaceVolume"
         directionOfMotion:
           description: The direction of movement of the ash cloud.
-          $ref: "../GML/GML.yaml#/components/schemas/Angle"
+          $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/Angle"
         speedOfMotion:
           description: The speed of motion of the ash cloud.
-          $ref: "../GML/GML.yaml#/components/schemas/Velocity"
+          $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/Velocity"
 
     WindObservedOrEstimated:
       description: Wind information within a vertical layer to be provided when volcanic ash is not identifiable from satellite data.
@@ -67,10 +67,10 @@ components:
           $ref: "../AIXM/AIXM.yaml#/components/schemas/AirspaceLayer"
         windDirection:
           description: Wind direction within the layer.
-          $ref: "../GML/GML.yaml#/components/schemas/Angle"
+          $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/Angle"
         windSpeed:
           description: Wind speed within the layer.
-          $ref: "../GML/GML.yaml#/components/schemas/Velocity"
+          $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/Velocity"
         variableWindDirection:
           description: When true, indicates that the wind direction is variable.
           type: boolean

@@ -19,7 +19,7 @@ components:
           properties:
             issueTime:
               description: The time at which this report was issued.
-              $ref: "../GML/GML.yaml#/components/schemas/TimeInstant"
+              $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/TimeInstant"
             issuingAirTrafficServicesUnit:
               description: The ATS unit serving the FIR or CTA to which the AIRMET refers.
               $ref: "../AIXM/AIXM.yaml#/components/schemas/Unit"
@@ -34,13 +34,13 @@ components:
               $ref: "../Common/String.yaml#/components/schemas/StringWithNilReason"
             validPeriod:
               description: The valid period for the entire report, including all observations and forecast conditions.
-              $ref: "../GML/GML.yaml#/components/schemas/TimePeriod"
+              $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/TimePeriod"
             cancelledReportSequenceNumber:
               description: The sequence number of a previous AIRMET that is cancelled by this AIRMET.
               $ref: "../Common/String.yaml#/components/schemas/CharacterString"
             cancelledReportValidPeriod:
               description: The valid period of a previous AIRMET that is cancelled by this AIRMET.
-              $ref: "../GML/GML.yaml#/components/schemas/TimePeriod"
+              $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/TimePeriod"
             phenomenon:
               description: The reported phenomenon, such as thunderstorm, tropical cyclone, icing, mountain wave, etc.
               $ref: "#/components/schemas/AeronauticalAreaWeatherPhenomenon"

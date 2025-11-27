@@ -17,7 +17,7 @@ components:
       properties:
         phenomenonTime:
           description: The time at which meteorological phenomena occur.
-          $ref: "../GML/GML.yaml#/components/schemas/DateTimeOrPeriod"
+          $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/DateTimeOrPeriod"
         member:
           description: The members of this collection.
           type: array
@@ -43,19 +43,19 @@ components:
           $ref: "../Common/Measure.yaml#/components/schemas/AngleWithNilReason"
         speedOfMotion:
           description: The expected speed of movement of a meteorological condition.
-          $ref: "../GML/GML.yaml#/components/schemas/Velocity"
+          $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/Velocity"
         intensityChange:
           description: The expected change in intensity for the reported meteorological condition (e.g., intensifying, weakening, or no change) determined at the time of AIRMET analysis based on the current state of the meteorological condition.
           $ref: "#/components/schemas/AIRMETExpectedIntensityChange"
         cloudBase:
           description: The cloud base of reported clouds.
-          $ref: "../GML/GML.yaml#/components/schemas/Distance"
+          $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/Distance"
         cloudBaseReference:
           description: The reference surface used for the value of the cloud base.
           $ref: "../AIXM/AIXM.yaml#/components/schemas/CodeVerticalReferenceBase"
         cloudTop:
           description: The cloud top of reported clouds.
-          $ref: "../GML/GML.yaml#/components/schemas/Distance"
+          $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/Distance"
         cloudTopReference:
           description: The reference surface used for the value of the cloud base.
           $ref: "../AIXM/AIXM.yaml#/components/schemas/CodeVerticalReferenceBase"
@@ -64,16 +64,16 @@ components:
           type: boolean
         surfaceVisibility:
           description: The surface visibility.
-          $ref: "../GML/GML.yaml#/components/schemas/Distance"
+          $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/Distance"
         surfaceVisibilityCause:
           description: The weather condition(s) causing reduced visibility.
           $ref: "#/components/schemas/WeatherCausingVisibiltyReduction"
         surfaceWindDirection:
           description: The widespread surface wind direction.
-          $ref: "../GML/GML.yaml#/components/schemas/Angle"
+          $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/Angle"
         surfaceWindSpeed:
           description: The widespread surface wind speed.
-          $ref: "../GML/GML.yaml#/components/schemas/Velocity"
+          $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/Velocity"
         approximateLocation:
           description: Indicator of whether the location of phenomena is approximate.
           type: boolean

@@ -20,7 +20,7 @@ components:
           properties:
             boundingPeriod:
               description: The period covering all of the phenomena mentioned in the collective.
-              $ref: "../GML/GML.yaml#/components/schemas/TimePeriod"
+              $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/TimePeriod"
             boundingVolume:
               description: The volume containing all of the phenomena mentioned in the collective during the bounding period.
               $ref: "Geometry_Types.yaml#/components/schemas/ElevatedEnvelope"
@@ -32,7 +32,7 @@ components:
                 $ref: "Code_Tables.yaml#/components/schemas/MeteorologicalPhenomenon"
             issueTime:
               description: The time the collective is issued.
-              $ref: "../GML/GML.yaml#/components/schemas/TimeInstant"
+              $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/TimeInstant"
             originatingCentre:
               description: Institution that creates the reports.
               type: string
@@ -41,10 +41,10 @@ components:
               $ref: "#/components/schemas/WMOCategoryCode"
             phenomenonBaseTime:
               description: The data time of the forecast, usually provided to identify different sets of numerical weather prediction product.
-              $ref: "../GML/GML.yaml#/components/schemas/TimeInstant"
+              $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/TimeInstant"
             phenomenonTime:
               description: The time instant or period during which the indicated meteorological phenomenon occurred or is expected to occur.
-              $ref: "../GML/GML.yaml#/components/schemas/DateTimeOrPeriod"
+              $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/DateTimeOrPeriod"
             feature:
               description: Meteorological feature(s) of the collection.
               type: array
@@ -61,19 +61,19 @@ components:
       properties:
         issueTime:
           description: The time the report is issued.
-          $ref: "../GML/GML.yaml#/components/schemas/TimeInstant"
+          $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/TimeInstant"
         originatingCentre:
           description: Institution that creates the reports.
           type: "string"
         phenomenonBaseTime:
           description: The data time of the forecast, usually provided to identify different sets of numerical weather prediction product.
-          $ref: "../GML/GML.yaml#/components/schemas/TimeInstant"
+          $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/TimeInstant"
         phenomenonCategory:
           description: The category of the meteorological phenomenon which is either weatherObservations or weatherForecasts.
           $ref: "#/components/schemas/WMOCategoryCode"
         phenomenonTime:
           description: The time instant or period during which the indicated meteorological phenomenon occurred or is expected to occur.
-          $ref: "../GML/GML.yaml#/components/schemas/DateTimeOrPeriod"
+          $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/DateTimeOrPeriod"
         phenomenon:
           description: The meteorological phenomenon mentioned in the report.
           $ref: "Code_Tables.yaml#/components/schemas/MeteorologicalPhenomenon"

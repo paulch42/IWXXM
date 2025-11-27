@@ -1,0 +1,88 @@
+openapi: "3.1.0"
+info:
+  title: ISO TC211
+  version: "1.0"
+  description: |
+    Definitions relating to ISO TC211.
+    Only a skeleton definition is provided.
+
+components:
+  schemas:
+    Velocity:
+      description: ISO 19103:2005, Velocity
+      allOf:
+        - $ref: "#/components/schemas/Measure"
+        - type: object
+
+    Distance:
+      description: ISO 19103:2005, Distance
+      allOf:
+        - $ref: "#/components/schemas/Measure"
+        - type: object
+
+    Length:
+      description: ISO 19103:2005, Length
+      allOf:
+        - $ref: "#/components/schemas/Measure"
+        - type: object
+
+    Angle:
+      description: ISO 19103:2005, Angle
+      allOf:
+        - $ref: "#/components/schemas/Measure"
+        - type: object
+
+    Measure:
+      description: ISO 19103:2005, Measure
+      type: object
+      required:
+        - value
+      properties:
+        value:
+          type: number
+
+    TimeInstant:
+      description: ISO 19108:2006, TM_Instant
+      type: string
+      format: date-time
+
+    TimePeriod:
+      description: ISO 19108:2006, TM_Period
+      type: object
+      properties:
+        beginPosition:
+          $ref: "#/components/schemas/TimeInstant"
+        endPosition:
+          $ref: "#/components/schemas/TimeInstant"
+
+    DateTimeOrPeriod:
+      description: A value that is either a time instant or a time period. IWXXM models this as a generic object.
+      oneOf:
+        - $ref: "#/components/schemas/TimeInstant"
+        - $ref: "#/components/schemas/TimePeriod"
+
+    Primitive:
+      description: ISO 19107:2003, GM_Primitive
+      type: object
+
+    Point:
+      description: ISO 19107:2003, GM_Point
+      type: object
+
+    Curve:
+      description: ISO 19107:2003, GM_Curve
+      type: object
+
+    Surface:
+      description: ISO 19107:2003, GM_Surface
+      type: object
+
+    Envelope:
+      description: ISO 19107:2003, GM_Envelope
+      type: object
+
+    NilReason:
+      description: |
+        Records an explanation of the reason for a nil value.
+        Does this belong here?
+      type: string

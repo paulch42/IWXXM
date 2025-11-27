@@ -14,16 +14,16 @@ components:
       properties:
         meanWindDirection:
           description: The forecast average wind direction from which wind is blowing.
-          $ref: "../GML/GML.yaml#/components/schemas/Angle"
+          $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/Angle"
         meanWindSpeed:
           description: The forecast average wind speed.
-          $ref: "../GML/GML.yaml#/components/schemas/Velocity"
+          $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/Velocity"
         meanWindSpeedOperator:
           description: ndication that the mean wind speed is above or below the reported value.
           $ref: "Relational_Operator.yaml#/components/schemas/RelationalOperator"
         windGustSpeed:
           description: Forecast variations from the mean wind speed (gusts).
-          $ref: "../GML/GML.yaml#/components/schemas/Velocity"
+          $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/Velocity"
         windGustSpeedOperator:
           description: Indication that the wind gust speed is above or below the reported value.
           $ref: "Relational_Operator.yaml#/components/schemas/RelationalOperator"

@@ -17,7 +17,7 @@ components:
       properties:
         phenomenonTime:
           description: The time at which meteorological phenomena occur.
-          $ref: "../GML/GML.yaml#/components/schemas/DateTimeOrPeriod"
+          $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/DateTimeOrPeriod"
         intensityAndRegion:
           description: Container of intensity of the space weather phenomena and affected region(s).
           type: array

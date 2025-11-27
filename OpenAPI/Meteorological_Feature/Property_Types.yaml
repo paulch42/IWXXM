@@ -27,13 +27,13 @@ components:
           $ref: "#/components/schemas/VolcanoActivityStatus"
         lastVolcanicAshEmission:
           description: Time of last volcanic ash emission.
-          $ref: "../GML/GML.yaml#/components/schemas/TimeInstant"
+          $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/TimeInstant"
         onsetTime:
           description: Time of onset of eruptive activity.
-          $ref: "../GML/GML.yaml#/components/schemas/TimeInstant"
+          $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/TimeInstant"
         duration:
           description: Duration of volcanic ash producing eruption.
-          $ref: "../GML/GML.yaml#/components/schemas/TimePeriod"
+          $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/TimePeriod"
 
     TropicalCyclone:
       description: A tropical cyclone.

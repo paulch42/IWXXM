@@ -18,7 +18,7 @@ components:
           properties:
             issueTime:
               description: The time at which this report was issued.
-              $ref: "../GML/GML.yaml#/components/schemas/TimeInstant"
+              $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/TimeInstant"
             issuingSpaceWeatherCentre:
               description: The issuing space weather centre (SWXC).
               $ref: "../AIXM/AIXM.yaml#/components/schemas/Unit"
@@ -49,7 +49,7 @@ components:
               description: Remarks, as necessary.
               $ref: "../Common/String.yaml#/components/schemas/StringWithNilReason"
             nextAdvisoryTime:
-              $ref: "../GML/GML.yaml#/components/schemas/TimeInstant"
+              $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/TimeInstant"
 
     SpaceWeatherEffect:
       description: Effect of the space weather phenomena.

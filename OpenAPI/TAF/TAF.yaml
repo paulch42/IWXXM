@@ -18,16 +18,16 @@ components:
           properties:
             issueTime:
               description: The time at which this report was issued.
-              $ref: "../GML/GML.yaml#/components/schemas/TimeInstant"
+              $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/TimeInstant"
             aerodrome:
               description: The aerodrome location for this report.
               $ref: "../AIXM/AIXM.yaml#/components/schemas/AirportHeliport"
             validPeriod:
               description: The time frame at which this report is valid.
-              $ref: "../GML/GML.yaml#/components/schemas/TimePeriod"
+              $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/TimePeriod"
             cancelledReportValidPeriod:
               description: The valid time period for the previously cancelled report.
-              $ref: "../GML/GML.yaml#/components/schemas/TimePeriod"
+              $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/TimePeriod"
             baseForecast:
               description: The prevailing conditions.
               $ref: "TAF_Forecast.yaml#/components/schemas/MeteorologicalAerodromeForecast"

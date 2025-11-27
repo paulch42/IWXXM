@@ -18,7 +18,7 @@ components:
           properties:
             issueTime:
               description: The time at which this report was issued.
-              $ref: "../GML/GML.yaml#/components/schemas/TimeInstant"
+              $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/TimeInstant"
             issuingVolcanicAshAdvisoryCentre:
               description: The issuing VAAC.
               $ref: "../AIXM/AIXM.yaml#/components/schemas/Unit"
@@ -54,4 +54,4 @@ components:
               $ref: "../Common/String.yaml#/components/schemas/StringWithNilReason"
             nextAdvisoryTime:
               description: The time at which the next advisory will be issued.
-              $ref: "../GML/GML.yaml#/components/schemas/TimeInstant"
+              $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/TimeInstant"

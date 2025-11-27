@@ -30,13 +30,13 @@ components:
           properties:
             issueTime:
               description: The time at which this report was issued.
-              $ref: "../GML/GML.yaml#/components/schemas/TimeInstant"
+              $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/TimeInstant"
             aerodrome:
               description: The aerodrome location for this report.
               $ref: "../AIXM/AIXM.yaml#/components/schemas/AirportHeliport"
             observationTime:
               description: The time at which phenomena were observed. This may differ from the times reported for forecast conditions.
-              $ref: "../GML/GML.yaml#/components/schemas/TimeInstant"
+              $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/TimeInstant"
             observation:
               description: The observation which resulted in the current meteorological conditions at an aerodrome.
               $ref: "Observation.yaml#/components/schemas/MeteorologicalAerodromeObservation"

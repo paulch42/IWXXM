@@ -20,10 +20,10 @@ components:
       properties:
         phenomenonTime:
           description: The time at which meteorological phenomena occur.
-          $ref: "../GML/GML.yaml#/components/schemas/DateTimeOrPeriod"
+          $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/DateTimeOrPeriod"
         tropicalCyclonePosition:
           description: The tropical cyclone position.
-          $ref: "../GML/GML.yaml#/components/schemas/Point"
+          $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/Point"
         cumulonimbusCloudLocation:
           description: Location of cumulonimbus cloud.
           type: array
@@ -35,19 +35,19 @@ components:
           $ref: "#/components/schemas/TropicalCycloneMovement"
         movementDirection:
           description: The movement direction observed.
-          $ref: "../GML/GML.yaml#/components/schemas/Angle"
+          $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/Angle"
         movementSpeed:
           description: The movement speed observed.
-          $ref: "../GML/GML.yaml#/components/schemas/Velocity"
+          $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/Velocity"
         intensityChange:
           description: Changes of maximum surface wind speed at time of observation.
           $ref: "#/components/schemas/TropicalCycloneIntensityChange"
         centralPressure:
           description: The central pressure of the tropical cyclone.
-          $ref: "../GML/GML.yaml#/components/schemas/Measure"
+          $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/Measure"
         maximumSurfaceWindSpeed:
           description: The maximum 10-minute mean surface wind speed near the centre of the tropical cyclone which shall be provided in either two units of measures - "m/s" or "[kn_i]" (knot).
-          $ref: "../GML/GML.yaml#/components/schemas/Velocity"
+          $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/Velocity"
 
     TropicalCycloneMovement:
       description: The movement type for a tropical cyclone, either MOVING or STATIONARY.

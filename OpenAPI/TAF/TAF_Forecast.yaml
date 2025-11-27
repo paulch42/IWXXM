@@ -15,10 +15,10 @@ components:
       properties:
         phenomenonTime:
           description: The time at which the reported phenomena or change of phenomena occur.
-          $ref: "../GML/GML.yaml#/components/schemas/TimePeriod"
+          $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/TimePeriod"
         prevailingVisibility:
           description: The prevailing horizontal visibility, mandatory except when ceiling and visibility is reported as OK.
-          $ref: "../GML/GML.yaml#/components/schemas/Distance"
+          $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/Distance"
         prevailingVisibilityOperator:
           description: The reported relational operator for the prevailing horizontal visibility.
           $ref: "../Common/Relational_Operator.yaml#/components/schemas/RelationalOperator"
@@ -60,16 +60,16 @@ components:
       properties:
         maximumAirTemperature:
           description: The maximum air temperature expressed in degrees Celsius ("Cel").
-          $ref: "../GML/GML.yaml#/components/schemas/Measure"
+          $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/Measure"
         maximumAirTemperatureTime:
           description: The time of occurrence of the maximum air temperature.
-          $ref: "../GML/GML.yaml#/components/schemas/TimeInstant"
+          $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/TimeInstant"
         minimumAirTemperature:
           description: The minimum air temperature expressed in degrees Celsius ("Cel").
-          $ref: "../GML/GML.yaml#/components/schemas/Measure"
+          $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/Measure"
         minimumAirTemperatureTime:
           description: The time of occurrence of the minimum air temperature.
-          $ref: "../GML/GML.yaml#/components/schemas/TimeInstant"
+          $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/TimeInstant"
 
     AerodromeForecastChangeIndicator:
       description: The forecast change indicator type, including temporary, permanent, or probable conditions.

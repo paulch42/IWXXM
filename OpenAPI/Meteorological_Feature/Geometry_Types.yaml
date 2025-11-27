@@ -10,7 +10,7 @@ components:
     ElevatedPoint:
       description: Describes a 3 dimensional point in terms of a horizontal position and an elevation, the latter of which can be expressed in metrics commonly used in the aviation domain.
       allOf:
-        - $ref: "../GML/GML.yaml#/components/schemas/Point"
+        - $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/Point"
         - type: object
           required:
             - elevation
@@ -28,7 +28,7 @@ components:
     ElevatedEnvelope:
       description: Describes a 3 dimensional envelope in terms of a horizontal area and an elevation, the latter of which can be expressed in metrics commonly used in the aviation domain.
       allOf:
-        - $ref: "../GML/GML.yaml#/components/schemas/Envelope"
+        - $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/Envelope"
         - type: object
           required:
             - upperElevation
@@ -50,7 +50,7 @@ components:
     ElevatedLevel:
       description: Describes a vertical level in terms of an elevation which can be expressed in metrics commonly used in the aviation domain.
       allOf:
-        - $ref: "../GML/GML.yaml#/components/schemas/GeometricPrimitive"
+        - $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/Primitive"
         - type: object
           required:
             - elevation
@@ -68,7 +68,7 @@ components:
     ElevatedCurve:
       description: Describes a horizontal curve in 3 dimensional space in terms of its horizontal position and an elevation, the latter of which can be expressed in metrics commonly used in the aviation domain.
       allOf:
-        - $ref: "../GML/GML.yaml#/components/schemas/Curve"
+        - $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/Curve"
         - type: object
           required:
             - elevation
@@ -86,7 +86,7 @@ components:
     ElevatedSurface:
       description: Describes a horizontal surface in 3 dimensional space in terms of its horizontal position and an elevation, the latter of which can be expressed in metrics commonly used in the aviation domain.
       allOf:
-        - $ref: "../GML/GML.yaml#/components/schemas/Surface"
+        - $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/Surface"
         - type: object
           required:
             - elevation
@@ -104,7 +104,7 @@ components:
     ElevatedVolume:
       description: Describes a 3 dimensional volume in terms of a horizontal area and an elevation, the latter of which can be expressed in metrics commonly used in the aviation domain.
       allOf:
-        - $ref: "../GML/GML.yaml#/components/schemas/Surface"
+        - $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/Surface"
         - type: object
           required:
             - upperElevation

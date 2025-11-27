@@ -17,10 +17,10 @@ components:
       properties:
         phenomenonTime:
           description: The time at which meteorological phenomena occur.
-          $ref: "../GML/GML.yaml#/components/schemas/DateTimeOrPeriod"
+          $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/DateTimeOrPeriod"
         tropicalCyclonePosition:
           description: The tropical cyclone position.
-          $ref: "../GML/GML.yaml#/components/schemas/Point"
+          $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/Point"
         maximumSurfaceWindSpeed:
           description: The maximum 10-minute mean surface wind speed near the centre of the tropical cyclone which shall be provided in either two units of measures - "m/s" or "[kn_i]" (knot).
           $ref: "../Common/Measure.yaml#/components/schemas/VelocityWithNilReason"
