@@ -15,12 +15,15 @@ components:
         - status
       properties:
         phenomenonTime:
+          description: The day and time (in UTC) of forecast of volcanic ash.
           $ref: "../GML/GML.yaml#/components/schemas/DateTimeOrPeriod"
         ashCloud:
+          description: Information on the volcanic ash cloud.
           type: array
           items:
             $ref: "#/components/schemas/VolcanicAshCloudForecast"
         status:
+          description: The status of volcanic ash cloud forecast.
           $ref: "#/components/schemas/VolcanicAshCloudForecastStatus"
 
     VolcanicAshCloudForecast:
@@ -30,6 +33,7 @@ components:
         - ashCloudExtent
       properties:
         ashCloudExtent:
+          description: The horizontal and vertical extent of the ash cloud.
           $ref: "../AIXM/AIXM.yaml#/components/schemas/AirspaceVolume"
 
     VolcanicAshCloudForecastStatus:

@@ -15,21 +15,25 @@ components:
         - status
       properties:
         phenomenonTime:
+          description: The day and time (in UTC) of observation (or estimation) of volcanic ash.
           $ref: "../GML/GML.yaml#/components/schemas/DateTimeOrPeriod"
         wind:
+          description: Wind information to be provided when volcanic ash is not identifiable from satellite data.
           type: array
           uniqueItems: true
           items:
             $ref: "#/components/schemas/WindObservedOrEstimated"
         ashCloud:
+          description: Information on the volcanic ash cloud.
           type: array
           uniqueItems: true
           items:
             $ref: "#/components/schemas/VolcanicAshCloudObservedOrEstimated"
         isEstimated:
-          type: string
-          enum: ["EST"]
+          description: Indicates whether the characteristics of the phenomenon is observed (empty or false) or estimated (true).
+          type: boolean
         status:
+          description: Volcanic ash observation (or estimation) status.
           $ref: "#/components/schemas/VolcanicAshObservedOrEstimatedStatus"
 
     VolcanicAshCloudObservedOrEstimated:
@@ -41,10 +45,13 @@ components:
         - speedOfMotion
       properties:
         ashCloudExtent:
+          description: The horizontal and vertical extent of the ash cloud.
           $ref: "../AIXM/AIXM.yaml#/components/schemas/AirspaceVolume"
         directionOfMotion:
+          description: The direction of movement of the ash cloud.
           $ref: "../GML/GML.yaml#/components/schemas/Angle"
         speedOfMotion:
+          description: The speed of motion of the ash cloud.
           $ref: "../GML/GML.yaml#/components/schemas/Velocity"
 
     WindObservedOrEstimated:
@@ -53,18 +60,22 @@ components:
       required:
         - verticalLayer
         - windSpeed
+        - variableWindDirection
       properties:
         verticalLayer:
+          description: The vertical layer in terms of flight levels in which wind is provided.
           $ref: "../AIXM/AIXM.yaml#/components/schemas/AirspaceLayer"
         windDirection:
+          description: Wind direction within the layer.
           $ref: "../GML/GML.yaml#/components/schemas/Angle"
         windSpeed:
+          description: Wind speed within the layer.
           $ref: "../GML/GML.yaml#/components/schemas/Velocity"
         variableWindDirection:
-          type: string
-          enum: ["VRB"]
+          description: When true, indicates that the wind direction is variable.
+          type: boolean
 
     VolcanicAshObservedOrEstimatedStatus:
-      description: Observed or estimated volcanic ash cloud information status. .
+      description: Observed or estimated volcanic ash cloud information status.
       type: string
       enum: ["PROVIDED", "NOT_IDENTIFIABLE", "NOT_AVAIALABLE", "NOT_PROVIDED"]

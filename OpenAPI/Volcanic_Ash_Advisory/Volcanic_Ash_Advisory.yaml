@@ -17,28 +17,41 @@ components:
             - issuingVolcanicAshAdvisoryCentre
           properties:
             issueTime:
+              description: The time at which this report was issued.
               $ref: "../GML/GML.yaml#/components/schemas/TimeInstant"
             issuingVolcanicAshAdvisoryCentre:
+              description: The issuing VAAC.
               $ref: "../AIXM/AIXM.yaml#/components/schemas/Unit"
             volcano:
+              description: The erupting volcano that is the source of volcanic ash.
               $ref: "../Meteorological_Feature/Property_Types.yaml#/components/schemas/Volcano"
             stateOrRegion:
+              description: State, or region if ash is not reported over a State.
               $ref: "../Common/String.yaml#/components/schemas/StringWithNilReason"
             sourceElevantionAMSL:
+              description: Elevation of the vent or the average height of volcanic ash field for re-suspended volcanic ash from mean sea level.
               $ref: "../Common/Measure.yaml#/components/schemas/DistanceWithNilReason"
             advisoryNumber:
+              description: Advisory number - year in full and message number (separate sequence for each volcano).
               $ref: "../Common/String.yaml#/components/schemas/StringWithNilReason"
             informationSource:
+              description: Information source - described in free text.
               $ref: "../Common/String.yaml#/components/schemas/StringWithNilReason"
             eruptionDetails:
+              description: Eruption details (excluding date/time of eruption(s)).
               $ref: "../Common/String.yaml#/components/schemas/StringWithNilReason"
             observation:
+              description: The observed (or estimated) conditions of volcanic ash clouds.
               $ref: "Volcanic_Ash_Observed_Conditions.yaml#/components/schemas/VolcanicAshObservedOrEstimatedConditions"
             forecast:
+              description: The forecast conditions of volcanic ash clouds.
               type: array
+              uniqueItems: true
               items:
                 $ref: "Volcanic_Ash_Forecast_Conditions.yaml#/components/schemas/VolcanicAshForecastConditions"
             remarks:
+              description: Remarks, as necessary.
               $ref: "../Common/String.yaml#/components/schemas/StringWithNilReason"
             nextAdvisoryTime:
+              description: The time at which the next advisory will be issued.
               $ref: "../GML/GML.yaml#/components/schemas/TimeInstant"

@@ -17,29 +17,36 @@ components:
             - issuingSpaceWeatherCentre
           properties:
             issueTime:
+              description: The time at which this report was issued.
               $ref: "../GML/GML.yaml#/components/schemas/TimeInstant"
             issuingSpaceWeatherCentre:
+              description: The issuing space weather centre (SWXC).
               $ref: "../AIXM/AIXM.yaml#/components/schemas/Unit"
             advisoryNumber:
+              description: Advisory number - four digit year and unique message number.
               $ref: "../Common/String.yaml#/components/schemas/StringWithNilReason"
             replacedAdvisoryNumber:
+              description: The number of the advisory being replaced.
               type: array
               maxItems: 4
               uniqueItems: true
               items:
                 $ref: "../Common/String.yaml#/components/schemas/CharacterString"
             effect:
+              description: Space weather effect.
               type: array
               uniqueItems: true
               items:
                 $ref: "#/components/schemas/SpaceWeatherEffect"
             analysis:
+              description: Observed and forecast space weather information.
               type: array
               maxItems: 5
               uniqueItems: true
               items:
                 $ref: "Space_Weather_Analysis.yaml#/components/schemas/SpaceWeatherAnalysis"
             remarks:
+              description: Remarks, as necessary.
               $ref: "../Common/String.yaml#/components/schemas/StringWithNilReason"
             nextAdvisoryTime:
               $ref: "../GML/GML.yaml#/components/schemas/TimeInstant"

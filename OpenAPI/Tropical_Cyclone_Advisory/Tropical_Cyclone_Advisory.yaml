@@ -3,7 +3,7 @@ info:
   title: IWXXM Tropical Cyclone Advisory Model
   version: "1.0"
   description: |
-    An OpenAPI model of the IWXXM Tropical Cyclone Advisory diagram.
+    Tropical Cyclone Advisories (TCA) report the occurrence and/or expected occurrence of tropical cyclone phenomena which may affect the safety of aircraft operations, and of the development of those phenomena in time and space.
 
 components:
   schemas:
@@ -17,21 +17,29 @@ components:
             - issuingTropicalCycloneAdvisoryCentre
           properties:
             issueTime:
+              description: The time at which this advisory was issued.
               $ref: "../GML/GML.yaml#/components/schemas/TimeInstant"
             issuingTropicalCycloneAdvisoryCentre:
+              description: The issuing TCAC.
               $ref: "../AIXM/AIXM.yaml#/components/schemas/Unit"
             tropicalCycloneName:
+              description: The tropical cyclone name.  If the tropical cyclone is unnamed, 'NN' may be used.
               $ref: "../Meteorological_Feature/Property_Types.yaml#/components/schemas/TropicalCyclone"
             advisoryNumber:
+              description: Advisory number - year in full and message number (separate sequence for each cyclone).
               $ref: "../Common/String.yaml#/components/schemas/StringWithNilReason"
             observation:
+              description: The observed conditions of the tropical cyclone.
               $ref: "Tropical_Cyclone_Observed_Conditions.yaml#/components/schemas/TropicalCycloneObservedConditions"
             forecast:
+              description: The forecast conditions of the tropical cyclone at given time intervals.
               type: array
               uniqueItems: true
               items:
                 $ref: "Tropical_Cyclone_Forecast_Conditions.yaml#/components/schemas/TropicalCycloneForecastConditions"
             remarks:
+              description: Remarks, as necessary.
               $ref: "../Common/String.yaml#/components/schemas/StringWithNilReason"
             nextAdvisoryTime:
+              description: The time at which the next advisory is expected to be issued.
               $ref: "../GML/GML.yaml#/components/schemas/TimeInstant"

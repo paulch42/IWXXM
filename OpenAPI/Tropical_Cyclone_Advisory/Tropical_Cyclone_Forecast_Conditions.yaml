@@ -16,8 +16,11 @@ components:
         - maximumSurfaceWindSpeed
       properties:
         phenomenonTime:
+          description: The time at which meteorological phenomena occur.
           $ref: "../GML/GML.yaml#/components/schemas/DateTimeOrPeriod"
         tropicalCyclonePosition:
-             $ref: "../GML/GML.yaml#/components/schemas/Point"
+          description: The tropical cyclone position.
+          $ref: "../GML/GML.yaml#/components/schemas/Point"
         maximumSurfaceWindSpeed:
-             $ref: "../Common/Measure.yaml#/components/schemas/VelocityWithNilReason"
+          description: The maximum 10-minute mean surface wind speed near the centre of the tropical cyclone which shall be provided in either two units of measures - "m/s" or "[kn_i]" (knot).
+          $ref: "../Common/Measure.yaml#/components/schemas/VelocityWithNilReason"
