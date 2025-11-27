@@ -1,12 +1,15 @@
 openapi: "3.1.0"
 info:
-  title: IWXXM Report Model
+  title: AIXM Model
   version: "1.0"
-  description: Minimal model of AIXM features to support IWXXM model.
+  description: |
+    Minimal model of AIXM features to support the IWXXM model.
+    Some detail is given for validation of JSON examples.
 
 components:
   schemas:
     Unit:
+      description: AIXM Unit Feature.
       type: object
       required:
         - name
@@ -21,7 +24,7 @@ components:
           type: string
 
     Airspace:
-      description: An AIXM Airspace feature.
+      description: AIXM Airspace Feature.
       type: object
       required:
         - name
@@ -36,13 +39,15 @@ components:
           type: string
 
     AirspaceLayer:
-      type: string
+      description: AIXM Airspace Layer Feature.
+      type: object
 
     AirspaceVolume:
-      type: string
+      description: AIXM Airspace Volume Feature.
+      type: object
 
     AirportHeliport:
-      description: An AIXM Airport/Heliport feature.
+      description: AIXM Airport/Heliport feature.
       type: object
       required:
         - name
@@ -56,35 +61,22 @@ components:
         designator:
           type: string
 
-    Runway:
-      type: string
-
     RunwayDirection:
-      description: An AIXM runway direction feature.
+      description: An AIXM RunwayDirection Feature.
       type: string
       pattern: "^[0-9]{2}[LCR]?$"
 
     ValDistanceVertical:
-      allOf:
-        - $ref: "#/components/schemas/ValDistanceVerticalBase"
-        - type: object
-          properties:
-            uom:
-              $ref: "#/components/schemas/UomDistanceVertical"
-        - $ref: "../Common/Measure.yaml#/components/schemas/NilReason"
+      description: AIXM ValDistanceVerticalType
 
     CodeVerticalReferenceBase:
-      description: TODO
+      description: AIXM CodeVerticalReferenceBaseType
       type: object
 
     CodeValueInterrpetationBase:
-      description: TODO
+      description: AIXM CodeValueInterrpetationBaseType
       type: object
 
     ValDistanceVerticalBase:
-      description: TODO
-      type: object
-
-    UomDistanceVertical:
-      description: TODO
+      description: AIXM ValDistanceVerticalBaseType
       type: object

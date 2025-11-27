@@ -1,6 +1,6 @@
 openapi: "3.1.0"
 info:
-  title: ISO TC211
+  title: ISO TC211 Model
   version: "1.0"
   description: |
     Definitions relating to ISO TC211.
