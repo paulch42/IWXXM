@@ -16,14 +16,17 @@ components:
         - member
       properties:
         phenomenonTime:
+          description: The time at which meteorological phenomena occur.
           $ref: "../GML/GML.yaml#/components/schemas/DateTimeOrPeriod"
         member:
+          description: The members of this collection.
           type: array
           minItems: 1
           uniqueItems: true
           items:
             $ref: "#/components/schemas/AIRMETEvolvingCondition"
         timeIndicator:
+          description: Indication whether the information is observed and expected to continue, or forecast.
           $ref: "../Common/Time_Indicator.yaml#/components/schemas/TimeIndicator"
 
     AIRMETEvolvingCondition:
@@ -33,35 +36,47 @@ components:
         - geometry
       properties:
         geometry:
+          description: The expected geographic region(s) affected by the reported phenomenon at a particular time (thunderstorms, volcanic ash, etc.).
           $ref: "../AIXM/AIXM.yaml#/components/schemas/AirspaceVolume"
         directionOfMotion:
+          description: The expected direction of movement of a meteorological condition.
           $ref: "../Common/Measure.yaml#/components/schemas/AngleWithNilReason"
         speedOfMotion:
+          description: The expected speed of movement of a meteorological condition.
           $ref: "../GML/GML.yaml#/components/schemas/Velocity"
         intensityChange:
+          description: The expected change in intensity for the reported meteorological condition (e.g., intensifying, weakening, or no change) determined at the time of AIRMET analysis based on the current state of the meteorological condition.
           $ref: "#/components/schemas/AIRMETExpectedIntensityChange"
         cloudBase:
+          description: The cloud base of reported clouds.
           $ref: "../GML/GML.yaml#/components/schemas/Distance"
         cloudBaseReference:
+          description: The reference surface used for the value of the cloud base.
           $ref: "../AIXM/AIXM.yaml#/components/schemas/CodeVerticalReferenceBase"
         cloudTop:
+          description: The cloud top of reported clouds.
           $ref: "../GML/GML.yaml#/components/schemas/Distance"
         cloudTopReference:
+          description: The reference surface used for the value of the cloud base.
           $ref: "../AIXM/AIXM.yaml#/components/schemas/CodeVerticalReferenceBase"
         cloudTopAbove:
-          type: string
-          enum: ["ABV"]
+          description: Indicates whether the cloud top is above the reported values.
+          type: boolean
         surfaceVisibility:
+          description: The surface visibility.
           $ref: "../GML/GML.yaml#/components/schemas/Distance"
         surfaceVisibilityCause:
+          description: The weather condition(s) causing reduced visibility.
           $ref: "#/components/schemas/WeatherCausingVisibiltyReduction"
         surfaceWindDirection:
+          description: The widespread surface wind direction.
           $ref: "../GML/GML.yaml#/components/schemas/Angle"
         surfaceWindSpeed:
+          description: The widespread surface wind speed.
           $ref: "../GML/GML.yaml#/components/schemas/Velocity"
         approximateLocation:
-          type: string
-          enum: ["APPROX"]
+          description: Indicator of whether the location of phenomena is approximate.
+          type: boolean
 
     AIRMETExpectedIntensityChange:
       description: Expected change in intensity for AIRMET phenomena.
@@ -71,7 +86,6 @@ components:
     WeatherCausingVisibiltyReduction:
       description: |
         A weather condition reducing visibility, such as dust, rain or volcanic ash.
-
         http://codes.wmo.int/49-2/WeatherCausingVisibilityReduction
       type: string
       enum: []

@@ -18,33 +18,42 @@ components:
             - validPeriod
           properties:
             issueTime:
+              description: The time at which this report was issued.
               $ref: "../GML/GML.yaml#/components/schemas/TimeInstant"
             issuingAirTrafficServicesUnit:
+              description: The ATS unit serving the FIR or CTA to which the AIRMET refers.
               $ref: "../AIXM/AIXM.yaml#/components/schemas/Unit"
             originatingMeteorologicalWatchOffice:
+              description: MWO originating this report.
               $ref: "../AIXM/AIXM.yaml#/components/schemas/Unit"
             issuingAirTrafficServicesRegion:
+              description: The ATS region (FIR, UIR, CTA, or FIR/UIR).
               $ref: "../AIXM/AIXM.yaml#/components/schemas/Airspace"
             sequenceNumber:
+              description: The sequence number of this message.
               $ref: "../Common/String.yaml#/components/schemas/StringWithNilReason"
             validPeriod:
+              description: The valid period for the entire report, including all observations and forecast conditions.
               $ref: "../GML/GML.yaml#/components/schemas/TimePeriod"
             cancelledReportSequenceNumber:
+              description: The sequence number of a previous AIRMET that is cancelled by this AIRMET.
               $ref: "../Common/String.yaml#/components/schemas/CharacterString"
             cancelledReportValidPeriod:
+              description: The valid period of a previous AIRMET that is cancelled by this AIRMET.
               $ref: "../GML/GML.yaml#/components/schemas/TimePeriod"
             phenomenon:
+              description: The reported phenomenon, such as thunderstorm, tropical cyclone, icing, mountain wave, etc.
               $ref: "#/components/schemas/AeronauticalAreaWeatherPhenomenon"
             analysis:
+              description: AIRMETs may include the same phenomenon covering more than one area within the FIR/UIR/CTA, as well as observed and forecast conditions for each of these reported areas.
               $ref: "AIRMET_Analysis.yaml#/components/schemas/AIRMETEvolvingConditionCollection"
             isCancelReport:
-              type: string
-              enum: ["CNL"]
+              description: Indicates whether the report is a 'CANCELLATION' report (true) which cancels a previously issued report or not (false or empty).
+              type: boolean
 
     AeronauticalAreaWeatherPhenomenon:
       description:
         Weather phenomenon of significance to aviation operations; used in AIRMET reports.
-
         http://codes.wmo.int/49-2/AirWxPhenomena
       type: string
       enum: []

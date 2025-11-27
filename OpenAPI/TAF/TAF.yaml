@@ -3,12 +3,12 @@ info:
   title: IWXXM TAF Model
   version: "1.0"
   description: |
-    An OpenAPI model of the IWXXM TAF diagram.
+    An Aerodrome Forecast (TAF) report is a routine forecast of meteorological conditions at an aerodrome intended for distribution.
 
 components:
   schemas:
     TAF:
-      description: An Aerodrome Forecast (TAF) report is a routine aerodrome forecast intended for distribution beyond an aerodrome.  TAF reports report base forecast conditions, and modifications to those conditions throughout the valid period.
+      description: An Aerodrome Forecast (TAF) report is a routine aerodrome forecast intended for distribution beyond an aerodrome. TAF reports report base forecast conditions, and modifications to those conditions throughout the valid period.
       allOf:
         - $ref: "../Common/Report.yaml#/components/schemas/Report"
         - type: object
@@ -17,19 +17,26 @@ components:
             - aerodrome
           properties:
             issueTime:
+              description: The time at which this report was issued.
               $ref: "../GML/GML.yaml#/components/schemas/TimeInstant"
             aerodrome:
+              description: The aerodrome location for this report.
               $ref: "../AIXM/AIXM.yaml#/components/schemas/AirportHeliport"
             validPeriod:
+              description: The time frame at which this report is valid.
               $ref: "../GML/GML.yaml#/components/schemas/TimePeriod"
             cancelledReportValidPeriod:
+              description: The valid time period for the previously cancelled report.
               $ref: "../GML/GML.yaml#/components/schemas/TimePeriod"
             baseForecast:
+              description: The prevailing conditions.
               $ref: "TAF_Forecast.yaml#/components/schemas/MeteorologicalAerodromeForecast"
             changeForecast:
+              description: Forecast that modifies the base forecast.
               type: array
+              uniqueItems: true
               items:
                 $ref: "TAF_Forecast.yaml#/components/schemas/MeteorologicalAerodromeForecast"
             isCancelReport:
-              type: string
-              enum: ["CNL"]
+              description: Indicates whether the report is a 'CANCELLATION' report (true) which cancels a previously issued report or not (false or empty).
+              type: boolean

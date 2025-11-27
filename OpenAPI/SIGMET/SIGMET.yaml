@@ -14,8 +14,10 @@ components:
         - type: object
           properties:
             eruptingVolcano:
+              description: The volcano that is erupting - required in all cases other than cancellations.
               $ref: "../Meteorological_Feature/Property_Types.yaml#/components/schemas/Volcano"
             volcanicAshMovedToFIR:
+              description: The FIR to which volcanic ash has moved.  Reported only on SIGMET cancellation reports.
               $ref: "../AIXM/AIXM.yaml#/components/schemas/Airspace"
 
     TropicalCycloneSIGMET:
@@ -25,52 +27,65 @@ components:
         - type: object
           properties:
             supplementaryAnalysisCollection:
+              description: Observed and/or forecast conditions of the cumulonimbus clouds associated with a tropical cyclone.
               type: array
               uniqueItems: true
               items:
                 $ref: "#/components/schemas/AnalysisAndForecastPositionAnalysis"
             tropicalCyclone:
+              description: The tropical cyclone being reported in this SIGMET, required in all cases other than cancellations.
               $ref: "../Meteorological_Feature/Property_Types.yaml#/components/schemas/TropicalCyclone"
 
     SIGMET:
       description: A SIGMET (significant meteorological) report. SIGMETs report the occurrence and/or expected occurrence of specified en-route weather phenomena which may affect the safety of aircraft operations, and of the development of those phenomena over time.
-      type: object
-      required:
-        - issueTime
-        - issuingAirTrafficServicesUnit
-        - validPeriod
-      properties:
-        issueTime:
-          $ref: "../GML/GML.yaml#/components/schemas/TimeInstant"
-        issuingAirTrafficServicesUnit:
-          $ref: "../AIXM/AIXM.yaml#/components/schemas/Unit"
-        originatingMeteorologicalWatchOffice:
-          $ref: "../AIXM/AIXM.yaml#/components/schemas/Unit"
-        issuingAirTrafficServicesRegion:
-          $ref: "../AIXM/AIXM.yaml#/components/schemas/Airspace"
-        sequenceNumber:
-          $ref: "../Common/String.yaml#/components/schemas/StringWithNilReason"
-        validPeriod:
-          $ref: "../GML/GML.yaml#/components/schemas/TimePeriod"
-        cancelledReportSequenceNumber:
-          $ref: "../Common/String.yaml#/components/schemas/CharacterString"
-        cancelledReportValidPeriod:
-          $ref: "../GML/GML.yaml#/components/schemas/TimePeriod"
-        phenomenon:
-          $ref: "#/components/schemas/AeronauticalSignificantWeatherPhenomenon"
-        analysisCollection:
-          type: array
-          uniqueItems: true
-          items:
-            $ref: "#/components/schemas/AnalysisAndForecastPositionAnalysis"
-        isCancelReport:
-          type: string
-          enum: ["CNL"]
+      allOf:
+        - $ref: "../Common/Report.yaml#/components/schemas/Report"
+        - type: object
+          required:
+            - issueTime
+            - issuingAirTrafficServicesUnit
+            - validPeriod
+          properties:
+            issueTime:
+              description: The time at which this report was issued.
+              $ref: "../GML/GML.yaml#/components/schemas/TimeInstant"
+            issuingAirTrafficServicesUnit:
+              description: The ATS unit serving the FIR or CTA to which the SIGMET refers.
+              $ref: "../AIXM/AIXM.yaml#/components/schemas/Unit"
+            originatingMeteorologicalWatchOffice:
+              description: MWO originating this report.
+              $ref: "../AIXM/AIXM.yaml#/components/schemas/Unit"
+            issuingAirTrafficServicesRegion:
+              description: The ATS region (FIR, UIR, CTA, or FIR/UIR).
+              $ref: "../AIXM/AIXM.yaml#/components/schemas/Airspace"
+            sequenceNumber:
+              description: The sequence number of this message.
+              $ref: "../Common/String.yaml#/components/schemas/StringWithNilReason"
+            validPeriod:
+              description: The valid period for the entire report covering all observations and forecast conditions.
+              $ref: "../GML/GML.yaml#/components/schemas/TimePeriod"
+            cancelledReportSequenceNumber:
+              description: The sequence number of a previous SIGMET that is cancelled by this SIGMET.
+              $ref: "../Common/String.yaml#/components/schemas/CharacterString"
+            cancelledReportValidPeriod:
+              description: The valid period of a previous SIGMET that is cancelled by this SIGMET.
+              $ref: "../GML/GML.yaml#/components/schemas/TimePeriod"
+            phenomenon:
+              description: The reported phenomenon, such as thunderstorm, tropical cyclone, icing, mountain wave, etc.
+              $ref: "#/components/schemas/AeronauticalSignificantWeatherPhenomenon"
+            analysisCollection:
+              description: Observed and/or forecast conditions of the phenomenon.
+              type: array
+              uniqueItems: true
+              items:
+                $ref: "#/components/schemas/AnalysisAndForecastPositionAnalysis"
+            isCancelReport:
+              description: Indicates whether the report is a 'CANCELLATION' report (true) which cancels a previously issued report or not (false or empty).
+              type: boolean
 
     AeronauticalSignificantWeatherPhenomenon:
       description: |
         Weather phenomenon of significance to aviation operations; used in SIGMET and AIRMET reports. 
-
         http://codes.wmo.int/49-2/SigWxPhenomena
       type: string
       enum: []
@@ -80,6 +95,8 @@ components:
       type: object
       properties:
         analysis:
+          description: A SIGMET report may include, at a time instant, a phenomenon covering more than one area within the FIR/UIR/CTA.
           $ref: "SIGMET_Analysis.yaml#/components/schemas/SIGMETEvolvingConditionCollection"
         forecastPositionAnalysis:
+          description: A forecast of the phenomenon at a time instant within the valid period.
           $ref: "SIGMET_Forecast_Position_Analysis.yaml#/components/schemas/SIGMETPositionCollection"

@@ -14,32 +14,40 @@ components:
         - phenomenonTime
       properties:
         phenomenonTime:
+          description: The time at which the reported phenomena or change of phenomena occur.
           $ref: "../GML/GML.yaml#/components/schemas/TimePeriod"
         prevailingVisibility:
+          description: The prevailing horizontal visibility, mandatory except when ceiling and visibility is reported as OK.
           $ref: "../GML/GML.yaml#/components/schemas/Distance"
         prevailingVisibilityOperator:
+          description: The reported relational operator for the prevailing horizontal visibility.
           $ref: "../Common/Relational_Operator.yaml#/components/schemas/RelationalOperator"
         surfaceWind:
+          description: Forecast of surface wind.
           $ref: "../Common/Surface_Wind.yaml#/components/schemas/AerodromeSurfaceWindForecast"
         weather:
+          description: Forecast of weather phenomena.
           type: array
           maxItems: 3
           uniqueItems: true
           items:
             $ref: "../Common/Weather.yaml#/components/schemas/AerodromeForecastWeather"
         cloud:
+          description: Forecast of cloud.
           $ref: "../Common/Cloud.yaml#/components/schemas/AerodromeCloudForecast"
         temperature:
+          description: Forecast of temperature.
           type: array
           maxItems: 2
           uniqueItems: true
           items:
             $ref: "#/components/schemas/AerodromeAirTemperatureForecast"
         changeIndicator:
+          description: The type of change being reported (FROM, BECOMING,  TEMPORARY, etc.).
           $ref: "#/components/schemas/AerodromeForecastChangeIndicator"
         cloudAndVisibilityOK:
-          type: string
-          enum: ["CAVOK"]
+          description: When true, indicates that the following conditions occur simultaneously at the time of forecast (also know as "CAVOK").
+          type: boolean
 
     AerodromeAirTemperatureForecast:
       description: An aggregation of air temperature forecast conditions typically reported together at an aerodrome, including the minimum and maximum anticipated air temperatures and when they occur.
@@ -51,12 +59,16 @@ components:
         - minimumAirTemperatureTime
       properties:
         maximumAirTemperature:
+          description: The maximum air temperature expressed in degrees Celsius ("Cel").
           $ref: "../GML/GML.yaml#/components/schemas/Measure"
         maximumAirTemperatureTime:
+          description: The time of occurrence of the maximum air temperature.
           $ref: "../GML/GML.yaml#/components/schemas/TimeInstant"
         minimumAirTemperature:
+          description: The minimum air temperature expressed in degrees Celsius ("Cel").
           $ref: "../GML/GML.yaml#/components/schemas/Measure"
         minimumAirTemperatureTime:
+          description: The time of occurrence of the minimum air temperature.
           $ref: "../GML/GML.yaml#/components/schemas/TimeInstant"
 
     AerodromeForecastChangeIndicator:

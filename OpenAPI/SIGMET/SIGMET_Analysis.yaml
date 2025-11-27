@@ -8,40 +8,51 @@ info:
 components:
   schemas:
     SIGMETEvolvingConditionCollection:
+      description: A collection of SIGMETEvolvingConditions, each representing a location where SIGMET observed or forecast conditions exist.
       required:
         - phenomenonTime
         - timeIndicator
         - member
       properties:
         phenomenonTime:
+          description: The time at which meteorological phenomena occur.
           $ref: "../GML/GML.yaml#/components/schemas/DateTimeOrPeriod"
         member:
+          description: The members of this collection.
           type: array
           minItems: 1
           uniqueItems: true
           items:
             $ref: "#/components/schemas/SIGMETEvolvingCondition"
         timeIndicator:
+          description: Indication whether the information is observed and expected to continue, or forecast.
           $ref: "../Common/Time_Indicator.yaml#/components/schemas/TimeIndicator"
 
     SIGMETEvolvingCondition:
+      description: Conditions that indicate the presence of a specific SIGMET phenomenon such as volcanic ash or a thunderstorm, along with expected changes to the phenomenon such as intensity, speed, and direction.
       required:
         - geometry
       properties:
         tropicalCyclonePosition:
+          description: The position of a tropical cyclone.  Only be used in a TropicalCycloneSIGMET.
           $ref: "../GML/GML.yaml#/components/schemas/Point"
         geometry:
+          description: The expected geographic region(s) affected by the reported phenomenon at a particular time (thunderstorms, volcanic ash, etc.).
           $ref: "../AIXM/AIXM.yaml#/components/schemas/AirspaceVolume"
         directionOfMotion:
+          description: This element refers to the expected direction of movement which the phenomenon is moving towards, .e.g, "moving east".
           $ref: "../Common/Measure.yaml#/components/schemas/AngleWithNilReason"
         speedOfMotion:
+          description: The expected speed of movement of a meteorological condition.
           $ref: "../GML/GML.yaml#/components/schemas/Velocity"
         intensityChange:
+          description: The expected change in intensity for the reported meteorological condition (e.g., intensifying, weakening, or no change) determined at the time of SIGMET analysis based on the current state of the meteorological condition.
           $ref: "#/components/schemas/SIGMETExpectedIntensityChange"
         approximateLocation:
-          type: string
-          enum: ["APPROX"]
+          description: Indicator of whether the location of phenomena is approximate.
+          type: boolean
 
     SIGMETExpectedIntensityChange:
+      description: Expected change in intensity for (significant) meteorological phenomena.
       type: string
       enum: ["NO_CHANGE", "WEAKEN", "INTENSIFY"]
