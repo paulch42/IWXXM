@@ -1,0 +1,18 @@
+openapi: "3.1.0"
+info:
+  title: IWXXM Meteorological Feature Property Model
+  version: "1.0"
+  description: |
+    An OpenAPI model of the IWXXM Meteorological Feature Property diagram.
+
+components:
+  schemas:
+    VolcanicAshCloudConcentration:
+      description: Estimated volcanic ash concentration with higher values possible within the ash cloud.
+      type: object
+      required:
+        - ashDensityEqualsOrExceeds
+      properties:
+        ashDensityEqualsOrExceeds:
+          description: Quantitative threshold of ash density within the cloud.
+          $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/Measure"

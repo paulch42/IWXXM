@@ -1,0 +1,30 @@
+openapi: "3.1.0"
+info:
+  title: IWXXM Quantitative Volcanic Ash Concentration Information Model
+  version: "1.0"
+  description: |
+    An OpenAPI model of the IWXXM Quantitative Volcanic Ash Concentration Information diagram.
+
+components:
+  schemas:
+    QuantitativeVolcanicAshConcentrationInformation:
+      description: A product issued by the Volcanic Ash Advisory Center (VAAC) on volcanic ash cloud(s) that poses a widespread impact to aircraft operations and air navigation.
+      type: object
+      required:
+        - dispersionModelInitialisationTime
+        - dispersionModelSourceElevation
+        - dispersionModelAshCloudHeight
+        - remarks
+      properties:
+        dispersionModelInitialisationTime:
+          description: Start of model forecast integration time.
+          $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/TimeInstant"
+        dispersionModelSourceElevation:
+          description: Elevation of erupting ash vent or fissure used in the dispersion model, not necessarily volcano's summit height, in meters ("m") or feet ("[ft_i]"). Use negative values to represent levels below mean sea level.
+          $ref: "../Meteorological_Feature/Geometry_Types.yaml#/components/schemas/ElevatedLevel"
+        dispersionModelAshCloudHeight:
+          description: Maximum height of ash cloud or eruption column at initialisation time in meters ("m") or feet ("[ft_i]").
+          $ref: "../Meteorological_Feature/Geometry_Types.yaml#/components/schemas/ElevatedLevel"
+        remarks:
+          description: Additional information to be provided with the QVACI.
+          $ref: "../Common/String.yaml#/components/schemas/StringWithNilReason"

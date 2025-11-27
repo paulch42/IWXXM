@@ -5,7 +5,7 @@ The contents of the model are:
 
 | Item | Description
 |-|-|
-| METAR_SPECI | A model of the IWXXM _METAR/SPECI_ package. |
+| METAR/SPECI | A model of the IWXXM _METAR/SPECI_ package. |
 | TAF | A model of the IWXXM _TAF_ package. |
 | AIRMET | A model of the IWXXM _AIRMET_ package. |
 | SIGMET | A model of the IWXXM _SIGMET_ package. |
@@ -13,12 +13,12 @@ The contents of the model are:
 | Volcanic Ash Advisory | A model of the IWXXM _Volcanic Ash Advisory_ package. |
 | Space Weather Advisory | A model of the IWXXM _Space Weather Advisory_ package. |
 | WAFS Significant Weather Forecast | A model of the IWXXM _WAFS Significant Weather Forecast_ package. |
+| Volcano Observatory Notice for Aviation | A model of the IWXXM _Volcano Observatory Notice for Aviation_ package. |
+| Quantitative Volcanic Ash Concentration Information | A model of the IWXXM _Quantitative Volcanic Ash Concentration Information_ package. |
 | Meteorological_Feature | A model of the IWXXM _Meteorological Feature_ package. |
 | Common | A model of the IWXXM _Common_ package. |
-| Measures | A model of the IWXXM _Measures_ package. |
-| METCE | A minimal model of METCE features to support the IWXXM model. |
 | AIXM | A minimal model of AIXM features to support the IWXXM model. |
-| GML | A minimal model of GML entities to support the IWXXM model. |
+| ISO TC211 | A minimal model of ISO TC211 entities to support the IWXXM model. |
 | Examples | Example messages that comply with the OpenAPI schema. |
 
-Lower level detail is not covered, particularly relating to AIXM, GML and METCE.
+Lower level detail is not covered, particularly relating to AIXM and ISO TC211.
