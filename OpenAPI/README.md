@@ -15,7 +15,7 @@ The contents of the model are:
 | WAFS Significant Weather Forecast | A model of the IWXXM _WAFS Significant Weather Forecast_ package. |
 | Volcano Observatory Notice for Aviation | A model of the IWXXM _Volcano Observatory Notice for Aviation_ package. |
 | Quantitative Volcanic Ash Concentration Information | A model of the IWXXM _Quantitative Volcanic Ash Concentration Information_ package. |
-| Meteorological_Feature | A model of the IWXXM _Meteorological Feature_ package. |
+| Meteorological Feature | A model of the IWXXM _Meteorological Feature_ package. |
 | Common | A model of the IWXXM _Common_ package. |
 | AIXM | A minimal model of AIXM features to support the IWXXM model. |
 | ISO TC211 | A minimal model of ISO TC211 entities to support the IWXXM model. |

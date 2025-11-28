@@ -29,6 +29,6 @@ components:
 
     StringWithNilReason:
       description: A nillable string quantity.  References to this type may be nil and may include a nilReason.
-      allOf:
+      oneOf:
         - $ref: "#/components/schemas/CharacterString"
-        - $ref: "Measure.yaml#/components/schemas/NilReason"
+        - $ref: "../AIXM/AIXM.yaml#/components/schemas/NilReason"

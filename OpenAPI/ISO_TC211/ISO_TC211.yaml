@@ -13,24 +13,71 @@ components:
       allOf:
         - $ref: "#/components/schemas/Measure"
         - type: object
+          required:
+            - distance
+            - time
+            - uom
+          properties:
+            distance:
+              $ref: "#/components/schemas/UomLength"
+            time:
+              $ref: "#/components/schemas/UomTime"
+            uom:
+              $ref: "#/components/schemas/UomVelocity"
+
+    UomVelocity:
+      description: ISO 19103:2005, UomVelocity
+      type: object
+      required:
+        - uom
+      properties:
+        uom:
+          type: string
+
+    UomTime:
+      description: ISO 19103:2005, UomTime
+      type: object
+      required:
+        - uom
+      properties:
+        uom:
+          type: string
 
     Distance:
       description: ISO 19103:2005, Distance
       allOf:
         - $ref: "#/components/schemas/Measure"
-        - type: object
+        - $ref: "#/components/schemas/UomLength"
 
     Length:
       description: ISO 19103:2005, Length
       allOf:
         - $ref: "#/components/schemas/Measure"
-        - type: object
+        - $ref: "#/components/schemas/UomLength"
+
+    UomLength:
+      description: ISO 19103:2005, UomLength
+      type: object
+      required:
+        - uom
+      properties:
+        uom:
+          type: string
 
     Angle:
-      description: ISO 19103:2005, Angle
+      description: ISO 19103:2005, UomAngle
       allOf:
         - $ref: "#/components/schemas/Measure"
-        - type: object
+        - $ref: "#/components/schemas/UomAngle"
+
+    UomAngle:
+      description: ISO 19103:2005, UomAngle
+      type: object
+      required:
+        - uom
+      properties:
+        uom:
+          type: string
 
     Measure:
       description: ISO 19103:2005, Measure
@@ -80,9 +127,3 @@ components:
     Envelope:
       description: ISO 19107:2003, GM_Envelope
       type: object
-
-    NilReason:
-      description: |
-        Records an explanation of the reason for a nil value.
-        Does this belong here?
-      type: string

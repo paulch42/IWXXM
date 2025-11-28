@@ -50,21 +50,19 @@ components:
       description: AIXM Airport/Heliport feature.
       type: object
       required:
-        - name
-        - type
         - designator
       properties:
-        name:
-          type: string
-        type:
-          type: string
         designator:
           type: string
 
     RunwayDirection:
       description: An AIXM RunwayDirection Feature.
-      type: string
-      pattern: "^[0-9]{2}[LCR]?$"
+      type: object
+      required:
+        - designator
+      properties:
+        designator:
+          type: string
 
     ValDistanceVertical:
       description: AIXM ValDistanceVerticalType
@@ -80,3 +78,10 @@ components:
     ValDistanceVerticalBase:
       description: AIXM ValDistanceVerticalBaseType
       type: object
+
+    NilReason:
+      description: Nil object with optional reason for nil value.
+      type: object
+      properties:
+        reason:
+          type: string

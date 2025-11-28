@@ -9,36 +9,30 @@ components:
   schemas:
     AngleWithNilReason:
       description: A nillable Angle quantity.
-      allOf:
+      oneOf:
         - $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/Angle"
-        - $ref: "#/components/schemas/NilReason"
+        - $ref: "../AIXM/AIXM.yaml#/components/schemas/NilReason"
 
     VelocityWithNilReason:
       description: A nillable Velocity quantity.
-      allOf:
+      oneOf:
         - $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/Velocity"
-        - $ref: "#/components/schemas/NilReason"
+        - $ref: "../AIXM/AIXM.yaml#/components/schemas/NilReason"
 
     DistanceWithNilReason:
       description: A nillable Distance quantity.
-      allOf:
+      oneOf:
         - $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/Distance"
-        - $ref: "#/components/schemas/NilReason"
+        - $ref: "../AIXM/AIXM.yaml#/components/schemas/NilReason"
 
     LengthWithNilReason:
       description: A nillable Length quantity.
-      allOf:
+      oneOf:
         - $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/Length"
-        - $ref: "#/components/schemas/NilReason"
+        - $ref: "../AIXM/AIXM.yaml#/components/schemas/NilReason"
 
     MeasureWithNilReason:
       description: A nillable Measure quantity.
-      allOf:
+      oneOf:
         - $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/Measure"
-        - $ref: "#/components/schemas/NilReason"
-
-    NilReason:
-      type: object
-      properties:
-        nilReason:
-          $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/NilReason"
+        - $ref: "../AIXM/AIXM.yaml#/components/schemas/NilReason"
