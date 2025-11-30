@@ -15,4 +15,4 @@ components:
       properties:
         ashDensityEqualsOrExceeds:
           description: Quantitative threshold of ash density within the cloud.
-          $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/Measure"
+          $ref: "../Common/Measure.yaml#/components/schemas/DensityWithNilReason"

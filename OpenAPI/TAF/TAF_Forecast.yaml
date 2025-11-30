@@ -60,13 +60,13 @@ components:
       properties:
         maximumAirTemperature:
           description: The maximum air temperature expressed in degrees Celsius ("Cel").
-          $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/Measure"
+          $ref: "../AIXM/AIXM.yaml#/components/schemas/Temperature"
         maximumAirTemperatureTime:
           description: The time of occurrence of the maximum air temperature.
           $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/TimeInstant"
         minimumAirTemperature:
           description: The minimum air temperature expressed in degrees Celsius ("Cel").
-          $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/Measure"
+          $ref: "../AIXM/AIXM.yaml#/components/schemas/Temperature"
         minimumAirTemperatureTime:
           description: The time of occurrence of the minimum air temperature.
           $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/TimeInstant"

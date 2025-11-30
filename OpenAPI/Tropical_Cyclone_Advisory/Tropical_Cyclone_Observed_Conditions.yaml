@@ -44,7 +44,7 @@ components:
           $ref: "#/components/schemas/TropicalCycloneIntensityChange"
         centralPressure:
           description: The central pressure of the tropical cyclone.
-          $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/Measure"
+          $ref: "../AIXM/AIXM.yaml#/components/schemas/Pressure"
         maximumSurfaceWindSpeed:
           description: The maximum 10-minute mean surface wind speed near the centre of the tropical cyclone which shall be provided in either two units of measures - "m/s" or "[kn_i]" (knot).
           $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/Velocity"

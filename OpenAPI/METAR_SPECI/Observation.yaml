@@ -18,13 +18,13 @@ components:
       properties:
         airTemperature:
           description: The observed air temperature.
-          $ref: "../Common/Measure.yaml#/components/schemas/MeasureWithNilReason"
+          $ref: "../Common/Measure.yaml#/components/schemas/TemperatureWithNilReason"
         dewpointTemperature:
           description: The observed dew point temperature.
-          $ref: "../Common/Measure.yaml#/components/schemas/MeasureWithNilReason"
+          $ref: "../Common/Measure.yaml#/components/schemas/TemperatureWithNilReason"
         qnh:
           description: The observed QNH altimeter setting.
-          $ref: "../Common/Measure.yaml#/components/schemas/MeasureWithNilReason"
+          $ref: "../Common/Measure.yaml#/components/schemas/PressureWithNilReason"
         surfaceWind:
           description: Representative surface wind observations.
           $ref: "#/components/schemas/AerodromeSurfaceWind"
@@ -171,7 +171,7 @@ components:
       properties:
         seaSurfaceTemperature:
           description: The sea-surface temperature observed by aeronautical meteorological stations established on offshore structures in support of helicopter operations.
-          $ref: "../Common/Measure.yaml#/components/schemas/MeasureWithNilReason"
+          $ref: "../Common/Measure.yaml#/components/schemas/TemperatureWithNilReason"
         significantWaveHeight:
           description: The significant wave height observed.
           $ref: "../Common/Measure.yaml#/components/schemas/DistanceWithNilReason"

@@ -31,6 +31,24 @@ components:
         - $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/Length"
         - $ref: "../AIXM/AIXM.yaml#/components/schemas/NilReason"
 
+    TemperatureWithNilReason:
+      description: A nillable Temperature quantity. Not in the IWXXM model.
+      oneOf:
+        - $ref: "../AIXM/AIXM.yaml#/components/schemas/Temperature"
+        - $ref: "../AIXM/AIXM.yaml#/components/schemas/NilReason"
+
+    PressureWithNilReason:
+      description: A nillable Pressure quantity. Not in the IWXXM model.
+      oneOf:
+        - $ref: "../AIXM/AIXM.yaml#/components/schemas/Pressure"
+        - $ref: "../AIXM/AIXM.yaml#/components/schemas/NilReason"
+
+    DensityWithNilReason:
+      description: A nillable Density quantity. Not in the IWXXM model.
+      oneOf:
+        - $ref: "../AIXM/AIXM.yaml#/components/schemas/Density"
+        - $ref: "../AIXM/AIXM.yaml#/components/schemas/NilReason"
+
     MeasureWithNilReason:
       description: A nillable Measure quantity.
       oneOf:

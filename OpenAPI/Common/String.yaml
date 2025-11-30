@@ -8,27 +8,33 @@ info:
 components:
   schemas:
     CharacterString:
-      type: object
-      required:
-        - characterSet
-        - elements
-        - maxLength
-        - size
-      properties:
-        characterSet:
-          type: string
-          enum: ["ISO 10646-2"]
-        elements:
-          type: string
-        maxLength:
-          type: integer
-          minimum: 0
-        size:
-          type: integer
-          minimum: 0
+      description: |
+        The following captures the class definition in the IWXXM String diagram.
+        It has been simplified to simplify examples while remaining schema compliant.
+
+          type: object
+          required:
+           - characterSet
+           - elements
+           - maxLength
+           - size
+          properties:
+           characterSet:
+             type: string
+             enum: ["ISO 10646-2"]
+           elements:
+             type: string
+          maxLength:
+             type: integer
+             minimum: 0
+           size:
+             type: integer
+             minimum: 0
+
+      type: string
 
     StringWithNilReason:
-      description: A nillable string quantity.  References to this type may be nil and may include a nilReason.
+      description: A nillable string quantity. References to this type may be nil and may include a nilReason.
       oneOf:
         - $ref: "#/components/schemas/CharacterString"
         - $ref: "../AIXM/AIXM.yaml#/components/schemas/NilReason"

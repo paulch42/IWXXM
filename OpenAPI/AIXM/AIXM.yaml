@@ -12,9 +12,7 @@ components:
       description: AIXM Unit Feature.
       type: object
       required:
-        - name
         - type
-        - designator
       properties:
         name:
           type: string
@@ -45,6 +43,21 @@ components:
     AirspaceVolume:
       description: AIXM Airspace Volume Feature.
       type: object
+      properties:
+        upperLimit:
+          $ref: "#/components/schemas/ValDistanceVertical"
+        upperLimitReference:
+          $ref: "#/components/schemas/CodeVerticalReferenceBase"
+        lowerLimit:
+          $ref: "#/components/schemas/ValDistanceVertical"
+        lowerLimitReference:
+          $ref: "#/components/schemas/CodeVerticalReferenceBase"
+        "horizontalProjection":
+          description: A list of latitude/longitude pairs.
+          type: array
+          minItems: 6
+          items:
+            type: number
 
     AirportHeliport:
       description: AIXM Airport/Heliport feature.
@@ -65,23 +78,81 @@ components:
           type: string
 
     ValDistanceVertical:
-      description: AIXM ValDistanceVerticalType
+      description: AIXM ValDistanceVertical
+      allOf:
+        - $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/Measure"
+        - $ref: "#/components/schemas/UomDistanceVertical"
+
+    UomDistanceVertical:
+      description: Unit of measure for ValDistanceVertical.
+      type: string
+      enum: ["FT", "M", "FL", "SM", "OTHER"]
 
     CodeVerticalReferenceBase:
       description: AIXM CodeVerticalReferenceBaseType
-      type: object
+      type: string
+      enum: ["SFC", "MSL", "W84", "STD", "OTHER"]
 
     CodeValueInterrpetationBase:
       description: AIXM CodeValueInterrpetationBaseType
-      type: object
+      type: string
+      enum: ["ABOVE", "AT_OR_ABOVE", "AT_OR_BELOW", "BELOW", "OTHER"]
 
-    ValDistanceVerticalBase:
-      description: AIXM ValDistanceVerticalBaseType
+    Temperature:
+      description: Temperature value.
+      allOf:
+        - $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/Measure"
+        - $ref: "#/components/schemas/UomTemperature"
+
+    UomTemperature:
+      description: Unit of measure for temperature.
       type: object
+      required:
+        - uom
+      properties:
+        uom:
+          type: string
+
+    Pressure:
+      description: Temperature value.
+      allOf:
+        - $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/Measure"
+        - $ref: "#/components/schemas/UomPressure"
+
+    UomPressure:
+      description: Unit of measure for pressure.
+      type: object
+      required:
+        - uom
+      properties:
+        uom:
+          type: string
+
+    Density:
+      description: Density value.
+      allOf:
+        - $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/Measure"
+        - $ref: "#/components/schemas/UomDensity"
+
+    UomDensity:
+      description: Unit of measure for density.
+      type: object
+      required:
+        - uom
+      properties:
+        uom:
+          type: string
 
     NilReason:
       description: Nil object with optional reason for nil value.
       type: object
+      required:
+        - nil
       properties:
+        nil:
+          type: boolean
         reason:
           type: string
+
+    Any:
+      description: A type that can represent any object.

@@ -9,37 +9,39 @@ components:
   schemas:
     VolcanoObservatoryNoticeForAviation:
       description: A product issued by the State Volcano Observatory (SVO) with a summary of volcanic activity and observations about ash emission (or lack thereof) which is intended for aviation users.
-      type: object
-      required:
-        - stateOrRegion
-        - noticeNumber
-        - currentColourCode
-        - prviousColoutCode
-        - contacts
-        - remarks
-        - nextNotice
-      properties:
-        stateOrRegion:
-          description: State or region involved.
-          $ref: "../Common/String.yaml#/components/schemas/StringWithNilReason"
-        noticeNumber:
-          description: VONA Notice Number.
-          $ref: "../Common/String.yaml#/components/schemas/StringWithNilReason"
-        currentColourCode:
-          description: Current aviation colour code.
-          $ref: "#/components/schemas/AviationColourCode"
-        previousColourCode:
-          description: Previous aviation colour code.
-          $ref: "#/components/schemas/AviationColourCode"
-        contacts:
-          description: State Volcano Observatory (SVO) contact details.
-          $ref: "../Common/String.yaml#/components/schemas/StringWithNilReason"
-        remarks:
-          description: Remarks.
-          $ref: "../Common/String.yaml#/components/schemas/StringWithNilReason"
-        nextNotice:
-          description: Indication of the issuance of next VONA.
-          $ref: "../Common/String.yaml#/components/schemas/StringWithNilReason"
+      allOf:
+        - $ref: "../Meteorological_Feature/Meteorological_Feature_and_Collection.yaml#/components/schemas/MeteorologicalFeatureCollection"
+        - type: object
+          required:
+            - stateOrRegion
+            - noticeNumber
+            - currentColourCode
+            - prviousColoutCode
+            - contacts
+            - remarks
+            - nextNotice
+          properties:
+            stateOrRegion:
+              description: State or region involved.
+              $ref: "../Common/String.yaml#/components/schemas/StringWithNilReason"
+            noticeNumber:
+              description: VONA Notice Number.
+              $ref: "../Common/String.yaml#/components/schemas/StringWithNilReason"
+            currentColourCode:
+              description: Current aviation colour code.
+              $ref: "#/components/schemas/AviationColourCode"
+            previousColourCode:
+              description: Previous aviation colour code.
+              $ref: "#/components/schemas/AviationColourCode"
+            contacts:
+              description: State Volcano Observatory (SVO) contact details.
+              $ref: "../Common/String.yaml#/components/schemas/StringWithNilReason"
+            remarks:
+              description: Remarks.
+              $ref: "../Common/String.yaml#/components/schemas/StringWithNilReason"
+            nextNotice:
+              description: Indication of the issuance of next VONA.
+              $ref: "../Common/String.yaml#/components/schemas/StringWithNilReason"
 
     AviationColourCode:
       description: Volcano level of alert colour codes for aviation.

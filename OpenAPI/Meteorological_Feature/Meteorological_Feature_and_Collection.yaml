@@ -35,7 +35,7 @@ components:
               $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/TimeInstant"
             originatingCentre:
               description: Institution that creates the reports.
-              type: string
+              $ref: "../AIXM/AIXM.yaml#/components/schemas/Any"
             phenomenonCategory:
               description: The category of the meteorological phenomenon which is either weatherObservations or weatherForecasts.
               $ref: "#/components/schemas/WMOCategoryCode"
@@ -64,7 +64,7 @@ components:
           $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/TimeInstant"
         originatingCentre:
           description: Institution that creates the reports.
-          type: "string"
+          $ref: "../AIXM/AIXM.yaml#/components/schemas/Any"
         phenomenonBaseTime:
           description: The data time of the forecast, usually provided to identify different sets of numerical weather prediction product.
           $ref: "../ISO_TC211/ISO_TC211.yaml#/components/schemas/TimeInstant"
@@ -79,13 +79,13 @@ components:
           $ref: "Code_Tables.yaml#/components/schemas/MeteorologicalPhenomenon"
         phenomenonGeometry:
           description: Geometry of the meteorological phenomenon.
-          type: "string"
+          $ref: "../AIXM/AIXM.yaml#/components/schemas/Any"
         phenomenonProperty:
           description: Properties of the meteorological phenomenon.
           type: array
           uniqueItems: true
           items:
-            type: "string"
+            $ref: "../AIXM/AIXM.yaml#/components/schemas/Any"
 
     WMOCategoryCode:
       description: Additional topic categories for WMO community.

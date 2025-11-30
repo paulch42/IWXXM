@@ -12,19 +12,7 @@ components:
       description: ISO 19103:2005, Velocity
       allOf:
         - $ref: "#/components/schemas/Measure"
-        - type: object
-          required:
-            - distance
-            - time
-            - uom
-          properties:
-            distance:
-              $ref: "#/components/schemas/UomLength"
-            time:
-              $ref: "#/components/schemas/UomTime"
-            uom:
-              $ref: "#/components/schemas/UomVelocity"
-
+        - $ref: "#/components/schemas/UomVelocity"
     UomVelocity:
       description: ISO 19103:2005, UomVelocity
       type: object
@@ -103,7 +91,9 @@ components:
           $ref: "#/components/schemas/TimeInstant"
 
     DateTimeOrPeriod:
-      description: A value that is either a time instant or a time period. IWXXM models this as a generic object.
+      description: |
+        A value that is either a time instant or a time period.
+        In the IWXXM model this is represenetd as a TM_Object.
       oneOf:
         - $ref: "#/components/schemas/TimeInstant"
         - $ref: "#/components/schemas/TimePeriod"
@@ -115,6 +105,16 @@ components:
     Point:
       description: ISO 19107:2003, GM_Point
       type: object
+      required:
+        - coordinate
+      properties:
+        coordinate:
+          description: Latitude followed by longitude.
+          type: array
+          minItems: 2
+          maxItems: 2
+          items:
+            type: number
 
     Curve:
       description: ISO 19107:2003, GM_Curve
